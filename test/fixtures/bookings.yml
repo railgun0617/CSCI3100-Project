@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 1
+  venue_id: 1
+  equipment_id: 1
+  start_time: 2026-03-22 23:59:33
+  end_time: 2026-03-22 23:59:33
+  status: MyString
+  notes: MyText
+
+two:
+  user_id: 1
+  venue_id: 1
+  equipment_id: 1
+  start_time: 2026-03-22 23:59:33
+  end_time: 2026-03-22 23:59:33
+  status: MyString
+  notes: MyText

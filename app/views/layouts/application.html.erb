@@ -1,29 +1,40 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= content_for(:title) || "Csci3100 Project" %></title>
+    <title>CUHK Booking SaaS</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="application-name" content="Csci3100 Project">
-    <meta name="mobile-web-app-capable" content="yes">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <%= stylesheet_link_tag "tailwind", "data-turbo-track": "reload" %>
 
-    <%= yield :head %>
-
-    <%# Enable PWA manifest for installable apps (make sure to enable in config/routes.rb too!) %>
-    <%#= tag.link rel: "manifest", href: pwa_manifest_path(format: :json) %>
-
-    <link rel="icon" href="/icon.png" type="image/png">
-    <link rel="icon" href="/icon.svg" type="image/svg+xml">
-    <link rel="apple-touch-icon" href="/icon.png">
-
-    <%# Includes all stylesheet files in app/assets/stylesheets %>
-    <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
+  <!-- The login link is a placeholder. Later, your backend will replace it with proper Devise links. -->
+  <body class="bg-gray-100">
+    <nav class="bg-white shadow">
+      <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+        <%= link_to "CUHK Booking", root_path, class: "text-xl font-bold text-blue-600" %>
+        <div class="space-x-4">
+          <%= link_to "Venues", venues_path, class: "text-gray-700 hover:text-blue-600" %>
+          <%= link_to "Equipment", equipment_index_path, class: "text-gray-700 hover:text-blue-600" %>
+          <%= link_to "My Bookings", bookings_path, class: "text-gray-700 hover:text-blue-600" %>
+          <%= link_to "Staff Dashboard", staff_dashboard_path, class: "text-gray-700 hover:text-blue-600" %>
+          <%= link_to "Manage Venues", new_venue_path, class: "text-gray-700 hover:text-blue-600" %>
+          <%= link_to "Add Equipment", new_equipment_path, class: "text-gray-700 hover:text-blue-600" %>
+          <%= link_to "Login", "#", class: "text-gray-700 hover:text-blue-600" %>
+        </div>
+      </div>
+    </nav>
 
-  <body>
-    <%= yield %>
+    <main class="container mx-auto px-4 py-8">
+      <%= yield %>
+    </main>
+
+    <footer class="bg-white border-t mt-8">
+      <div class="container mx-auto px-4 py-4 text-center text-gray-500 text-sm">
+        CUHK Booking SaaS &copy; 2026
+      </div>
+    </footer>
   </body>
 </html>

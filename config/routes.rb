@@ -1,4 +1,15 @@
 Rails.application.routes.draw do
+  get "equipment/index"
+  get "equipment/show"
+  get "equipment/new"
+  get "equipment/edit"
+  get "staff/dashboard"
+  get "bookings/index"
+  get "bookings/new"
+  get "venues/index"
+  get "venues/show"
+  get "venues/new"
+  get "venues/edit"
   ## get "home/index"
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
@@ -16,4 +27,15 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "posts#index"
   root "home#index"
+
+  resources :venues
+  resources :equipment
+  resources :bookings, only: [:index, :new, :create] do
+    member do
+      patch :approve
+      patch :reject
+    end
+  end
+
+  get 'staff/dashboard', to: 'staff#dashboard'
 end

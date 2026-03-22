@@ -1,0 +1,19 @@
+<div class="bg-white rounded-lg shadow p-6">
+  <h1 class="text-2xl font-bold mb-2"><%= @venue.name %></h1>
+  <p class="text-gray-600 mb-4"><%= @venue.description %></p>
+  <div class="grid md:grid-cols-2 gap-6">
+    <div>
+      <h2 class="font-semibold text-lg">Details</h2>
+      <ul class="mt-2 space-y-1">
+        <li>Capacity: <%= @venue.capacity %></li>
+        <li>Equipment: <%= @venue.equipment_list %></li>
+        <li>College/Dept: <%= @venue.tenant&.name %></li>
+      </ul>
+      <%= link_to "Book This Venue", new_booking_path(venue_id: @venue.id), class: "mt-4 inline-block bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700" %>
+    </div>
+    <div>
+      <h2 class="font-semibold text-lg">Location</h2>
+      <div id="map" data-controller="map" data-map-lat-value="<%= @venue.latitude %>" data-map-lng-value="<%= @venue.longitude %>" class="h-64 w-full bg-gray-200 rounded-lg"></div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,33 @@
+<div class="bg-white rounded-lg shadow p-6 max-w-2xl mx-auto">
+  <h1 class="text-2xl font-bold mb-4">Edit Equipment</h1>
+  <%= form_with model: @equipment, local: true do |f| %>
+    <div class="mb-4">
+      <%= f.label :name, class: "block text-gray-700 font-medium mb-1" %>
+      <%= f.text_field :name, class: "w-full p-2 border rounded-lg" %>
+    </div>
+    <div class="mb-4">
+      <%= f.label :description, class: "block text-gray-700 font-medium mb-1" %>
+      <%= f.text_area :description, rows: 3, class: "w-full p-2 border rounded-lg" %>
+    </div>
+    <div class="mb-4">
+      <%= f.label :location, class: "block text-gray-700 font-medium mb-1" %>
+      <%= f.text_field :location, class: "w-full p-2 border rounded-lg" %>
+    </div>
+    <div class="mb-4">
+      <%= f.label :quantity, class: "block text-gray-700 font-medium mb-1" %>
+      <%= f.number_field :quantity, class: "w-full p-2 border rounded-lg" %>
+    </div>
+    <div class="mb-4">
+      <%= f.label :latitude, class: "block text-gray-700 font-medium mb-1" %>
+      <%= f.text_field :latitude, class: "w-full p-2 border rounded-lg" %>
+    </div>
+    <div class="mb-4">
+      <%= f.label :longitude, class: "block text-gray-700 font-medium mb-1" %>
+      <%= f.text_field :longitude, class: "w-full p-2 border rounded-lg" %>
+    </div>
+    <div class="flex justify-end space-x-2">
+      <%= link_to "Cancel", equipment_index_path, class: "px-4 py-2 border rounded-lg hover:bg-gray-100" %>
+      <%= f.submit "Update Equipment", class: "bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700" %>
+    </div>
+  <% end %>
+</div>

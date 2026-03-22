@@ -1,0 +1,19 @@
+<div class="bg-white rounded-lg shadow p-6">
+  <h1 class="text-2xl font-bold mb-2"><%= @equipment.name %></h1>
+  <p class="text-gray-600 mb-4"><%= @equipment.description %></p>
+  <div class="grid md:grid-cols-2 gap-6">
+    <div>
+      <h2 class="font-semibold text-lg">Details</h2>
+      <ul class="mt-2 space-y-1">
+        <li>Location: <%= @equipment.location %></li>
+        <li>Available quantity: <%= @equipment.quantity %></li>
+        <li>College/Dept: <%= @equipment.tenant&.name %></li>
+      </ul>
+      <%= link_to "Book This Equipment", new_booking_path(equipment_id: @equipment.id), class: "mt-4 inline-block bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700" %>
+    </div>
+    <div>
+      <h2 class="font-semibold text-lg">Location Map</h2>
+      <div id="map" data-controller="map" data-map-lat-value="<%= @equipment.latitude %>" data-map-lng-value="<%= @equipment.longitude %>" class="h-64 w-full bg-gray-200 rounded-lg"></div>
+    </div>
+  </div>
+</div>
