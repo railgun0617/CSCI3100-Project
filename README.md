@@ -155,7 +155,7 @@ app/
 ├── models/               # User, Venue, Equipment, Booking
 ├── views/                # All HTML/ERB templates
 ├── javascript/controllers/  # Stimulus (map, search)
-├── assets/stylesheets/   # Tailwind source
+├── assets/   # Tailwind source
 config/routes.rb
 Gemfile
 ```
