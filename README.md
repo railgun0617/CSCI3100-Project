@@ -46,7 +46,6 @@ This is a multi-tenant SaaS application for booking venues and equipment across 
 
 ### Styling
 - Tailwind CSS installed (`tailwindcss-rails` gem).  
-- Compiled CSS in `app/assets/builds/application.css`.
 
 ## What Backend Needs to Do
 
@@ -127,8 +126,16 @@ This is a multi-tenant SaaS application for booking venues and equipment across 
    ```bash
    bin/dev
    ```
+   If haven't installed Tailwind or the bin/dev script is missing, run:
+   ```bash
+   rails tailwindcss:install
+   ```
+   This creates the bin/dev file. Then you can start the server with:
+   ```bash
+   bin/dev
+   ```
 
-5. Visit `http://localhost:3000`.
+6. Visit `http://localhost:3000`.
 
 ## File Structure Overview
 
@@ -153,7 +160,3 @@ Gemfile
 ## Communication
 
 If any frontend expectations (e.g., JSON format for search, data attributes in views) need adjustment, please coordinate with the frontend team. We can iterate quickly.
-
----
-
-Let's finish strong! 🚀
