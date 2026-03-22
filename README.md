@@ -134,6 +134,16 @@ This is a multi-tenant SaaS application for booking venues and equipment across 
    ```bash
    bin/dev
    ```
+   Alternative:\
+   Start the Tailwind watcher in one terminal:
+   ```bash
+   rails tailwindcss:watch
+   ```
+   Keep this terminal open – it will recompile CSS automatically when you change views.\
+   Start the Rails server in another terminal:
+   ```bash
+   rails server
+   ```
 
 6. Visit `http://localhost:3000`.
 
