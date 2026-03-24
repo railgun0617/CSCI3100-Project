@@ -1032,3 +1032,570 @@ Processing by VenuesController#index as HTML
 Completed 200 OK in 9ms (Views: 3.2ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.0ms)
 
 
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='Csci3100Project'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Csci3100Project'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Csci3100Project'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Csci3100Project'*/[0m
+Started GET "/" for 127.0.0.1 at 2026-03-24 12:44:00 +0800
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Csci3100Project'*/[0m
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 2.9ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 59.7ms | GC: 0.2ms)
+Completed 200 OK in 299ms (Views: 88.6ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.2ms)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2026-03-24 12:44:01 +0800
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/equipment/index" for 127.0.0.1 at 2026-03-24 12:45:26 +0800
+Processing by EquipmentController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering equipment/index.html.erb within layouts/application
+  [1m[36mEquipment Load (5.8ms)[0m  [1m[34mSELECT "equipment".* FROM "equipment" /*action='index',application='Csci3100Project',controller='equipment'*/[0m
+  ↳ app/views/equipment/index.html.erb:17
+  Rendered equipment/index.html.erb within layouts/application (Duration: 41.6ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 48.3ms | GC: 0.0ms)
+Completed 200 OK in 310ms (Views: 51.2ms | ActiveRecord: 10.2ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/bookings" for 127.0.0.1 at 2026-03-24 12:45:29 +0800
+Processing by BookingsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering bookings/index.html.erb within layouts/application
+  Rendered bookings/index.html.erb within layouts/application (Duration: 2.0ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 7.4ms | GC: 0.0ms)
+Completed 200 OK in 48ms (Views: 20.0ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/staff/dashboard" for 127.0.0.1 at 2026-03-24 12:45:31 +0800
+Processing by StaffController#dashboard as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering staff/dashboard.html.erb within layouts/application
+  Rendered staff/dashboard.html.erb within layouts/application (Duration: 3.5ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 9.9ms | GC: 0.0ms)
+Completed 200 OK in 52ms (Views: 24.3ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/equipment/new" for 127.0.0.1 at 2026-03-24 12:45:42 +0800
+Processing by EquipmentController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering equipment/new.html.erb within layouts/application
+  Rendered equipment/new.html.erb within layouts/application (Duration: 79.6ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 84.0ms | GC: 0.0ms)
+Completed 200 OK in 113ms (Views: 87.0ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/venues/new" for 127.0.0.1 at 2026-03-24 12:45:46 +0800
+Processing by VenuesController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering venues/new.html.erb within layouts/application
+  Rendered venues/new.html.erb within layouts/application (Duration: 1.1ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 16.6ms | GC: 0.0ms)
+Completed 200 OK in 64ms (Views: 32.4ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/staff/dashboard" for 127.0.0.1 at 2026-03-24 12:45:48 +0800
+Processing by StaffController#dashboard as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering staff/dashboard.html.erb within layouts/application
+  Rendered staff/dashboard.html.erb within layouts/application (Duration: 0.1ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 5.3ms | GC: 0.0ms)
+Completed 200 OK in 45ms (Views: 17.9ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/bookings" for 127.0.0.1 at 2026-03-24 12:45:49 +0800
+Processing by BookingsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering bookings/index.html.erb within layouts/application
+  Rendered bookings/index.html.erb within layouts/application (Duration: 0.2ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 11.8ms | GC: 0.0ms)
+Completed 200 OK in 39ms (Views: 15.0ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/equipment/index" for 127.0.0.1 at 2026-03-24 12:45:50 +0800
+Processing by EquipmentController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering equipment/index.html.erb within layouts/application
+  [1m[36mEquipment Load (0.5ms)[0m  [1m[34mSELECT "equipment".* FROM "equipment" /*action='index',application='Csci3100Project',controller='equipment'*/[0m
+  ↳ app/views/equipment/index.html.erb:17
+  Rendered equipment/index.html.erb within layouts/application (Duration: 11.8ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 17.4ms | GC: 0.0ms)
+Completed 200 OK in 42ms (Views: 19.4ms | ActiveRecord: 0.5ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/venues" for 127.0.0.1 at 2026-03-24 12:45:51 +0800
+Processing by VenuesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering venues/index.html.erb within layouts/application
+  [1m[36mVenue Load (0.5ms)[0m  [1m[34mSELECT "venues".* FROM "venues" /*action='index',application='Csci3100Project',controller='venues'*/[0m
+  ↳ app/views/venues/index.html.erb:18
+  Rendered venues/index.html.erb within layouts/application (Duration: 24.7ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 30.1ms | GC: 0.0ms)
+Completed 200 OK in 74ms (Views: 31.1ms | ActiveRecord: 1.5ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/venues/new" for 127.0.0.1 at 2026-03-24 12:45:52 +0800
+Processing by VenuesController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering venues/new.html.erb within layouts/application
+  Rendered venues/new.html.erb within layouts/application (Duration: 0.1ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 5.8ms | GC: 0.0ms)
+Completed 200 OK in 43ms (Views: 14.2ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/staff/dashboard" for 127.0.0.1 at 2026-03-24 12:45:54 +0800
+Processing by StaffController#dashboard as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering staff/dashboard.html.erb within layouts/application
+  Rendered staff/dashboard.html.erb within layouts/application (Duration: 0.1ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 4.9ms | GC: 0.0ms)
+Completed 200 OK in 67ms (Views: 43.3ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/bookings" for 127.0.0.1 at 2026-03-24 12:45:55 +0800
+Processing by BookingsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering bookings/index.html.erb within layouts/application
+  Rendered bookings/index.html.erb within layouts/application (Duration: 0.1ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 14.9ms | GC: 0.0ms)
+Completed 200 OK in 48ms (Views: 18.7ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/equipment/index" for 127.0.0.1 at 2026-03-24 12:45:55 +0800
+Processing by EquipmentController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering equipment/index.html.erb within layouts/application
+  [1m[36mEquipment Load (0.5ms)[0m  [1m[34mSELECT "equipment".* FROM "equipment" /*action='index',application='Csci3100Project',controller='equipment'*/[0m
+  ↳ app/views/equipment/index.html.erb:17
+  Rendered equipment/index.html.erb within layouts/application (Duration: 9.7ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 15.6ms | GC: 0.0ms)
+Completed 200 OK in 47ms (Views: 19.8ms | ActiveRecord: 0.4ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/venues" for 127.0.0.1 at 2026-03-24 12:45:56 +0800
+Processing by VenuesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering venues/index.html.erb within layouts/application
+  [1m[36mVenue Load (0.7ms)[0m  [1m[34mSELECT "venues".* FROM "venues" /*action='index',application='Csci3100Project',controller='venues'*/[0m
+  ↳ app/views/venues/index.html.erb:18
+  Rendered venues/index.html.erb within layouts/application (Duration: 10.8ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 90.8ms | GC: 0.0ms)
+Completed 200 OK in 118ms (Views: 93.7ms | ActiveRecord: 0.7ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/equipment/index" for 127.0.0.1 at 2026-03-24 12:45:58 +0800
+Processing by EquipmentController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering equipment/index.html.erb within layouts/application
+  [1m[36mEquipment Load (0.5ms)[0m  [1m[34mSELECT "equipment".* FROM "equipment" /*action='index',application='Csci3100Project',controller='equipment'*/[0m
+  ↳ app/views/equipment/index.html.erb:17
+  Rendered equipment/index.html.erb within layouts/application (Duration: 7.3ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 19.0ms | GC: 0.0ms)
+Completed 200 OK in 50ms (Views: 26.9ms | ActiveRecord: 0.5ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/venues" for 127.0.0.1 at 2026-03-24 12:45:59 +0800
+Processing by VenuesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering venues/index.html.erb within layouts/application
+  [1m[36mVenue Load (1.1ms)[0m  [1m[34mSELECT "venues".* FROM "venues" /*action='index',application='Csci3100Project',controller='venues'*/[0m
+  ↳ app/views/venues/index.html.erb:18
+  Rendered venues/index.html.erb within layouts/application (Duration: 10.4ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 15.5ms | GC: 0.0ms)
+Completed 200 OK in 47ms (Views: 19.2ms | ActiveRecord: 1.1ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/venues/new" for 127.0.0.1 at 2026-03-24 12:46:05 +0800
+Processing by VenuesController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering venues/new.html.erb within layouts/application
+  Rendered venues/new.html.erb within layouts/application (Duration: 0.1ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 6.8ms | GC: 0.0ms)
+Completed 200 OK in 33ms (Views: 9.4ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/equipment/index" for 127.0.0.1 at 2026-03-24 12:46:42 +0800
+Processing by EquipmentController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering equipment/index.html.erb within layouts/application
+  [1m[36mEquipment Load (0.5ms)[0m  [1m[34mSELECT "equipment".* FROM "equipment" /*action='index',application='Csci3100Project',controller='equipment'*/[0m
+  ↳ app/views/equipment/index.html.erb:17
+  Rendered equipment/index.html.erb within layouts/application (Duration: 8.8ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 18.3ms | GC: 0.0ms)
+Completed 200 OK in 47ms (Views: 23.2ms | ActiveRecord: 0.4ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/venues/new" for 127.0.0.1 at 2026-03-24 13:00:38 +0800
+Processing by VenuesController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering venues/new.html.erb within layouts/application
+  Rendered venues/new.html.erb within layouts/application (Duration: 0.1ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 6.2ms | GC: 0.0ms)
+Completed 200 OK in 35ms (Views: 9.8ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/staff/dashboard" for 127.0.0.1 at 2026-03-24 13:17:13 +0800
+Processing by StaffController#dashboard as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering staff/dashboard.html.erb within layouts/application
+  Rendered staff/dashboard.html.erb within layouts/application (Duration: 0.3ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 6.0ms | GC: 0.0ms)
+Completed 200 OK in 36ms (Views: 8.4ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/equipment/new" for 127.0.0.1 at 2026-03-24 13:17:20 +0800
+Processing by EquipmentController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering equipment/new.html.erb within layouts/application
+  Rendered equipment/new.html.erb within layouts/application (Duration: 6.7ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 10.9ms | GC: 0.0ms)
+Completed 200 OK in 42ms (Views: 13.9ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/equipment/index" for 127.0.0.1 at 2026-03-24 13:17:25 +0800
+Processing by EquipmentController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering equipment/index.html.erb within layouts/application
+  [1m[36mEquipment Load (6.3ms)[0m  [1m[34mSELECT "equipment".* FROM "equipment" /*action='index',application='Csci3100Project',controller='equipment'*/[0m
+  ↳ app/views/equipment/index.html.erb:17
+  Rendered equipment/index.html.erb within layouts/application (Duration: 14.4ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 19.4ms | GC: 0.0ms)
+Completed 200 OK in 47ms (Views: 15.7ms | ActiveRecord: 6.3ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2026-03-24 13:17:45 +0800
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.9ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 5.9ms | GC: 0.0ms)
+Completed 200 OK in 35ms (Views: 9.4ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/venues" for 127.0.0.1 at 2026-03-24 13:17:48 +0800
+Processing by VenuesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering venues/index.html.erb within layouts/application
+  [1m[36mVenue Load (0.5ms)[0m  [1m[34mSELECT "venues".* FROM "venues" /*action='index',application='Csci3100Project',controller='venues'*/[0m
+  ↳ app/views/venues/index.html.erb:18
+  Rendered venues/index.html.erb within layouts/application (Duration: 9.3ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 14.1ms | GC: 0.0ms)
+Completed 200 OK in 41ms (Views: 16.4ms | ActiveRecord: 0.5ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2026-03-24 13:17:51 +0800
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.8ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 5.9ms | GC: 0.0ms)
+Completed 200 OK in 32ms (Views: 8.3ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/equipment/index" for 127.0.0.1 at 2026-03-24 13:17:54 +0800
+Processing by EquipmentController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering equipment/index.html.erb within layouts/application
+  [1m[36mEquipment Load (0.5ms)[0m  [1m[34mSELECT "equipment".* FROM "equipment" /*action='index',application='Csci3100Project',controller='equipment'*/[0m
+  ↳ app/views/equipment/index.html.erb:17
+  Rendered equipment/index.html.erb within layouts/application (Duration: 7.0ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 11.6ms | GC: 0.0ms)
+Completed 200 OK in 36ms (Views: 14.0ms | ActiveRecord: 0.4ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2026-03-24 13:18:10 +0800
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.7ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 9.7ms | GC: 0.0ms)
+Completed 200 OK in 36ms (Views: 12.2ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/equipment/index" for 127.0.0.1 at 2026-03-24 13:19:22 +0800
+Processing by EquipmentController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering equipment/index.html.erb within layouts/application
+  [1m[36mEquipment Load (0.5ms)[0m  [1m[34mSELECT "equipment".* FROM "equipment" /*action='index',application='Csci3100Project',controller='equipment'*/[0m
+  ↳ app/views/equipment/index.html.erb:17
+  Rendered equipment/index.html.erb within layouts/application (Duration: 26.0ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 44.1ms | GC: 0.0ms)
+Completed 200 OK in 92ms (Views: 63.9ms | ActiveRecord: 0.5ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/bookings/new?equipment_id=1" for 127.0.0.1 at 2026-03-24 13:19:37 +0800
+Processing by BookingsController#new as HTML
+  Parameters: {"equipment_id" => "1"}
+  Rendering layout layouts/application.html.erb
+  Rendering bookings/new.html.erb within layouts/application
+  Rendered bookings/new.html.erb within layouts/application (Duration: 4.1ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 8.6ms | GC: 0.0ms)
+Completed 500 Internal Server Error in 53ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined method 'name' for nil)
+Caused by: NoMethodError (undefined method 'name' for nil)
+
+Information for: ActionView::Template::Error (undefined method 'name' for nil):
+    1: <div class="bg-white rounded-lg shadow p-6 max-w-md mx-auto">
+    2:   <h1 class="text-2xl font-bold mb-4">Book <%= @venue.name %></h1>
+    3: 
+    4:   <%= form_with model: @booking, local: true do |f| %>
+    5:     <div class="mb-4">
+    6:       <%= f.label :start_time, "Start Time", class: "block text-gray-700 font-medium mb-1" %>
+  
+app/views/bookings/new.html.erb:3
+
+Information for cause: NoMethodError (undefined method 'name' for nil):
+  
+app/views/bookings/new.html.erb:3
+Started GET "/staff/dashboard" for 127.0.0.1 at 2026-03-24 14:01:40 +0800
+Processing by StaffController#dashboard as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering staff/dashboard.html.erb within layouts/application
+  Rendered staff/dashboard.html.erb within layouts/application (Duration: 0.2ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 19.2ms | GC: 0.0ms)
+Completed 200 OK in 65ms (Views: 26.3ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2026-03-24 18:27:35 +0800
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Csci3100Project'*/[0m
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 1.4ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 276.2ms | GC: 0.0ms)
+Completed 200 OK in 1209ms (Views: 418.4ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2026-03-24 18:27:38 +0800
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/equipment/new" for 127.0.0.1 at 2026-03-24 18:27:42 +0800
+Processing by EquipmentController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering equipment/new.html.erb within layouts/application
+  Rendered equipment/new.html.erb within layouts/application (Duration: 83.2ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 85.4ms | GC: 0.0ms)
+Completed 200 OK in 289ms (Views: 91.8ms | ActiveRecord: 6.5ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/venues/new" for 127.0.0.1 at 2026-03-24 18:27:44 +0800
+Processing by VenuesController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering venues/new.html.erb within layouts/application
+  Rendered venues/new.html.erb within layouts/application (Duration: 0.5ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 2.7ms | GC: 0.0ms)
+Completed 200 OK in 25ms (Views: 7.8ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2026-03-24 18:32:01 +0800
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.5ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 4.0ms | GC: 0.0ms)
+Completed 200 OK in 18ms (Views: 5.9ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2026-03-24 18:36:46 +0800
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Csci3100Project'*/[0m
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 1.4ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 37.6ms | GC: 0.0ms)
+Completed 200 OK in 87ms (Views: 47.0ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2026-03-24 18:58:15 +0800
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Csci3100Project'*/[0m
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 1.4ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 454.5ms | GC: 0.0ms)
+Completed 200 OK in 1641ms (Views: 580.7ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2026-03-24 18:58:19 +0800
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.2ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 3.1ms | GC: 0.0ms)
+Completed 200 OK in 27ms (Views: 4.7ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2026-03-24 18:59:32 +0800
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.7ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 8.7ms | GC: 0.0ms)
+Completed 200 OK in 24ms (Views: 17.8ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2026-03-24 19:04:02 +0800
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.6ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 11.0ms | GC: 0.0ms)
+Completed 200 OK in 32ms (Views: 20.0ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/equipment/new" for 127.0.0.1 at 2026-03-24 19:04:04 +0800
+Processing by EquipmentController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering equipment/new.html.erb within layouts/application
+  Rendered equipment/new.html.erb within layouts/application (Duration: 129.1ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 130.2ms | GC: 0.0ms)
+Completed 200 OK in 406ms (Views: 136.2ms | ActiveRecord: 6.4ms (0 queries, 0 cached) | GC: 0.2ms)
+
+
+Started GET "/bookings" for 127.0.0.1 at 2026-03-24 19:04:07 +0800
+Processing by BookingsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering bookings/index.html.erb within layouts/application
+  Rendered bookings/index.html.erb within layouts/application (Duration: 0.7ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 2.9ms | GC: 0.0ms)
+Completed 200 OK in 61ms (Views: 13.1ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/equipment/new" for 127.0.0.1 at 2026-03-24 19:04:57 +0800
+Processing by EquipmentController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering equipment/new.html.erb within layouts/application
+  Rendered equipment/new.html.erb within layouts/application (Duration: 3.4ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 6.1ms | GC: 0.0ms)
+Completed 200 OK in 19ms (Views: 8.6ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2026-03-24 19:05:14 +0800
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Csci3100Project'*/[0m
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 2.8ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 38.9ms | GC: 0.0ms)
+Completed 200 OK in 109ms (Views: 49.4ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2026-03-24 19:07:35 +0800
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Csci3100Project'*/[0m
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.8ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 28.2ms | GC: 0.0ms)
+Completed 200 OK in 83ms (Views: 38.5ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/equipment/new" for 127.0.0.1 at 2026-03-24 19:07:37 +0800
+Processing by EquipmentController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering equipment/new.html.erb within layouts/application
+  Rendered equipment/new.html.erb within layouts/application (Duration: 22.4ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 24.7ms | GC: 0.0ms)
+Completed 200 OK in 74ms (Views: 29.1ms | ActiveRecord: 8.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/venues/new" for 127.0.0.1 at 2026-03-24 19:07:39 +0800
+Processing by VenuesController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering venues/new.html.erb within layouts/application
+  Rendered venues/new.html.erb within layouts/application (Duration: 4.1ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 8.0ms | GC: 0.0ms)
+Completed 200 OK in 51ms (Views: 14.3ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/bookings" for 127.0.0.1 at 2026-03-24 19:07:42 +0800
+Processing by BookingsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering bookings/index.html.erb within layouts/application
+  Rendered bookings/index.html.erb within layouts/application (Duration: 1.0ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 3.8ms | GC: 0.0ms)
+Completed 200 OK in 28ms (Views: 11.8ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/equipment/index" for 127.0.0.1 at 2026-03-24 19:13:26 +0800
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Csci3100Project'*/[0m
+Processing by EquipmentController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering equipment/index.html.erb within layouts/application
+  [1m[36mEquipment Load (1.7ms)[0m  [1m[34mSELECT "equipment".* FROM "equipment" /*action='index',application='Csci3100Project',controller='equipment'*/[0m
+  ↳ app/views/equipment/index.html.erb:17
+  Rendered equipment/index.html.erb within layouts/application (Duration: 10.0ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 47.2ms | GC: 0.0ms)
+Completed 200 OK in 367ms (Views: 55.6ms | ActiveRecord: 3.0ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/bookings/new?equipment_id=1" for 127.0.0.1 at 2026-03-24 19:15:19 +0800
+Processing by BookingsController#new as HTML
+  Parameters: {"equipment_id" => "1"}
+  Rendering layout layouts/application.html.erb
+  Rendering bookings/new.html.erb within layouts/application
+  Rendered bookings/new.html.erb within layouts/application (Duration: 73.6ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 75.0ms | GC: 0.0ms)
+Completed 500 Internal Server Error in 170ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined method 'name' for nil)
+Caused by: NoMethodError (undefined method 'name' for nil)
+
+Information for: ActionView::Template::Error (undefined method 'name' for nil):
+    1: <div class="bg-white rounded-lg shadow p-6 max-w-md mx-auto">
+    2:   <h1 class="text-2xl font-bold mb-4">Book <%= @venue.name %></h1>
+    3: 
+    4:   <%= form_with model: @booking, local: true do |f| %>
+    5:     <div class="mb-4">
+    6:       <%= f.label :start_time, "Start Time", class: "block text-gray-700 font-medium mb-1" %>
+  
+app/views/bookings/new.html.erb:3
+
+Information for cause: NoMethodError (undefined method 'name' for nil):
+  
+app/views/bookings/new.html.erb:3
+Started GET "/equipment/new" for 127.0.0.1 at 2026-03-24 19:15:23 +0800
+Processing by EquipmentController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering equipment/new.html.erb within layouts/application
+  Rendered equipment/new.html.erb within layouts/application (Duration: 18.6ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 51.7ms | GC: 0.0ms)
+Completed 200 OK in 112ms (Views: 62.0ms | ActiveRecord: 12.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/venues/new" for 127.0.0.1 at 2026-03-24 19:15:26 +0800
+Processing by VenuesController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering venues/new.html.erb within layouts/application
+  Rendered venues/new.html.erb within layouts/application (Duration: 0.9ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 3.4ms | GC: 0.0ms)
+Completed 200 OK in 29ms (Views: 11.6ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/equipment/new" for 127.0.0.1 at 2026-03-24 19:15:53 +0800
+Processing by EquipmentController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering equipment/new.html.erb within layouts/application
+  Rendered equipment/new.html.erb within layouts/application (Duration: 3.7ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 16.0ms | GC: 0.0ms)
+Completed 200 OK in 133ms (Views: 114.6ms | ActiveRecord: 6.6ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2026-03-24 19:15:54 +0800
+Processing by LoginController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering login/index.html.erb within layouts/application
+  Rendered login/index.html.erb within layouts/application (Duration: 0.4ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 2.4ms | GC: 0.0ms)
+Completed 200 OK in 24ms (Views: 7.0ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
