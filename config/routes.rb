@@ -38,5 +38,5 @@ Rails.application.routes.draw do
   end
 
   get 'staff/dashboard', to: 'staff#dashboard'
-  get 'login', to: 'login#index'
+  get 'login', to: 'login#index', as: 'login'
 end
