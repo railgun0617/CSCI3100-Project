@@ -52,11 +52,6 @@ group :development, :test do
 
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
   gem "rubocop-rails-omakase", require: false
-
-  gem 'cucumber-rails', require: false
-  gem 'database_cleaner'
-  gem 'rspec-expectations'
-  gem 'simplecov', require: false
 end
 
 group :development do
@@ -68,6 +63,12 @@ group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara"
   gem "selenium-webdriver"
+  gem "cucumber-rails", require: false
+  gem "cucumber"
+  gem "database_cleaner"
+  gem "simplecov", require: false
+  gem "rspec-expectations"
 end
 
 gem "tailwindcss-rails", "~> 4.4"
+gem "devise"

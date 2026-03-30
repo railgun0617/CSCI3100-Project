@@ -7,6 +7,6 @@ Feature: Navigation from one page to another
   I want to go to different pages
 
   Scenario: go to main page
-    Given I am on the login page
+    Given I am on the sign in page
     When I click 'CUHK Booking'
     Then I should be on the main page

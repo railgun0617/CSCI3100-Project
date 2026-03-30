@@ -16,18 +16,27 @@
       <div class="container mx-auto px-4 py-3 flex justify-between items-center">
         <%= link_to "CUHK Booking", root_path, class: "text-xl font-bold text-blue-600" %>
         <div class="space-x-4">
-          <%= link_to "Venues", venues_path, class: "text-gray-700 hover:text-blue-600" %>
-          <%= link_to "Equipment", equipment_index_path, class: "text-gray-700 hover:text-blue-600" %>
-          <%= link_to "My Bookings", bookings_path, class: "text-gray-700 hover:text-blue-600" %>
-          <%= link_to "Staff Dashboard", staff_dashboard_path, class: "text-gray-700 hover:text-blue-600" %>
-          <%= link_to "Manage Venues", new_venue_path, class: "text-gray-700 hover:text-blue-600" %>
-          <%= link_to "Add Equipment", new_equipment_path, class: "text-gray-700 hover:text-blue-600" %>
-          <%= link_to "Login", "#", class: "text-gray-700 hover:text-blue-600" %>
-        </div>
+        <%= link_to "Venues", venues_path, class: "text-gray-700 hover:text-blue-600" %>
+        <%= link_to "Equipment", equipment_index_path, class: "text-gray-700 hover:text-blue-600" %>
+        <%= link_to "My Bookings", bookings_path, class: "text-gray-700 hover:text-blue-600" %>
+
+
+        <%= link_to "Staff Dashboard", staff_dashboard_path, class: "text-gray-700 hover:text-blue-600" %>
+        <%= link_to "Manage Venues", new_venue_path, class: "text-gray-700 hover:text-blue-600" %>
+        <%= link_to "Add Equipment", new_equipment_path, class: "text-gray-700 hover:text-blue-600" %>
+
+        <% if current_user %>
+          <%= button_to "Sign Out", destroy_user_session_path, method: :delete, class: "text-gray-700 hover:text-blue-600 bg-transparent border-0", form_class: "inline-block" %>
+        <% else %>
+          <%= link_to "Sign Up", new_user_registration_path, class: "text-gray-700 hover:text-blue-600" %>
+          <%= link_to "Sign In", new_user_session_path, class: "text-gray-700 hover:text-blue-600" %>
+  <% end %>
+</div>
       </div>
     </nav>
 
     <main class="container mx-auto px-4 py-8">
+      <%= render 'layouts/alerts' %>
       <%= yield %>
     </main>
 
