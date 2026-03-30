@@ -3,6 +3,11 @@ require "active_support/core_ext/integer/time"
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
+  # For development use
+  config.action_controller.forgery_protection_origin_check = false
+  config.hosts << /.*\.github\.dev/
+  routes.default_url_options = { host: "congenial-zebra-69qw79wwj6j4h4vxw-3000.app.github.dev", protocol: "https" }
+
   # Make code changes take effect immediately without server restart.
   config.enable_reloading = true
 
