@@ -6560,3 +6560,133 @@ Completed 200 OK in 9ms (Views: 3.2ms | ActiveRecord: 0.1ms (1 query, 0 cached) 
 
 
 >>>>>>> main
+Started GET "/" for 127.0.0.1 at 2026-03-30 21:24:59 +0800
+  [1m[36mActiveRecord::SchemaMigration Load (1.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Csci3100Project'*/[0m
+  
+ArgumentError (Reported error must be an Exception, got: #<SyntaxError:"/mnt/c/Programming/VS Code/Courses/CSCI3100/Project/CSCI3100-Project/config/routes.rb:1: syntax error, unexpected <<\n<<<<<<< HEAD\n^~\n">)
+Caused by: SyntaxError (/mnt/c/Programming/VS Code/Courses/CSCI3100/Project/CSCI3100-Project/config/routes.rb:1: syntax error, unexpected <<
+<<<<<<< HEAD
+^~
+)
+
+Information for: ArgumentError (Reported error must be an Exception, got: #<SyntaxError:"/mnt/c/Programming/VS Code/Courses/CSCI3100/Project/CSCI3100-Project/config/routes.rb:1: syntax error, unexpected <<\n<<<<<<< HEAD\n^~\n">):
+  
+activesupport (8.1.3) lib/active_support/error_reporter.rb:235:in `report'
+actionpack (8.1.3) lib/action_dispatch/middleware/executor.rb:36:in `rescue in call'
+actionpack (8.1.3) lib/action_dispatch/middleware/executor.rb:32:in `call'
+actionpack (8.1.3) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
+actionpack (8.1.3) lib/action_dispatch/middleware/debug_exceptions.rb:31:in `call'
+web-console (4.3.0) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.3.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.3.0) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.3.0) lib/web_console/middleware.rb:17:in `call'
+actionpack (8.1.3) lib/action_dispatch/middleware/show_exceptions.rb:32:in `call'
+railties (8.1.3) lib/rails/rack/logger.rb:41:in `call_app'
+railties (8.1.3) lib/rails/rack/logger.rb:29:in `call'
+propshaft (1.3.1) lib/propshaft/quiet_assets.rb:11:in `call'
+actionpack (8.1.3) lib/action_dispatch/middleware/remote_ip.rb:98:in `call'
+actionpack (8.1.3) lib/action_dispatch/middleware/request_id.rb:34:in `call'
+rack (3.2.5) lib/rack/method_override.rb:28:in `call'
+rack (3.2.5) lib/rack/runtime.rb:24:in `call'
+activesupport (8.1.3) lib/active_support/cache/strategy/local_cache_middleware.rb:30:in `call'
+actionpack (8.1.3) lib/action_dispatch/middleware/server_timing.rb:61:in `block in call'
+actionpack (8.1.3) lib/action_dispatch/middleware/server_timing.rb:26:in `collect_events'
+actionpack (8.1.3) lib/action_dispatch/middleware/server_timing.rb:60:in `call'
+actionpack (8.1.3) lib/action_dispatch/middleware/executor.rb:20:in `call'
+propshaft (1.3.1) lib/propshaft/server.rb:37:in `call'
+actionpack (8.1.3) lib/action_dispatch/middleware/static.rb:27:in `call'
+rack (3.2.5) lib/rack/sendfile.rb:131:in `call'
+actionpack (8.1.3) lib/action_dispatch/middleware/host_authorization.rb:143:in `call'
+railties (8.1.3) lib/rails/engine.rb:534:in `call'
+puma (7.2.0) lib/puma/configuration.rb:296:in `call'
+puma (7.2.0) lib/puma/request.rb:103:in `block in handle_request'
+puma (7.2.0) lib/puma/thread_pool.rb:355:in `with_force_shutdown'
+puma (7.2.0) lib/puma/request.rb:102:in `handle_request'
+puma (7.2.0) lib/puma/server.rb:503:in `process_client'
+puma (7.2.0) lib/puma/server.rb:262:in `block in run'
+puma (7.2.0) lib/puma/thread_pool.rb:182:in `block in spawn_thread'
+
+Information for cause: SyntaxError (/mnt/c/Programming/VS Code/Courses/CSCI3100/Project/CSCI3100-Project/config/routes.rb:1: syntax error, unexpected <<
+<<<<<<< HEAD
+^~
+):
+  
+config/routes.rb:1: syntax error, unexpected <<
+Started GET "/favicon.ico" for 127.0.0.1 at 2026-03-30 21:25:03 +0800
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/" for 127.0.0.1 at 2026-03-30 21:25:58 +0800
+  [1m[36mActiveRecord::SchemaMigration Load (1.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Csci3100Project'*/[0m
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 4.8ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 267.3ms | GC: 14.5ms)
+Completed 500 Internal Server Error in 1787ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 14.5ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `login_path' for an instance of #<Class:0x00007a17475f03d8>)
+Caused by: NameError (undefined local variable or method `login_path' for an instance of #<Class:0x00007a17475f03d8>)
+
+Information for: ActionView::Template::Error (undefined local variable or method `login_path' for an instance of #<Class:0x00007a17475f03d8>):
+    24:           <%= link_to "Manage Venues", new_venue_path, class: "text-gray-700 hover:text-blue-600" %>
+    25:           <%= link_to "Add Equipment", new_equipment_path, class: "text-gray-700 hover:text-blue-600" %>
+    26:           <%= link_to "Login", login_path, class: "text-gray-700 hover:text-blue-600" %>
+    27:         </div>
+    28:       </div>
+    29:     </nav>
+    30: 
+  
+app/views/layouts/application.html.erb:27
+
+Information for cause: NameError (undefined local variable or method `login_path' for an instance of #<Class:0x00007a17475f03d8>):
+  
+app/views/layouts/application.html.erb:27
+Started GET "/" for 127.0.0.1 at 2026-03-30 21:27:59 +0800
+  [1m[36mActiveRecord::SchemaMigration Load (1.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Csci3100Project'*/[0m
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 65.9ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 312.2ms | GC: 13.0ms)
+Completed 500 Internal Server Error in 614ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 13.0ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `login_path' for an instance of #<Class:0x000072ec9d8894e0>)
+Caused by: NameError (undefined local variable or method `login_path' for an instance of #<Class:0x000072ec9d8894e0>)
+
+Information for: ActionView::Template::Error (undefined local variable or method `login_path' for an instance of #<Class:0x000072ec9d8894e0>):
+    24:           <%= link_to "Manage Venues", new_venue_path, class: "text-gray-700 hover:text-blue-600" %>
+    25:           <%= link_to "Add Equipment", new_equipment_path, class: "text-gray-700 hover:text-blue-600" %>
+    26:           <%= link_to "Login", login_path, class: "text-gray-700 hover:text-blue-600" %>
+    27:         </div>
+    28:       </div>
+    29:     </nav>
+    30: 
+  
+app/views/layouts/application.html.erb:27
+
+Information for cause: NameError (undefined local variable or method `login_path' for an instance of #<Class:0x000072ec9d8894e0>):
+  
+app/views/layouts/application.html.erb:27
+Started GET "/" for 127.0.0.1 at 2026-03-30 21:28:17 +0800
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 4.3ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 40.1ms | GC: 0.3ms)
+Completed 200 OK in 176ms (Views: 133.1ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.3ms)
+
+
+Started GET "/equipment/new" for 127.0.0.1 at 2026-03-30 21:28:22 +0800
+Processing by EquipmentController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering equipment/new.html.erb within layouts/application
+  Rendered equipment/new.html.erb within layouts/application (Duration: 235.2ms | GC: 8.2ms)
+  Rendered layout layouts/application.html.erb (Duration: 239.2ms | GC: 10.1ms)
+Completed 200 OK in 782ms (Views: 243.6ms | ActiveRecord: 23.6ms (0 queries, 0 cached) | GC: 37.3ms)
+
+

@@ -1,44 +1,3 @@
-<<<<<<< HEAD
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>CUHK Booking SaaS</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-    <%= stylesheet_link_tag "tailwind", "data-turbo-track": "reload" %>
-
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_importmap_tags %>
-  </head>
-  <!-- The login link is a placeholder. Later, your backend will replace it with proper Devise links. -->
-  <body class="bg-gray-100">
-    <nav class="bg-white shadow">
-      <div class="container mx-auto px-4 py-3 flex justify-between items-center">
-        <%= link_to "CUHK Booking", root_path, class: "text-xl font-bold text-blue-600" %>
-        <div class="space-x-4">
-          <%= link_to "Venues", venues_path, class: "text-gray-700 hover:text-blue-600" %>
-          <%= link_to "Equipment", equipment_index_path, class: "text-gray-700 hover:text-blue-600" %>
-          <%= link_to "My Bookings", bookings_path, class: "text-gray-700 hover:text-blue-600" %>
-          <%= link_to "Staff Dashboard", staff_dashboard_path, class: "text-gray-700 hover:text-blue-600" %>
-          <%= link_to "Manage Venues", new_venue_path, class: "text-gray-700 hover:text-blue-600" %>
-          <%= link_to "Add Equipment", new_equipment_path, class: "text-gray-700 hover:text-blue-600" %>
-          <%= link_to "Login", login_path, class: "text-gray-700 hover:text-blue-600" %>
-        </div>
-      </div>
-    </nav>
-
-    <main class="container mx-auto px-4 py-8">
-      <%= yield %>
-    </main>
-
-    <footer class="bg-white border-t mt-8">
-      <div class="container mx-auto px-4 py-4 text-center text-gray-500 text-sm">
-        CUHK Booking SaaS &copy; 2026
-      </div>
-    </footer>
-  </body>
-=======
 <!DOCTYPE html>
 <html>
   <head>
@@ -78,5 +37,4 @@
       </div>
     </footer>
   </body>
->>>>>>> main
 </html>
