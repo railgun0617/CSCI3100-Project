@@ -1,18 +1,74 @@
-<div class="text-center py-8">
-  <h1 class="text-3xl font-bold">CUHK Venue & Equipment Booking</h1>
-  <p class="text-gray-600 mt-2">Book rooms and equipment across colleges.</p>
-</div>
-
-<div class="grid md:grid-cols-2 gap-8 mt-8">
-  <div class="bg-white rounded-lg shadow p-6 text-center">
-    <h2 class="text-xl font-semibold">Find Venues</h2>
-    <p class="text-gray-500 mt-2">Book lecture halls, meeting rooms, and more.</p>
-    <%= link_to "Browse Venues", venues_path, class: "mt-4 inline-block bg-blue-600 text-white px-4 py-2 rounded" %>
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+  <!-- Hero Section -->
+  <div class="text-center mb-16">
+    <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 tracking-tight">
+      CUHK Venue & Equipment Booking
+    </h1>
+    <p class="mt-4 text-xl text-gray-600 max-w-2xl mx-auto">
+      Book rooms, lecture halls, projectors, and more across all CUHK colleges and departments – all in one place.
+    </p>
   </div>
 
-  <div class="bg-white rounded-lg shadow p-6 text-center">
-    <h2 class="text-xl font-semibold">Browse Equipment</h2>
-    <p class="text-gray-500 mt-2">Projectors, sound systems, cameras – available for your event.</p>
-    <%= link_to "View Equipment", equipment_index_path, class: "mt-4 inline-block bg-green-600 text-white px-4 py-2 rounded" %>
+  <!-- Feature Cards Grid -->
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+    <!-- Venues -->
+    <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition duration-300">
+      <div class="p-6">
+        <div class="text-4xl mb-4">🏛️</div>
+        <h2 class="text-xl font-bold text-gray-800">Venues</h2>
+        <p class="text-gray-600 mt-2 text-sm">Lecture theatres, seminar rooms, study spaces – find a suitable place for your event.</p>
+        <%= link_to "Explore Venues →", venues_path, class: "mt-4 inline-block text-blue-600 hover:text-blue-800 font-medium" %>
+      </div>
+    </div>
+
+    <!-- Equipment -->
+    <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition duration-300">
+      <div class="p-6">
+        <div class="text-4xl mb-4">🎥</div>
+        <h2 class="text-xl font-bold text-gray-800">Equipment</h2>
+        <p class="text-gray-600 mt-2 text-sm">Projectors, sound systems, cameras – reserve any useful items for your event.</p>
+        <%= link_to "Browse Equipment →", equipment_index_path, class: "mt-4 inline-block text-blue-600 hover:text-blue-800 font-medium" %>
+      </div>
+    </div>
+
+    <!-- All Resources (Combined) -->
+    <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition duration-300">
+      <div class="p-6">
+        <div class="text-4xl mb-4">📋</div>
+        <h2 class="text-xl font-bold text-gray-800">All Resources</h2>
+        <p class="text-gray-600 mt-2 text-sm">See both venues and equipment in one unified view – search and filter everything.</p>
+        <%= link_to "View All →", resources_path, class: "mt-4 inline-block text-blue-600 hover:text-blue-800 font-medium" %>
+      </div>
+    </div>
+
+    <!-- My Bookings (conditional) -->
+    <% if user_signed_in? %>
+      <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition duration-300">
+        <div class="p-6">
+          <div class="text-4xl mb-4">📅</div>
+          <h2 class="text-xl font-bold text-gray-800">My Bookings</h2>
+          <p class="text-gray-600 mt-2 text-sm">Track your pending, approved, and past reservations – manage your schedule.</p>
+          <%= link_to "Go to Bookings →", bookings_path, class: "mt-4 inline-block text-blue-600 hover:text-blue-800 font-medium" %>
+        </div>
+      </div>
+    <% else %>
+      <!-- For guests: show Sign Up / Sign In card -->
+      <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition duration-300">
+        <div class="p-6">
+          <div class="text-4xl mb-4">🔐</div>
+          <h2 class="text-xl font-bold text-gray-800">Get Started</h2>
+          <p class="text-gray-600 mt-2 text-sm">Create an account or sign in to make bookings and manage your reservations.</p>
+          <div class="mt-4 space-x-3">
+            <%= link_to "Sign Up", new_user_registration_path, class: "inline-block bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 text-sm" %>
+            <%= link_to "Sign In", new_user_session_path, class: "inline-block text-blue-600 hover:text-blue-800 font-medium text-sm" %>
+          </div>
+        </div>
+      </div>
+    <% end %>
   </div>
+
+  <!-- Optional: Trust/Info Banner 
+  <div class="mt-16 text-center text-sm text-gray-500 border-t pt-8">
+    <p>Powered by CUHK ITSC | Multi‑tenant SaaS for colleges and departments</p>
+  </div> -->
 </div>

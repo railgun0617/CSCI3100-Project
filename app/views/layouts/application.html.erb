@@ -27,6 +27,7 @@
               <!-- Visible only to staff -->
               <%= link_to "Staff Dashboard", staff_dashboard_path, class: "text-gray-700 hover:text-blue-600" %>
               <%= link_to "Manage Resources", manage_resources_path, class: "text-gray-700 hover:text-blue-600" %>
+              <%= link_to "Create Staff", new_admin_user_path, class: "text-gray-700 hover:text-blue-600" %>
             <% end %>
 
             <%= button_to "Sign Out", destroy_user_session_path, method: :delete,
