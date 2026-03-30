@@ -6560,3 +6560,396 @@ Completed 200 OK in 9ms (Views: 3.2ms | ActiveRecord: 0.1ms (1 query, 0 cached) 
 
 
 >>>>>>> main
+Started GET "/" for 127.0.0.1 at 2026-03-30 21:52:04 +0800
+  [1m[36mActiveRecord::SchemaMigration Load (1.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Csci3100Project'*/[0m
+  
+ArgumentError (Reported error must be an Exception, got: #<SyntaxError:"/mnt/c/Programming/VS Code/Courses/CSCI3100/Project/CSCI3100-Project/config/routes.rb:1: syntax error, unexpected <<\n<<<<<<< HEAD\n^~\n">)
+Caused by: SyntaxError (/mnt/c/Programming/VS Code/Courses/CSCI3100/Project/CSCI3100-Project/config/routes.rb:1: syntax error, unexpected <<
+<<<<<<< HEAD
+^~
+)
+
+Information for: ArgumentError (Reported error must be an Exception, got: #<SyntaxError:"/mnt/c/Programming/VS Code/Courses/CSCI3100/Project/CSCI3100-Project/config/routes.rb:1: syntax error, unexpected <<\n<<<<<<< HEAD\n^~\n">):
+  
+activesupport (8.1.2) lib/active_support/error_reporter.rb:235:in `report'
+actionpack (8.1.2) lib/action_dispatch/middleware/executor.rb:36:in `rescue in call'
+actionpack (8.1.2) lib/action_dispatch/middleware/executor.rb:32:in `call'
+actionpack (8.1.2) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
+actionpack (8.1.2) lib/action_dispatch/middleware/debug_exceptions.rb:31:in `call'
+web-console (4.2.1) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.2.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.2.1) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.2.1) lib/web_console/middleware.rb:17:in `call'
+actionpack (8.1.2) lib/action_dispatch/middleware/show_exceptions.rb:32:in `call'
+railties (8.1.2) lib/rails/rack/logger.rb:41:in `call_app'
+railties (8.1.2) lib/rails/rack/logger.rb:29:in `call'
+propshaft (1.3.1) lib/propshaft/quiet_assets.rb:11:in `call'
+actionpack (8.1.2) lib/action_dispatch/middleware/remote_ip.rb:98:in `call'
+actionpack (8.1.2) lib/action_dispatch/middleware/request_id.rb:34:in `call'
+rack (3.2.5) lib/rack/method_override.rb:28:in `call'
+rack (3.2.5) lib/rack/runtime.rb:24:in `call'
+activesupport (8.1.2) lib/active_support/cache/strategy/local_cache_middleware.rb:30:in `call'
+actionpack (8.1.2) lib/action_dispatch/middleware/server_timing.rb:61:in `block in call'
+actionpack (8.1.2) lib/action_dispatch/middleware/server_timing.rb:26:in `collect_events'
+actionpack (8.1.2) lib/action_dispatch/middleware/server_timing.rb:60:in `call'
+actionpack (8.1.2) lib/action_dispatch/middleware/executor.rb:20:in `call'
+propshaft (1.3.1) lib/propshaft/server.rb:37:in `call'
+actionpack (8.1.2) lib/action_dispatch/middleware/static.rb:27:in `call'
+rack (3.2.5) lib/rack/sendfile.rb:131:in `call'
+actionpack (8.1.2) lib/action_dispatch/middleware/host_authorization.rb:143:in `call'
+railties (8.1.2) lib/rails/engine.rb:534:in `call'
+puma (7.2.0) lib/puma/configuration.rb:296:in `call'
+puma (7.2.0) lib/puma/request.rb:103:in `block in handle_request'
+puma (7.2.0) lib/puma/thread_pool.rb:355:in `with_force_shutdown'
+puma (7.2.0) lib/puma/request.rb:102:in `handle_request'
+puma (7.2.0) lib/puma/server.rb:503:in `process_client'
+puma (7.2.0) lib/puma/server.rb:262:in `block in run'
+puma (7.2.0) lib/puma/thread_pool.rb:182:in `block in spawn_thread'
+
+Information for cause: SyntaxError (/mnt/c/Programming/VS Code/Courses/CSCI3100/Project/CSCI3100-Project/config/routes.rb:1: syntax error, unexpected <<
+<<<<<<< HEAD
+^~
+):
+  
+config/routes.rb:1: syntax error, unexpected <<
+Started GET "/" for 127.0.0.1 at 2026-03-30 21:52:44 +0800
+  [1m[36mActiveRecord::SchemaMigration Load (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Csci3100Project'*/[0m
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 2.7ms | GC: 0.0ms)
+  [1m[36mUser Load (8.1ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Csci3100Project',controller='home'*/[0m
+  ↳ app/controllers/application_controller.rb:12:in `current_user'
+  Rendered layout layouts/application.html.erb (Duration: 972.4ms | GC: 27.9ms)
+Completed 500 Internal Server Error in 2090ms (ActiveRecord: 40.0ms (1 query, 0 cached) | GC: 27.9ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `destroy_user_session_path' for an instance of #<Class:0x00007d8bd58811a0>)
+Caused by: NameError (undefined local variable or method `destroy_user_session_path' for an instance of #<Class:0x00007d8bd58811a0>)
+
+Information for: ActionView::Template::Error (undefined local variable or method `destroy_user_session_path' for an instance of #<Class:0x00007d8bd58811a0>):
+    27: 
+    28:         <% if current_user %>
+    29:           <%= button_to "Sign Out", destroy_user_session_path, method: :delete, class: "text-gray-700 hover:text-blue-600 bg-transparent border-0", form_class: "inline-block" %>
+    30:         <% else %>
+    31:           <%= link_to "Sign Up", new_user_registration_path, class: "text-gray-700 hover:text-blue-600" %>
+    32:           <%= link_to "Sign In", new_user_session_path, class: "text-gray-700 hover:text-blue-600" %>
+    33:   <% end %>
+  
+app/views/layouts/application.html.erb:30
+
+Information for cause: NameError (undefined local variable or method `destroy_user_session_path' for an instance of #<Class:0x00007d8bd58811a0>):
+  
+app/views/layouts/application.html.erb:30
+Started GET "/" for 127.0.0.1 at 2026-03-30 21:54:51 +0800
+  [1m[36mActiveRecord::SchemaMigration Load (1.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Csci3100Project'*/[0m
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 3.0ms | GC: 0.0ms)
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Csci3100Project',controller='home'*/[0m
+  ↳ app/controllers/application_controller.rb:12:in `current_user'
+  Rendered layouts/_alerts.html.erb (Duration: 2.4ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 315.3ms | GC: 2.2ms)
+Completed 200 OK in 649ms (Views: 310.3ms | ActiveRecord: 25.5ms (1 query, 0 cached) | GC: 22.4ms)
+
+
+Started GET "/equipment/new" for 127.0.0.1 at 2026-03-30 21:54:57 +0800
+Processing by EquipmentController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering equipment/new.html.erb within layouts/application
+  Rendered equipment/new.html.erb within layouts/application (Duration: 179.0ms | GC: 7.7ms)
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT 1 /*action='new',application='Csci3100Project',controller='equipment'*/[0m
+  ↳ app/controllers/application_controller.rb:12:in `current_user'
+  Rendered layouts/_alerts.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 202.7ms | GC: 10.6ms)
+Completed 200 OK in 338ms (Views: 209.8ms | ActiveRecord: 3.7ms (1 query, 0 cached) | GC: 22.7ms)
+
+
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2026-03-30 21:54:58 +0800
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]"}
+Redirected to http://127.0.0.1:3000/
+Filter chain halted as :verify_signed_out_user rendered or redirected
+Completed 303 See Other in 3ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2026-03-30 21:54:58 +0800
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.3ms | GC: 0.0ms)
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Csci3100Project',controller='home'*/[0m
+  ↳ app/controllers/application_controller.rb:12:in `current_user'
+  Rendered layouts/_alerts.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 18.1ms | GC: 0.0ms)
+Completed 200 OK in 188ms (Views: 18.4ms | ActiveRecord: 1.8ms (1 query, 0 cached) | GC: 0.8ms)
+
+
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2026-03-30 21:55:56 +0800
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]"}
+Redirected to http://127.0.0.1:3000/
+Filter chain halted as :verify_signed_out_user rendered or redirected
+Completed 303 See Other in 3ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2026-03-30 21:55:57 +0800
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.2ms | GC: 0.0ms)
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Csci3100Project',controller='home'*/[0m
+  ↳ app/controllers/application_controller.rb:12:in `current_user'
+  Rendered layouts/_alerts.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 8.5ms | GC: 0.2ms)
+Completed 200 OK in 49ms (Views: 9.2ms | ActiveRecord: 0.7ms (1 query, 0 cached) | GC: 0.2ms)
+
+
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2026-03-30 21:55:59 +0800
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]"}
+Redirected to http://127.0.0.1:3000/
+Filter chain halted as :verify_signed_out_user rendered or redirected
+Completed 303 See Other in 3ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2026-03-30 21:55:59 +0800
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.3ms | GC: 0.0ms)
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Csci3100Project',controller='home'*/[0m
+  ↳ app/controllers/application_controller.rb:12:in `current_user'
+  Rendered layouts/_alerts.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 5.0ms | GC: 0.0ms)
+Completed 200 OK in 47ms (Views: 6.1ms | ActiveRecord: 0.6ms (1 query, 0 cached) | GC: 0.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2026-03-30 21:56:42 +0800
+  [1m[36mActiveRecord::SchemaMigration Load (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Csci3100Project'*/[0m
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 4.7ms | GC: 0.0ms)
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Csci3100Project',controller='home'*/[0m
+  ↳ app/controllers/application_controller.rb:12:in `current_user'
+  Rendered layout layouts/application.html.erb (Duration: 371.9ms | GC: 13.9ms)
+Completed 500 Internal Server Error in 560ms (ActiveRecord: 50.8ms (1 query, 0 cached) | GC: 13.9ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `destroy_user_session_path' for an instance of #<Class:0x0000735038464f78>)
+Caused by: NameError (undefined local variable or method `destroy_user_session_path' for an instance of #<Class:0x0000735038464f78>)
+
+Information for: ActionView::Template::Error (undefined local variable or method `destroy_user_session_path' for an instance of #<Class:0x0000735038464f78>):
+    27: 
+    28:         <% if current_user %>
+    29:           <%= button_to "Sign Out", destroy_user_session_path, method: :delete, class: "text-gray-700 hover:text-blue-600 bg-transparent border-0", form_class: "inline-block" %>
+    30:         <% else %>
+    31:           <%= link_to "Sign Up", new_user_registration_path, class: "text-gray-700 hover:text-blue-600" %>
+    32:           <%= link_to "Sign In", new_user_session_path, class: "text-gray-700 hover:text-blue-600" %>
+    33:   <% end %>
+  
+app/views/layouts/application.html.erb:30
+
+Information for cause: NameError (undefined local variable or method `destroy_user_session_path' for an instance of #<Class:0x0000735038464f78>):
+  
+app/views/layouts/application.html.erb:30
+Started GET "/" for 127.0.0.1 at 2026-03-30 21:58:46 +0800
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.4ms | GC: 0.0ms)
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Csci3100Project',controller='home'*/[0m
+  ↳ app/controllers/application_controller.rb:12:in `current_user'
+  Rendered layout layouts/application.html.erb (Duration: 17.9ms | GC: 0.0ms)
+Completed 500 Internal Server Error in 84ms (ActiveRecord: 0.9ms (1 query, 0 cached) | GC: 0.2ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `destroy_user_session_path' for an instance of #<Class:0x0000735038464f78>)
+Caused by: NameError (undefined local variable or method `destroy_user_session_path' for an instance of #<Class:0x0000735038464f78>)
+
+Information for: ActionView::Template::Error (undefined local variable or method `destroy_user_session_path' for an instance of #<Class:0x0000735038464f78>):
+    27: 
+    28:         <% if current_user %>
+    29:           <%= button_to "Sign Out", destroy_user_session_path, method: :delete, class: "text-gray-700 hover:text-blue-600 bg-transparent border-0", form_class: "inline-block" %>
+    30:         <% else %>
+    31:           <%= link_to "Sign Up", new_user_registration_path, class: "text-gray-700 hover:text-blue-600" %>
+    32:           <%= link_to "Sign In", new_user_session_path, class: "text-gray-700 hover:text-blue-600" %>
+    33:   <% end %>
+  
+app/views/layouts/application.html.erb:30
+
+Information for cause: NameError (undefined local variable or method `destroy_user_session_path' for an instance of #<Class:0x0000735038464f78>):
+  
+app/views/layouts/application.html.erb:30
+Started GET "/" for 127.0.0.1 at 2026-03-30 21:58:54 +0800
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 3.2ms | GC: 0.0ms)
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Csci3100Project',controller='home'*/[0m
+  ↳ app/controllers/application_controller.rb:12:in `current_user'
+  Rendered layouts/_alerts.html.erb (Duration: 2.9ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 71.5ms | GC: 0.4ms)
+Completed 200 OK in 134ms (Views: 64.7ms | ActiveRecord: 18.0ms (1 query, 0 cached) | GC: 0.8ms)
+
+
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2026-03-30 21:58:58 +0800
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]"}
+Redirected to http://127.0.0.1:3000/
+Filter chain halted as :verify_signed_out_user rendered or redirected
+Completed 303 See Other in 3ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2026-03-30 21:58:58 +0800
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.3ms | GC: 0.0ms)
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Csci3100Project',controller='home'*/[0m
+  ↳ app/controllers/application_controller.rb:12:in `current_user'
+  Rendered layouts/_alerts.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 9.2ms | GC: 0.0ms)
+Completed 200 OK in 53ms (Views: 8.8ms | ActiveRecord: 1.8ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2026-03-30 22:05:10 +0800
+  [1m[36mActiveRecord::SchemaMigration Load (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Csci3100Project'*/[0m
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 2.6ms | GC: 0.0ms)
+  [1m[36mUser Load (9.0ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Csci3100Project',controller='home'*/[0m
+  ↳ app/controllers/application_controller.rb:12:in `current_user'
+  Rendered layouts/_alerts.html.erb (Duration: 23.4ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 926.9ms | GC: 5.5ms)
+Completed 200 OK in 1438ms (Views: 897.1ms | ActiveRecord: 115.6ms (1 query, 0 cached) | GC: 14.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2026-03-30 22:06:29 +0800
+  [1m[36mActiveRecord::SchemaMigration Load (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Csci3100Project'*/[0m
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 21.4ms | GC: 17.6ms)
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Csci3100Project',controller='home'*/[0m
+  ↳ app/controllers/application_controller.rb:12:in `current_user'
+  Rendered layouts/_alerts.html.erb (Duration: 2.5ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 236.9ms | GC: 20.0ms)
+Completed 200 OK in 941ms (Views: 235.1ms | ActiveRecord: 32.1ms (1 query, 0 cached) | GC: 20.0ms)
+
+
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2026-03-30 22:06:39 +0800
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]"}
+Redirected to http://127.0.0.1:3000/
+Filter chain halted as :verify_signed_out_user rendered or redirected
+Completed 303 See Other in 5ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 2.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2026-03-30 22:06:40 +0800
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.3ms | GC: 0.0ms)
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Csci3100Project',controller='home'*/[0m
+  ↳ app/controllers/application_controller.rb:12:in `current_user'
+  Rendered layouts/_alerts.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 16.3ms | GC: 5.3ms)
+Completed 200 OK in 111ms (Views: 21.9ms | ActiveRecord: 1.4ms (1 query, 0 cached) | GC: 11.0ms)
+
+
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2026-03-30 22:07:25 +0800
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]"}
+Redirected to http://127.0.0.1:3000/
+Filter chain halted as :verify_signed_out_user rendered or redirected
+Completed 303 See Other in 11ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 7.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2026-03-30 22:07:25 +0800
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.2ms | GC: 0.0ms)
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Csci3100Project',controller='home'*/[0m
+  ↳ app/controllers/application_controller.rb:12:in `current_user'
+  Rendered layouts/_alerts.html.erb (Duration: 0.8ms | GC: 0.7ms)
+  Rendered layout layouts/application.html.erb (Duration: 12.6ms | GC: 4.9ms)
+Completed 200 OK in 54ms (Views: 14.5ms | ActiveRecord: 0.6ms (1 query, 0 cached) | GC: 7.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2026-03-30 22:09:20 +0800
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 8.7ms | GC: 0.0ms)
+  [1m[36mUser Load (2.4ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Csci3100Project',controller='home'*/[0m
+  ↳ app/controllers/application_controller.rb:12:in `current_user'
+  Rendered layouts/_alerts.html.erb (Duration: 5.7ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 357.3ms | GC: 0.0ms)
+Completed 200 OK in 417ms (Views: 328.1ms | ActiveRecord: 38.1ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2026-03-30 22:09:22 +0800
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]"}
+Redirected to http://127.0.0.1:3000/
+Filter chain halted as :verify_signed_out_user rendered or redirected
+Completed 303 See Other in 3ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2026-03-30 22:09:23 +0800
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.2ms | GC: 0.0ms)
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Csci3100Project',controller='home'*/[0m
+  ↳ app/controllers/application_controller.rb:12:in `current_user'
+  Rendered layouts/_alerts.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 6.2ms | GC: 0.0ms)
+Completed 200 OK in 46ms (Views: 7.6ms | ActiveRecord: 0.8ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2026-03-30 22:09:52 +0800
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.3ms | GC: 0.0ms)
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Csci3100Project',controller='home'*/[0m
+  ↳ app/controllers/application_controller.rb:12:in `current_user'
+  Rendered layouts/_alerts.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 7.2ms | GC: 0.0ms)
+Completed 200 OK in 75ms (Views: 8.3ms | ActiveRecord: 0.7ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2026-03-30 22:10:38 +0800
+  [1m[36mActiveRecord::SchemaMigration Load (1.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Csci3100Project'*/[0m
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 3.8ms | GC: 0.0ms)
+  [1m[36mUser Load (6.5ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Csci3100Project',controller='home'*/[0m
+  ↳ app/controllers/application_controller.rb:12:in `current_user'
+  Rendered layouts/_alerts.html.erb (Duration: 9.2ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 469.2ms | GC: 21.2ms)
+Completed 200 OK in 775ms (Views: 401.4ms | ActiveRecord: 95.6ms (1 query, 0 cached) | GC: 21.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2026-03-30 22:10:52 +0800
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.3ms | GC: 0.0ms)
+  [1m[36mUser Load (3.5ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Csci3100Project',controller='home'*/[0m
+  ↳ app/controllers/application_controller.rb:12:in `current_user'
+  Rendered layouts/_alerts.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 23.8ms | GC: 0.0ms)
+Completed 200 OK in 172ms (Views: 28.8ms | ActiveRecord: 3.5ms (1 query, 0 cached) | GC: 0.0ms)
+
+
