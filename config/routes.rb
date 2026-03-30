@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get "resources/index"
   devise_for :users, controllers: { registrations: "registrations" }
   get "equipment/index"
   get "equipment/show"
@@ -39,4 +40,6 @@ Rails.application.routes.draw do
   end
 
   get 'staff/dashboard', to: 'staff#dashboard'
+  get 'resources', to: 'resources#index'
+  get 'manage_resources', to: 'manage_resources#index'  # or use department/manage
 end
