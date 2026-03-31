@@ -1,39 +1,63 @@
 <div class="bg-white rounded-lg shadow p-6">
   <h1 class="text-2xl font-bold mb-2"><%= @venue.name %></h1>
   <p class="text-gray-600 mb-4"><%= @venue.description %></p>
+
   <div class="grid md:grid-cols-2 gap-6">
     <div>
       <h2 class="font-semibold text-lg">Details</h2>
       <ul class="mt-2 space-y-1">
         <li>Capacity: <%= @venue.capacity %></li>
-        <%# <li>College/Dept: <%= @venue.tenant&.name || 'N/A' %></li> 
       </ul>
-      <%= link_to "Book This Venue", new_booking_path(venue_id: @venue.id), class: "mt-4 inline-block bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700" %>
+      <%= link_to "Book This Venue", new_booking_path(venue_id: @venue.id), 
+                  class: "mt-4 inline-block bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700" %>
     </div>
 
     <div>
-      <h2 class="font-semibold text-lg">Location</h2>
 
       <% if @venue.latitude.present? && @venue.longitude.present? %>
-        <% zoom_level = 17   # 0 (world) to 21 (street level) %>
-        <iframe
-          width="100%"
-          height="350"
-          style="border: 1px solid black"
-          loading="lazy"
-          allowfullscreen
-          referrerpolicy="no-referrer-when-downgrade"
-          src="https://www.google.com/maps/embed/v1/search?key=AIzaSyB9rihEzb0gyIuURXCuzVk_kjc2RIHNnOg&q=<%= @venue.latitude %>,<%= @venue.longitude %>&center=<%= @venue.latitude %>,<%= @venue.longitude %>&zoom=<%= zoom_level %>">
-        </iframe>
-        <br/>
-        <small>
-          <a href="https://www.google.com/maps?q=<%= @venue.latitude %>,<%= @venue.longitude %>&z=<%= zoom_level %>" target="_blank">
-            View larger map
-          </a>
-        </small>
+        <div id="venue-map" style="height: 400px; width: 100%; border-radius: 8px; border: 1px solid #ddd;"></div>
+        
+        <div class="mt-2 text-sm text-gray-600">
+          <%= @venue.latitude.to_f.round(6) %>, <%= @venue.longitude.to_f.round(6) %>
+        </div>
       <% else %>
         <p class="text-gray-500">No location coordinates available.</p>
       <% end %>
     </div>
   </div>
 </div>
+
+<% if @venue.latitude.present? && @venue.longitude.present? %>
+<script>
+  function initVenueMap() {
+    const lat = <%= @venue.latitude.to_f %>;
+    const lng = <%= @venue.longitude.to_f %>;
+    const position = { lat: lat, lng: lng };
+
+    const map = new google.maps.Map(document.getElementById("venue-map"), {
+      zoom: 16,
+      center: position,
+      mapTypeId: "roadmap"
+    });
+
+    // Fixed marker (non-draggable)
+    new google.maps.Marker({
+      position: position,
+      map: map,
+      title: "<%= @venue.name %>",
+      animation: google.maps.Animation.DROP   // nice drop effect on load
+    });
+  }
+
+  // Load Google Maps API
+  if (typeof google === "undefined" || typeof google.maps === "undefined") {
+    const script = document.createElement("script");
+    script.src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyB9rihEzb0gyIuURXCuzVk_kjc2RIHNnOg&callback=initVenueMap";
+    script.async = true;
+    script.defer = true;
+    document.head.appendChild(script);
+  } else {
+    initVenueMap();
+  }
+</script>
+<% end %>
