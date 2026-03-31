@@ -23,7 +23,7 @@ Feature: Login page
     
   Scenario: Incorrect Email
     Given I am on the sign in page
-    Given I type the email as "1155123456@link.ust.edu.hk"
+    Given I type the email as "1155123456link.cuhk.edu.hk"
     When I press "Submit" button
     Then It should pop a warning
     
