@@ -7598,3 +7598,169 @@ Completed 200 OK in 64ms (Views: 14.5ms | ActiveRecord: 0.7ms (1 query, 0 cached
   [1m[36mActiveRecord::InternalMetadata Update (0.1ms)[0m  [1m[33mUPDATE "ar_internal_metadata" SET "value" = 'test', "updated_at" = '2026-03-30 15:28:11.855930' WHERE "ar_internal_metadata"."key" = 'environment' /*application='Csci3100Project'*/[0m
   [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'schema_sha1' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='Csci3100Project'*/[0m
   [1m[36mActiveRecord::InternalMetadata Create (0.1ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ('schema_sha1', '2403fd363931616b571c2c76d394f5ec01243473', '2026-03-30 15:28:11.859044', '2026-03-30 15:28:11.859047') RETURNING "key" /*application='Csci3100Project'*/[0m
+Started GET "/" for 127.0.0.1 at 2026-03-31 08:54:05 +0800
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Csci3100Project'*/[0m
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 1.5ms | GC: 0.0ms)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Csci3100Project',controller='home'*/[0m
+  ↳ app/controllers/application_controller.rb:12:in 'ApplicationController#current_user'
+  Rendered layouts/_alerts.html.erb (Duration: 0.8ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 825.7ms | GC: 0.0ms)
+Completed 200 OK in 2074ms (Views: 1045.1ms | ActiveRecord: 7.9ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2026-03-31 08:54:10 +0800
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/equipment/index" for 127.0.0.1 at 2026-03-31 08:54:21 +0800
+Processing by EquipmentController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering equipment/index.html.erb within layouts/application
+  [1m[36mEquipment Load (0.5ms)[0m  [1m[34mSELECT "equipment".* FROM "equipment" /*action='index',application='Csci3100Project',controller='equipment'*/[0m
+  ↳ app/views/equipment/index.html.erb:17
+  Rendered equipment/index.html.erb within layouts/application (Duration: 26.8ms | GC: 0.0ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Csci3100Project',controller='equipment'*/[0m
+  ↳ app/controllers/application_controller.rb:12:in 'ApplicationController#current_user'
+  Rendered layouts/_alerts.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 40.6ms | GC: 0.0ms)
+Completed 200 OK in 141ms (Views: 50.2ms | ActiveRecord: 2.0ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/bookings" for 127.0.0.1 at 2026-03-31 08:54:26 +0800
+Processing by BookingsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering bookings/index.html.erb within layouts/application
+  Rendered bookings/index.html.erb within layouts/application (Duration: 1.6ms | GC: 0.0ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Csci3100Project',controller='bookings'*/[0m
+  ↳ app/controllers/application_controller.rb:12:in 'ApplicationController#current_user'
+  Rendered layouts/_alerts.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 15.0ms | GC: 0.0ms)
+Completed 200 OK in 106ms (Views: 28.4ms | ActiveRecord: 0.3ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/equipment/index" for 127.0.0.1 at 2026-03-31 08:54:28 +0800
+Processing by EquipmentController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering equipment/index.html.erb within layouts/application
+  [1m[36mEquipment Load (0.3ms)[0m  [1m[34mSELECT "equipment".* FROM "equipment" /*action='index',application='Csci3100Project',controller='equipment'*/[0m
+  ↳ app/views/equipment/index.html.erb:17
+  Rendered equipment/index.html.erb within layouts/application (Duration: 31.9ms | GC: 0.0ms)
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Csci3100Project',controller='equipment'*/[0m
+  ↳ app/controllers/application_controller.rb:12:in 'ApplicationController#current_user'
+  Rendered layouts/_alerts.html.erb (Duration: 0.2ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 64.9ms | GC: 0.0ms)
+Completed 200 OK in 96ms (Views: 70.4ms | ActiveRecord: 0.8ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/venues" for 127.0.0.1 at 2026-03-31 08:54:29 +0800
+Processing by VenuesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering venues/index.html.erb within layouts/application
+  [1m[36mVenue Load (0.4ms)[0m  [1m[34mSELECT "venues".* FROM "venues" /*action='index',application='Csci3100Project',controller='venues'*/[0m
+  ↳ app/views/venues/index.html.erb:18
+  Rendered venues/index.html.erb within layouts/application (Duration: 42.4ms | GC: 0.0ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Csci3100Project',controller='venues'*/[0m
+  ↳ app/controllers/application_controller.rb:12:in 'ApplicationController#current_user'
+  Rendered layouts/_alerts.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 53.6ms | GC: 0.0ms)
+Completed 200 OK in 173ms (Views: 68.8ms | ActiveRecord: 1.5ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/bookings/new?venue_id=1" for 127.0.0.1 at 2026-03-31 08:54:36 +0800
+Processing by BookingsController#new as HTML
+  Parameters: {"venue_id" => "1"}
+  Rendering layout layouts/application.html.erb
+  Rendering bookings/new.html.erb within layouts/application
+  Rendered bookings/new.html.erb within layouts/application (Duration: 3.1ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 10.6ms | GC: 0.0ms)
+Completed 500 Internal Server Error in 170ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined method 'name' for nil)
+Caused by: NoMethodError (undefined method 'name' for nil)
+
+Information for: ActionView::Template::Error (undefined method 'name' for nil):
+    1: <div class="bg-white rounded-lg shadow p-6 max-w-md mx-auto">
+    2:   <h1 class="text-2xl font-bold mb-4">Book <%= @venue.name %></h1>
+    3: 
+    4:   <%= form_with model: @booking, local: true do |f| %>
+    5:     <div class="mb-4">
+    6:       <%= f.label :start_time, "Start Time", class: "block text-gray-700 font-medium mb-1" %>
+  
+app/views/bookings/new.html.erb:3
+
+Information for cause: NoMethodError (undefined method 'name' for nil):
+  
+app/views/bookings/new.html.erb:3
+Started GET "/equipment/index" for 127.0.0.1 at 2026-03-31 08:58:26 +0800
+Processing by EquipmentController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering equipment/index.html.erb within layouts/application
+  [1m[36mEquipment Load (0.4ms)[0m  [1m[34mSELECT "equipment".* FROM "equipment" /*action='index',application='Csci3100Project',controller='equipment'*/[0m
+  ↳ app/views/equipment/index.html.erb:17
+  Rendered equipment/index.html.erb within layouts/application (Duration: 14.9ms | GC: 0.0ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Csci3100Project',controller='equipment'*/[0m
+  ↳ app/controllers/application_controller.rb:12:in 'ApplicationController#current_user'
+  Rendered layouts/_alerts.html.erb (Duration: 0.3ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 35.0ms | GC: 0.0ms)
+Completed 200 OK in 66ms (Views: 40.7ms | ActiveRecord: 0.7ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/bookings/new?equipment_id=1" for 127.0.0.1 at 2026-03-31 08:58:26 +0800
+Processing by BookingsController#new as HTML
+  Parameters: {"equipment_id" => "1"}
+  Rendering layout layouts/application.html.erb
+  Rendering bookings/new.html.erb within layouts/application
+  Rendered bookings/new.html.erb within layouts/application (Duration: 3.3ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 4.8ms | GC: 0.0ms)
+Completed 500 Internal Server Error in 33ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined method 'name' for nil)
+Caused by: NoMethodError (undefined method 'name' for nil)
+
+Information for: ActionView::Template::Error (undefined method 'name' for nil):
+    1: <div class="bg-white rounded-lg shadow p-6 max-w-md mx-auto">
+    2:   <h1 class="text-2xl font-bold mb-4">Book <%= @venue.name %></h1>
+    3: 
+    4:   <%= form_with model: @booking, local: true do |f| %>
+    5:     <div class="mb-4">
+    6:       <%= f.label :start_time, "Start Time", class: "block text-gray-700 font-medium mb-1" %>
+  
+app/views/bookings/new.html.erb:3
+
+Information for cause: NoMethodError (undefined method 'name' for nil):
+  
+app/views/bookings/new.html.erb:3
+Started GET "/bookings/new?equipment_id=1" for 127.0.0.1 at 2026-03-31 08:59:08 +0800
+Processing by BookingsController#new as HTML
+  Parameters: {"equipment_id" => "1"}
+  Rendering layout layouts/application.html.erb
+  Rendering bookings/new.html.erb within layouts/application
+  Rendered bookings/new.html.erb within layouts/application (Duration: 1.5ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 4.7ms | GC: 0.0ms)
+Completed 500 Internal Server Error in 36ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined method 'name' for nil)
+Caused by: NoMethodError (undefined method 'name' for nil)
+
+Information for: ActionView::Template::Error (undefined method 'name' for nil):
+    1: <div class="bg-white rounded-lg shadow p-6 max-w-md mx-auto">
+    2:   <h1 class="text-2xl font-bold mb-4">Book <%= @venue.name %></h1>
+    3: 
+    4:   <%= form_with model: @booking, local: true do |f| %>
+    5:     <div class="mb-4">
+    6:       <%= f.label :start_time, "Start Time", class: "block text-gray-700 font-medium mb-1" %>
+  
+app/views/bookings/new.html.erb:3
+
+Information for cause: NoMethodError (undefined method 'name' for nil):
+  
+app/views/bookings/new.html.erb:3
