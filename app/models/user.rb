@@ -4,7 +4,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   # New: role enum (student is default)
-  enum :role, { student: 0, staff: 1 }, default: :student
+  enum :role, { student: 'student', staff: 'staff' }, default: 'student'
 
   # Optional: helper methods
   def student?

@@ -1,5 +1,12 @@
 Rails.application.routes.draw do
+  get "manage_resources/index"
+  get "resources/index"
   devise_for :users, controllers: { registrations: "registrations" }
+  namespace :admin do
+    get "users/new"
+    get "users/create"
+    resources :users, only: [:new, :create]
+  end
   get "equipment/index"
   get "equipment/show"
   get "equipment/new"
@@ -39,4 +46,6 @@ Rails.application.routes.draw do
   end
 
   get 'staff/dashboard', to: 'staff#dashboard'
+  get 'resources', to: 'resources#index'
+  get 'manage_resources', to: 'manage_resources#index'  # or use department/manage
 end

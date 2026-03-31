@@ -6,8 +6,7 @@
       <h2 class="font-semibold text-lg">Details</h2>
       <ul class="mt-2 space-y-1">
         <li>Capacity: <%= @venue.capacity %></li>
-        <li>Equipment: <%= @venue.equipment_list %></li>
-        <li>College/Dept: <%= @venue.tenant&.name %></li>
+        <%#<li>College/Dept: <%= @venue.tenant&.name || 'N/A' %></li>
       </ul>
       <%= link_to "Book This Venue", new_booking_path(venue_id: @venue.id), class: "mt-4 inline-block bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700" %>
     </div>
