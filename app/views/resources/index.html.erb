@@ -2,7 +2,7 @@
 
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
   <% @resources.each do |resource| %>
-    <div class="bg-white rounded-lg shadow p-4 hover:shadow-lg transition">
+    <div class="bg-white rounded-lg shadow p-4 hover:shadow-lg transition flex flex-col h-full">
       <!-- Header with name and type badge -->
       <div class="flex justify-between items-start">
         <h2 class="text-xl font-semibold text-blue-600">
@@ -36,8 +36,8 @@
         <% end %>
       </div>
 
-      <!-- Action buttons -->
-      <div class="mt-4 flex justify-between items-center">
+      <!-- Action buttons – pushed to bottom with mt-auto -->
+      <div class="mt-auto pt-4 flex justify-between items-center">
         <%= link_to "View Details", polymorphic_path(resource), class: "text-blue-600 hover:text-blue-800 text-sm font-medium" %>
         <%= link_to "Book", new_booking_path(resource_type: resource.class.name.underscore, resource_id: resource.id), class: "bg-green-600 hover:bg-green-700 text-white px-3 py-1 rounded text-sm" %>
       </div>
