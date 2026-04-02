@@ -67,6 +67,7 @@ group :test do
   gem "cucumber"
   gem "database_cleaner"
   gem "simplecov", require: false
+  gem "simplecov-console", require: false
   gem "rspec-expectations"
 end
 
