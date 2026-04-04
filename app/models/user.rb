@@ -3,6 +3,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  has_many :bookings, dependent: :destroy         
   # New: role enum (student is default)
   enum :role, { student: 'student', staff: 'staff' }, default: 'student'
 
