@@ -1,0 +1,106 @@
+<div class="mb-4">
+  <label class="block text-gray-700 font-medium mb-1">Select Location on Map</label>
+  <div id="map-picker" style="height: 400px; width: 100%; border-radius: 8px; border: 1px solid #ddd;"></div>
+  
+  <div id="map-info" class="mt-2 text-sm text-gray-600">
+    Click on the map to select a location, then click "Confirm Location".
+  </div>
+  
+  <button type="button" id="confirm-location" class="mt-2 px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 hidden">
+    Confirm Location
+  </button>
+
+  <%= f.hidden_field :latitude, id: "equipment_latitude" %>
+  <%= f.hidden_field :longitude, id: "equipment_longitude" %>
+</div>
+
+<script>
+  let map, marker, currentLocation;
+
+  function initMapPicker() {
+    // Get default location: use passed values for edit, or fallback for new
+    const defaultLat = <%= local_assigns[:latitude] || 22.419513 %>;
+    const defaultLng = <%= local_assigns[:longitude] || 114.205158 %>;
+    
+    const defaultLocation = { lat: defaultLat, lng: defaultLng };
+
+    map = new google.maps.Map(document.getElementById("map-picker"), {
+      zoom: 16,
+      center: defaultLocation,
+    });
+
+    // Check if we have existing coordinates (for Edit mode)
+    const latField = document.getElementById("equipment_latitude");
+    const lngField = document.getElementById("equipment_longitude");
+    
+    const existingLat = latField.value ? parseFloat(latField.value) : null;
+    const existingLng = lngField.value ? parseFloat(lngField.value) : null;
+
+    if (existingLat && existingLng && !isNaN(existingLat) && !isNaN(existingLng)) {
+      const pos = { lat: existingLat, lng: existingLng };
+      placeMarker(pos);
+      showCoordinates(pos);
+      currentLocation = pos;
+      document.getElementById("confirm-location").classList.remove("hidden");
+    }
+
+    // Click listener to place new marker
+    map.addListener("click", (event) => {
+      const location = event.latLng;
+      placeMarker(location);
+      showCoordinates(location);
+      currentLocation = location;
+      document.getElementById("confirm-location").classList.remove("hidden");
+    });
+  }
+
+  function placeMarker(location) {
+    if (marker) {
+      marker.setPosition(location);
+    } else {
+      marker = new google.maps.Marker({
+        position: location,
+        map: map,
+        title: "Selected location",
+        draggable: true   // ← This makes it easier to adjust position
+      });
+    }
+  }
+
+  function showCoordinates(location) {
+    const lat = location.lat instanceof Function ? location.lat() : location.lat;
+    const lng = location.lng instanceof Function ? location.lng() : location.lng;
+    
+    document.getElementById("map-info").innerHTML = 
+      `Selected: Latitude ${lat.toFixed(6)}, Longitude ${lng.toFixed(6)}`;
+  }
+
+  // Confirm button
+  document.getElementById("confirm-location").addEventListener("click", () => {
+    if (currentLocation) {
+      const lat = currentLocation.lat instanceof Function ? currentLocation.lat() : currentLocation.lat;
+      const lng = currentLocation.lng instanceof Function ? currentLocation.lng() : currentLocation.lng;
+
+      document.getElementById("equipment_latitude").value = lat;
+      document.getElementById("equipment_longitude").value = lng;
+
+      document.getElementById("map-info").innerHTML = 
+        `Confirmed: Latitude ${lat.toFixed(6)}, Longitude ${lng.toFixed(6)} (ready to submit)`;
+      
+      document.getElementById("confirm-location").classList.add("hidden");
+    } else {
+      alert("No location selected. Click on the map first.");
+    }
+  });
+
+  // Initialize map
+  if (typeof google === "undefined" || typeof google.maps === "undefined") {
+    const script = document.createElement("script");
+    script.src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyB9rihEzb0gyIuURXCuzVk_kjc2RIHNnOg&callback=initMapPicker";
+    script.async = true;
+    script.defer = true;
+    document.head.appendChild(script);
+  } else {
+    initMapPicker();
+  }
+</script>   
