@@ -38,13 +38,14 @@ Rails.application.routes.draw do
 
   resources :venues
   resources :equipment
-  resources :bookings, only: [:index, :new, :create] do
+  resources :bookings, only: [:index, :new, :create, :destroy] do
     member do
       patch :approve
       patch :reject
     end
   end
 
+  post 'create_booking', to: 'bookings#create_booking', as: 'create_booking'
   get 'staff/dashboard', to: 'staff#dashboard'
   get 'resources', to: 'resources#index'
   get 'manage_resources', to: 'manage_resources#index'  # or use department/manage

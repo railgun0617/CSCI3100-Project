@@ -1,27 +1,57 @@
-<div class="bg-white rounded-lg shadow p-6 max-w-md mx-auto">
-  <h1 class="text-2xl font-bold mb-4">Book <%= @venue.name %></h1>
+<div class="container mx-auto px-4 py-8">
+  <h1 class="text-2xl font-bold mb-2">Book <%= @resource.name %></h1>
+  <p class="text-gray-600 mb-6">Select an available time slot for the next 7 days.</p>
 
-  <%= form_with model: @booking, local: true do |f| %>
-    <div class="mb-4">
-      <%= f.label :start_time, "Start Time", class: "block text-gray-700 font-medium mb-1" %>
-      <%= f.datetime_local_field :start_time, class: "w-full p-2 border rounded-lg" %>
-    </div>
+  <!-- Legend -->
+  <div class="flex gap-4 mb-6 text-sm">
+    <div class="flex items-center gap-1"><div class="w-4 h-4 bg-green-500 rounded"></div><span>Available</span></div>
+    <div class="flex items-center gap-1"><div class="w-4 h-4 bg-red-500 rounded"></div><span>Booked</span></div>
+    <div class="flex items-center gap-1"><div class="w-4 h-4 bg-gray-300 rounded"></div><span>Closed</span></div>
+  </div>
 
-    <div class="mb-4">
-      <%= f.label :end_time, "End Time", class: "block text-gray-700 font-medium mb-1" %>
-      <%= f.datetime_local_field :end_time, class: "w-full p-2 border rounded-lg" %>
-    </div>
+  <!-- Timetable -->
+  <div class="overflow-x-auto">
+    <table class="min-w-full bg-white border border-gray-200 rounded-lg shadow">
+      <thead>
+        <tr class="bg-gray-100 border-b">
+          <th class="px-4 py-2 text-left text-sm font-semibold text-gray-700">Date</th>
+          <th class="px-4 py-2 text-left text-sm font-semibold text-gray-700">Time</th>
+          <th class="px-4 py-2 text-left text-sm font-semibold text-gray-700">Status</th>
+          <th class="px-4 py-2 text-left text-sm font-semibold text-gray-700">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @time_slots.each do |slot| %>
+          <tr class="border-b hover:bg-gray-50">
+            <td class="px-4 py-2"><%= slot[:time].strftime("%A, %b %d") %></td>
+            <td class="px-4 py-2"><%= slot[:time].strftime("%I:%M %p") %></td>
+            <td class="px-4 py-2">
+              <span class="px-2 py-1 text-xs rounded-full
+                <%= slot[:status] == 'available' ? 'bg-green-100 text-green-800' : 
+                   slot[:status] == 'booked' ? 'bg-red-100 text-red-800' : 
+                   'bg-gray-100 text-gray-600' %>">
+                <%= slot[:status].capitalize %>
+              </span>
+            </td>
+            <td class="px-4 py-2">
+              <% if slot[:status] == 'available' %>
+                <%= button_to "Book", create_booking_path, method: :post,
+                      params: { resource_type: @resource.class.name.underscore,
+                                resource_id: @resource.id,
+                                start_time: slot[:time].iso8601,
+                                end_time: (slot[:time] + 1.hour).iso8601 },
+                      class: "bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 rounded text-sm" %>
+              <% else %>
+                <span class="text-gray-400 text-sm">Not available</span>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
 
-    <div class="mb-4">
-      <%= f.label :notes, "Notes (optional)", class: "block text-gray-700 font-medium mb-1" %>
-      <%= f.text_area :notes, rows: 3, class: "w-full p-2 border rounded-lg" %>
-    </div>
-
-    <%= f.hidden_field :venue_id, value: @venue.id %>
-
-    <div class="flex justify-end space-x-2">
-      <%= link_to "Cancel", venues_path, class: "px-4 py-2 border rounded-lg hover:bg-gray-100" %>
-      <%= f.submit "Submit Booking", class: "bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700" %>
-    </div>
-  <% end %>
+  <div class="mt-6">
+    <%= link_to "Back to Resources", resources_path, class: "text-blue-600 hover:underline" %>
+  </div>
 </div>
