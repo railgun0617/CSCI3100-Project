@@ -14,7 +14,37 @@ Given(/^I am on the (.*) page$/) do |page_name|
     visit resources_path
   when 'booking'
     visit bookings_path
+  when 'manage resources'
+    # if !current_user.staff?
+    #   raise 'Only staff can manage resources' and return
+    # end
+    visit manage_resources_path\
+  when 'create staff'
+    visit new_admin_user_path
   else
     raise 'Unknown Page'
   end
 end
+
+Given(/^I am a (.*)$/) do |user_type|
+  role = user_type.strip.downcase
+  unless %w[student staff].include?(role)
+    raise "Unknown User Type: #{user_type}"
+  end
+
+  @current_user = User.find_or_initialize_by(email: "#{role}@example.com")
+  @current_user.password = 'Password123'
+  @current_user.password_confirmation = 'Password123'
+  @current_user.role = role
+  @current_user.save!
+
+  visit new_user_session_path
+  fill_in 'Email', with: @current_user.email
+  fill_in 'Password', with: 'Password123'
+  click_button 'Log in'
+end
+
+Then(/^I should see the error message "([^"]*)"$/) do |expected_message|
+  expect(page).to have_content(expected_message)
+end
+

@@ -6,5 +6,5 @@ Feature: Equipment Page
 
   Scenario: See All of the Equipments
     Given the equipment "Projector" exists
-    And I am on the equipment page
+    When I am on the equipment page
     Then I should see the equipment "Projector"

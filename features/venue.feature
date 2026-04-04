@@ -6,5 +6,5 @@ Feature: Venue Page
 
   Scenario: See All of the Venues
     Given the venue "Library" exists
-    And I am on the venue page
+    When I am on the venue page
     Then I should see the venue "Library"

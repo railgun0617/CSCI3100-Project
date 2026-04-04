@@ -7,6 +7,6 @@ Feature: Equipment and Venue Page
   Scenario: See All of the Equipments and Venues
     Given the equipment "Projector" exists
     And the venue "Library" exists
-    And I am on the equipment and venue page
+    When I am on the equipment and venue page
     Then I should see the equipment "Projector"
     And I should see the venue "Library"
