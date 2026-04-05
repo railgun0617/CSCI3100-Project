@@ -17,6 +17,23 @@
       <%= f.number_field :capacity, class: "w-full p-2 border rounded-lg" %>
     </div>
 
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+      <div>
+        <%= f.label :open_time, "Opening Time", class: "block text-gray-700 font-medium mb-1" %>
+          <%= f.select :open_time, 
+            (9..17).map { |h| ["#{h.to_s.rjust(2, '0')}:00", "#{h.to_s.rjust(2, '0')}:00"] },
+            { selected: @venue.open_time&.strftime("%H:%M") || "09:00", include_blank: 'Select opening time' },
+            { class: "w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" } %>
+      </div>
+      <div>
+        <%= f.label :close_time, "Closing Time", class: "block text-gray-700 font-medium mb-1" %>
+          <%= f.select :close_time,
+          (9..17).map { |h| ["#{h.to_s.rjust(2, '0')}:00", "#{h.to_s.rjust(2, '0')}:00"] },
+          { selected: @venue.close_time&.strftime("%H:%M") || "17:00", include_blank: 'Select closing time' },
+          { class: "w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" } %>
+      </div>
+    </div>
+
     <!-- Map Picker -->
     <div class="mb-6">
       <label class="block text-gray-700 font-medium mb-1">Select Location on Map</label>

@@ -6,6 +6,7 @@
     <div>
       <h2 class="font-semibold text-lg">Details</h2>
       <ul class="mt-2 space-y-1">
+        <li>Open time: <%= @venue.open_time.strftime("%H:%M") %> - <%= @venue.close_time.strftime("%H:%M") %> </li>
         <li>Capacity: <%= @venue.capacity %></li>
       </ul>
       <%= link_to "Book This Venue", new_booking_path(venue_id: @venue.id), 

@@ -36,7 +36,8 @@ class BookingsController < ApplicationController
       user: current_user,
       start_time: start_time,
       end_time: end_time,
-      status: "pending"
+      status: "pending",
+      booking_type: resource_type # Ensure the type of booking
     )
 
     if booking.save
@@ -87,8 +88,10 @@ class BookingsController < ApplicationController
         slot_end = slot_start + 1.hour
 
         # Determine if the slot is closed (e.g., weekends)
-        status = if date.saturday? || date.sunday?
+        status = if date.saturday? || date.sunday? 
                   "closed"
+                elsif resource.is_a?(Venue) && !resource.is_venue_open?(slot_start, slot_end)
+                  "closed" # not in open hours 
                 else
                   # Check if there is any booking (pending or approved) that overlaps this time slot
                   overlapping_booking = resource.bookings
