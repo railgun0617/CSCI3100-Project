@@ -6,6 +6,8 @@ Given(/^I am on the (.*) page$/) do |page_name|
     visit new_user_session_path
   when 'sign up'
     visit new_user_registration_path
+  when 'edit account'
+    visit edit_user_registration_path
   when 'equipment'
     visit equipment_index_path
   when 'venue'
@@ -44,7 +46,10 @@ Given(/^I am a (.*)$/) do |user_type|
   click_button 'Log in'
 end
 
-Then(/^I should see the error message "([^"]*)"$/) do |expected_message|
-  expect(page).to have_content(expected_message)
+When (/^I press (.*?)$/) do |button_text|
+  click_button button_text
 end
 
+Then (/^I should see(?: the (.*?))? "(.*?)"$/) do |message_type, message|
+  expect(page).to have_content(message)
+end

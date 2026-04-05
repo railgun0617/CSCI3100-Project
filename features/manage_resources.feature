@@ -15,4 +15,4 @@ Feature: Manage Resources Page
   Scenario: Students accidentally go to Manage Resources Page
     Given I am a student
     When I am on the manage resources page
-    Then I should see the error message "Only staff can manage resources"
+    Then I should see the error message "Access denied."
