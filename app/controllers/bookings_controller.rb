@@ -15,6 +15,8 @@ class BookingsController < ApplicationController
       return
     end
     @time_slots = generate_time_slots(@resource)
+
+    @max_quantities = calculate_max_quantities(@resource, @time_slots) if @resource.is_a?(Equipment) # calculate max quantity for each timeslot
   end
 
   def create_booking
@@ -25,8 +27,20 @@ class BookingsController < ApplicationController
 
     if resource_type == "venue"
       resource = Venue.find(resource_id)
+      quantity = nil
     elsif resource_type == "equipment"
       resource = Equipment.find(resource_id)
+      quantity = params[:quantity].to_i
+
+      booked = Booking.where(equipment_id: resource_id, status: [:pending, :approved])
+                      .where("start_time < ? AND end_time > ?", end_time, start_time)
+                      .sum(:quantity)
+      
+      if quantity > (resource.quantity - booked)
+        redirect_to new_booking_path(resource_type: resource_type, resource_id: resource_id),
+                    alert: "Only #{resource.total_quantity - booked} items available"
+        return
+      end
     else
       redirect_to resources_path, alert: "Invalid resource."
       return
@@ -36,8 +50,13 @@ class BookingsController < ApplicationController
       user: current_user,
       start_time: start_time,
       end_time: end_time,
-      status: "pending"
+      status: "pending",
+      booking_type: resource_type # Ensure the type of booking
     )
+
+    if resource_type == "equipment"
+      booking.quantity = quantity
+    end
 
     if booking.save
       redirect_to bookings_path, notice: "Booking request submitted for #{start_time.strftime('%b %d, %I:%M %p')}."
@@ -87,8 +106,15 @@ class BookingsController < ApplicationController
         slot_end = slot_start + 1.hour
 
         # Determine if the slot is closed (e.g., weekends)
-        status = if date.saturday? || date.sunday?
+        status = if date.saturday? || date.sunday? 
                   "closed"
+                elsif resource.is_a?(Venue) && !resource.is_venue_open?(slot_start, slot_end)
+                  "closed" # not in open hours 
+                elsif resource.is_a?(Equipment)
+                  booked = Booking.where(equipment_id: resource.id, status: [:pending, :approved])
+                                  .where("start_time < ? AND end_time > ?", slot_end, slot_start)
+                                  .sum(:quantity)
+                  resource.quantity - booked > 0 ? "available" : "booked"
                 else
                   # Check if there is any booking (pending or approved) that overlaps this time slot
                   overlapping_booking = resource.bookings
@@ -102,5 +128,22 @@ class BookingsController < ApplicationController
       end
     end
     slots
+  end
+
+  def calculate_max_quantities(resource, time_slots)
+    max_qty = {}
+    time_slots.each do |slot|
+      next unless slot[:status] == 'available'
+      
+      start_t = slot[:time]
+      end_t = start_t + 1.hour
+      
+      booked = Booking.where(equipment_id: resource.id, status: [:pending, :approved])
+                      .where("start_time < ? AND end_time > ?", end_t, start_t)
+                      .sum(:quantity)
+      
+      max_qty[slot[:time].to_i] = resource.quantity - booked
+    end
+    max_qty
   end
 end
