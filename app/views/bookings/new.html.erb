@@ -38,8 +38,8 @@
                   <% end %>
                 </select>
               </td>
-            <% else %>
-                <td class="px-4 py-2"></td>  <%# non-available can still maintain the td structure %>
+            <% elsif @resource.is_a?(Equipment) %>
+              <td class="px-4 py-2">-</td> <%# non-available can still maintain the td structure %>
             <% end %>
             <td class="px-4 py-2"><%= slot[:time].strftime("%I:%M %p") %></td>
             <td class="px-4 py-2">
