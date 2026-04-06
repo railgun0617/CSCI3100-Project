@@ -1,0 +1,39 @@
+# Logs
+log/*.log
+*.log
+
+# Database
+*.sqlite3
+*.sqlite3-*
+storage/*.sqlite3
+
+# Cache files
+tmp/cache/
+tmp/cache/*
+.bootsnap
+
+# PID files
+*.pid
+tmp/pids/
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Uploads
+storage/
+public/uploads/
+
+# Dependencies
+node_modules/
