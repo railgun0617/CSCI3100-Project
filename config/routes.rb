@@ -49,4 +49,6 @@ Rails.application.routes.draw do
   get 'staff/dashboard', to: 'staff#dashboard'
   get 'resources', to: 'resources#index'
   get 'manage_resources', to: 'manage_resources#index'  # or use department/manage
+  get '/favicon.ico', to: redirect('/assets/favicon.ico')
+
 end
