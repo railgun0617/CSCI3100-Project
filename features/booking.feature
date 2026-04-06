@@ -15,7 +15,7 @@ Feature: Booking Page
     And I should see the booking for the venue "Library"
 
   Scenario: Book an item
-    Given I am on equipment and venue page
+    Given I am on the equipment and venue page
     And the current time is "2020-01-04 08:00:00" # 2020-01-04 is Saturday
     When I click "Book"
     Then I should see "Book Library"

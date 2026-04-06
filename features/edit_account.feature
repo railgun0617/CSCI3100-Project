@@ -27,7 +27,7 @@ Feature: Edit Account Page
 
   Scenario: Go back to previous page
     Given I am on the equipment and venue page
-    When I click 'Edit Account'
+    When I click the "Edit Account" link
     Then I should be on the edit account page
-    When I click 'Back'
+    When I click the "Back" link
     Then I should be on the equipment and venue page

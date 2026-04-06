@@ -14,7 +14,7 @@ Given("I am logged in as a student") do
   click_button "Log in"
 end
 
-Given("I am logged in as staff") do
+Given("I am logged in as a staff") do
   @staff = create(:user, :staff, email: "staff@link.cuhk.edu.hk", password: "password123")
   visit new_user_session_path
   fill_in "Email", with: @staff.email
@@ -22,6 +22,3 @@ Given("I am logged in as staff") do
   click_button "Log in"
 end
 
-When(/^I click the "(.*?)" button$/) do |button_text|
-  click_button button_text
-end

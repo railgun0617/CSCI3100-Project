@@ -59,4 +59,6 @@ require 'factory_bot'
 
 World(FactoryBot::Syntax::Methods)
 
+# Or or Capybara.javascript_driver = :selenium_chrome_headless if you want to run headless by default.
+Capybara.javascript_driver = :selenium_chrome
 

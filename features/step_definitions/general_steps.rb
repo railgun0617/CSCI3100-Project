@@ -10,6 +10,9 @@ Given(/^I am on the (.*) page$/) do |page_name|
     visit edit_user_registration_path
   when 'equipment'
     visit equipment_index_path
+  when 'add equipment'
+    visit new_equipment_path
+    puts "DEBUG current_path: #{current_path}"
   when 'venue'
     visit venues_path
   when 'equipment and venue'
@@ -20,7 +23,7 @@ Given(/^I am on the (.*) page$/) do |page_name|
     # if !current_user.staff?
     #   raise 'Only staff can manage resources' and return
     # end
-    visit manage_resources_path\
+    visit manage_resources_path
   when 'create staff'
     visit new_admin_user_path
   else
@@ -46,10 +49,14 @@ Given(/^I am a (.*)$/) do |user_type|
   click_button 'Log in'
 end
 
-When (/^I press (.*?)$/) do |button_text|
+When(/^I click the "(.*?)" button$/) do |button_text|
   click_button button_text
 end
 
-Then (/^I should see(?: the (.*?))? "(.*?)"$/) do |message_type, message|
+When(/^I click the "(.*)" link$/) do |link_text|
+    click_link link_text
+end
+
+Then(/^I should see(?: the (.*?))? "(.*?)"$/) do |message_type, message|
   expect(page).to have_content(message)
 end
