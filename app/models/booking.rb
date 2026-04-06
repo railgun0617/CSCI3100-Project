@@ -17,7 +17,7 @@ class Booking < ApplicationRecord
     validate :no_venue_booking_time_conflict, if: ->{ venue.present? } # Only one booking is allowed in a time interval
     validate :within_venue_opening_hours, if: ->{ venue.present? } # The venue must be opening at booking time
 
-    # validate :sufficient_equipment_availability, if: ->{ equipment.present? }
+    # validate :sufficient_equipment, if: ->{ equipment.present? }
     # validates :quantity, presence: true, numericality: { greater_than: 0, only_integer: true }, if: -> { equipment.present? }
 
     def venue_conflict_exists?
@@ -30,6 +30,18 @@ class Booking < ApplicationRecord
         .where(status: [:pending, :approved])
         .where("start_time < ? AND end_time > ?", end_time, start_time)
         .exists?  # return bool
+    end
+
+    def remaining_equipment
+        return false if equipment.blank? || quantity.blank?
+
+        booked_equipment = Booking.where(equipment_id: equipment_id).where.not(id: id).where(status: [:pending, :approved]).sum(:quantity)
+
+        equipment.quantity - booked_equipment
+    end
+
+    def sufficient_equipment?
+        remaining_equipment >= quantity
     end
 
     def approve!

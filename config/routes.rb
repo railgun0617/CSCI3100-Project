@@ -7,10 +7,10 @@ Rails.application.routes.draw do
     get "users/create"
     resources :users, only: [:new, :create]
   end
-  get "equipment/index"
-  get "equipment/show"
-  get "equipment/new"
-  get "equipment/edit"
+  # get "equipment/index"
+  # get "equipment/show"
+  # get "equipment/new"
+  # get "equipment/edit"
   get "staff/dashboard"
   get "bookings/index"
   get "bookings/new"
