@@ -1,13 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  subject do
-    described_class.new(
-      email: "1155123456@link.cuhk.edu.hk",
-      password: "qwerty123",
-      password_confirmation: "qwerty123"
-    )
-  end
+  subject { build(:user) }
 
   describe "sign up validations" do
     it "is valid with a proper email and matching password confirmation" do
@@ -41,24 +35,17 @@ RSpec.describe User, type: :model do
     end
 
     it "is invalid with a duplicate email" do
-      described_class.create!(
-        email: "1155123456@link.cuhk.edu.hk",
-        password: "123456",
-        password_confirmation: "123456"
-      )
-      duplicate_user = subject.dup
+      create(:user, email: "1155123456@link.cuhk.edu.hk")
+      duplicate_user = build(:user, email: "1155123456@link.cuhk.edu.hk")
       expect(duplicate_user).not_to be_valid
       expect(duplicate_user.errors[:email]).to include("has already been taken")
     end
   end
 
+  
   describe "sign in validations" do
     let!(:existing_user) do
-      described_class.create!(
-        email: "1155123456@link.cuhk.edu.hk",
-        password: "qwerty123",
-        password_confirmation: "qwerty123"
-      )
+      create(:user, email: "1155123456@link.cuhk.edu.hk", password: "qwerty123", password_confirmation: "qwerty123")
     end
 
     it "is valid with correct email and password" do
@@ -66,7 +53,7 @@ RSpec.describe User, type: :model do
     end
 
     it "is invalid with incorrect password" do
-      expect(existing_user.valid_password?("wrongpassword")).to be false
+      expect(existing_user.valid_password?("qwertyuiop123")).to be false
     end
 
     it "is invalid with different case password" do

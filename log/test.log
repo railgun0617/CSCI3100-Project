@@ -69631,3 +69631,1040 @@ Processing by Devise::SessionsController#new as HTML
   Rendered layout layouts/application.html.erb (Duration: 4.5ms | GC: 0.0ms)
 Completed 200 OK in 5ms (Views: 4.9ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
   [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "schema_sha1"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+Processing by EquipmentController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering equipment/index.html.erb within layouts/application
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+  Rendered equipment/index.html.erb within layouts/application (Duration: 0.1ms | GC: 0.0ms)
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+  Rendered layout layouts/application.html.erb (Duration: 0.3ms | GC: 0.0ms)
+Completed 200 OK in 75ms (Views: 10.2ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mEquipment Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "equipment"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mEquipment Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "equipment"[0m
+Processing by EquipmentController#create as HTML
+  Parameters: {"equipment" => {"description" => nil, "latitude" => nil, "location" => nil, "longitude" => nil, "name" => nil, "quantity" => nil}}
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mEquipment Create (0.4ms)[0m  [1m[32mINSERT INTO "equipment" ("created_at", "description", "latitude", "location", "longitude", "name", "quantity", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["created_at", "2026-04-06 07:22:58.275918"], ["description", nil], ["latitude", nil], ["location", nil], ["longitude", nil], ["name", nil], ["quantity", nil], ["updated_at", "2026-04-06 07:22:58.275918"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/equipment/1
+Completed 302 Found in 8ms (ActiveRecord: 0.7ms (1 query, 0 cached) | GC: 0.0ms)
+  [1m[36mEquipment Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "equipment"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+Processing by EquipmentController#create as HTML
+  Parameters: {"equipment" => {"description" => nil, "latitude" => nil, "location" => nil, "longitude" => nil, "name" => nil, "quantity" => nil}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mEquipment Create (0.5ms)[0m  [1m[32mINSERT INTO "equipment" ("created_at", "description", "latitude", "location", "longitude", "name", "quantity", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["created_at", "2026-04-06 07:22:58.373045"], ["description", nil], ["latitude", nil], ["location", nil], ["longitude", nil], ["name", nil], ["quantity", nil], ["updated_at", "2026-04-06 07:22:58.373045"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/equipment/1
+Completed 302 Found in 8ms (ActiveRecord: 0.6ms (1 query, 0 cached) | GC: 0.0ms)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+Processing by EquipmentController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering equipment/new.html.erb within layouts/application
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+  Rendered equipment/new.html.erb within layouts/application (Duration: 0.1ms | GC: 0.0ms)
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+  Rendered layout layouts/application.html.erb (Duration: 0.4ms | GC: 0.0ms)
+Completed 200 OK in 198ms (Views: 0.9ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.1ms)[0m  [1m[32mINSERT INTO "users" ("created_at", "email", "encrypted_password", "remember_created_at", "reset_password_sent_at", "reset_password_token", "role", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["created_at", "2026-04-06 07:22:58.870960"], ["email", "[FILTERED]"], ["encrypted_password", "[FILTERED]"], ["remember_created_at", nil], ["reset_password_sent_at", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["role", "student"], ["updated_at", "2026-04-06 07:22:58.870960"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.1ms)[0m  [1m[32mINSERT INTO "users" ("created_at", "email", "encrypted_password", "remember_created_at", "reset_password_sent_at", "reset_password_token", "role", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["created_at", "2026-04-06 07:22:58.876357"], ["email", "[FILTERED]"], ["encrypted_password", "[FILTERED]"], ["remember_created_at", nil], ["reset_password_sent_at", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["role", "student"], ["updated_at", "2026-04-06 07:22:58.876357"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("created_at", "email", "encrypted_password", "remember_created_at", "reset_password_sent_at", "reset_password_token", "role", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["created_at", "2026-04-06 07:22:58.915156"], ["email", "[FILTERED]"], ["encrypted_password", "[FILTERED]"], ["remember_created_at", nil], ["reset_password_sent_at", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["role", "student"], ["updated_at", "2026-04-06 07:22:58.915156"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.1ms)[0m  [1m[32mINSERT INTO "users" ("created_at", "email", "encrypted_password", "remember_created_at", "reset_password_sent_at", "reset_password_token", "role", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["created_at", "2026-04-06 07:22:58.920441"], ["email", "[FILTERED]"], ["encrypted_password", "[FILTERED]"], ["remember_created_at", nil], ["reset_password_sent_at", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["role", "student"], ["updated_at", "2026-04-06 07:22:58.920441"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.1ms)[0m  [1m[32mINSERT INTO "users" ("created_at", "email", "encrypted_password", "remember_created_at", "reset_password_sent_at", "reset_password_token", "role", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["created_at", "2026-04-06 07:22:58.924187"], ["email", "[FILTERED]"], ["encrypted_password", "[FILTERED]"], ["remember_created_at", nil], ["reset_password_sent_at", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["role", "student"], ["updated_at", "2026-04-06 07:22:58.924187"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "schema_sha1"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+Processing by EquipmentController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering equipment/index.html.erb within layouts/application
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+  Rendered equipment/index.html.erb within layouts/application (Duration: 0.2ms | GC: 0.0ms)
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+  Rendered layout layouts/application.html.erb (Duration: 0.5ms | GC: 0.0ms)
+Completed 200 OK in 81ms (Views: 13.7ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.2ms)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mEquipment Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "equipment"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mEquipment Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "equipment"[0m
+Processing by EquipmentController#create as HTML
+  Parameters: {"equipment" => {"description" => nil, "latitude" => nil, "location" => nil, "longitude" => nil, "name" => nil, "quantity" => nil}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mEquipment Create (0.5ms)[0m  [1m[32mINSERT INTO "equipment" ("created_at", "description", "latitude", "location", "longitude", "name", "quantity", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["created_at", "2026-04-06 12:36:15.989717"], ["description", nil], ["latitude", nil], ["location", nil], ["longitude", nil], ["name", nil], ["quantity", nil], ["updated_at", "2026-04-06 12:36:15.989717"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/equipment/1
+Completed 302 Found in 14ms (ActiveRecord: 1.2ms (1 query, 0 cached) | GC: 0.0ms)
+  [1m[36mEquipment Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "equipment"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+Processing by EquipmentController#create as HTML
+  Parameters: {"equipment" => {"description" => nil, "latitude" => nil, "location" => nil, "longitude" => nil, "name" => nil, "quantity" => nil}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mEquipment Create (0.4ms)[0m  [1m[32mINSERT INTO "equipment" ("created_at", "description", "latitude", "location", "longitude", "name", "quantity", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["created_at", "2026-04-06 12:36:16.008768"], ["description", nil], ["latitude", nil], ["location", nil], ["longitude", nil], ["name", nil], ["quantity", nil], ["updated_at", "2026-04-06 12:36:16.008768"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/equipment/1
+Completed 302 Found in 3ms (ActiveRecord: 0.6ms (1 query, 0 cached) | GC: 0.0ms)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+Processing by EquipmentController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering equipment/new.html.erb within layouts/application
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+  Rendered equipment/new.html.erb within layouts/application (Duration: 0.2ms | GC: 0.0ms)
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+  Rendered layout layouts/application.html.erb (Duration: 0.5ms | GC: 0.0ms)
+Completed 200 OK in 6ms (Views: 1.3ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("created_at", "email", "encrypted_password", "remember_created_at", "reset_password_sent_at", "reset_password_token", "role", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["created_at", "2026-04-06 12:36:16.149895"], ["email", "[FILTERED]"], ["encrypted_password", "[FILTERED]"], ["remember_created_at", nil], ["reset_password_sent_at", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["role", "student"], ["updated_at", "2026-04-06 12:36:16.149895"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("created_at", "email", "encrypted_password", "remember_created_at", "reset_password_sent_at", "reset_password_token", "role", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["created_at", "2026-04-06 12:36:16.163947"], ["email", "[FILTERED]"], ["encrypted_password", "[FILTERED]"], ["remember_created_at", nil], ["reset_password_sent_at", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["role", "student"], ["updated_at", "2026-04-06 12:36:16.163947"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("created_at", "email", "encrypted_password", "remember_created_at", "reset_password_sent_at", "reset_password_token", "role", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["created_at", "2026-04-06 12:36:16.177623"], ["email", "[FILTERED]"], ["encrypted_password", "[FILTERED]"], ["remember_created_at", nil], ["reset_password_sent_at", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["role", "student"], ["updated_at", "2026-04-06 12:36:16.177623"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (1.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("created_at", "email", "encrypted_password", "remember_created_at", "reset_password_sent_at", "reset_password_token", "role", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["created_at", "2026-04-06 12:36:16.188748"], ["email", "[FILTERED]"], ["encrypted_password", "[FILTERED]"], ["remember_created_at", nil], ["reset_password_sent_at", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["role", "student"], ["updated_at", "2026-04-06 12:36:16.188748"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.1ms)[0m  [1m[32mINSERT INTO "users" ("created_at", "email", "encrypted_password", "remember_created_at", "reset_password_sent_at", "reset_password_token", "role", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["created_at", "2026-04-06 12:36:16.197917"], ["email", "[FILTERED]"], ["encrypted_password", "[FILTERED]"], ["remember_created_at", nil], ["reset_password_sent_at", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["role", "student"], ["updated_at", "2026-04-06 12:36:16.197917"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "schema_sha1"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+Processing by EquipmentController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering equipment/index.html.erb within layouts/application
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+  Rendered equipment/index.html.erb within layouts/application (Duration: 0.2ms | GC: 0.0ms)
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+  Rendered layout layouts/application.html.erb (Duration: 0.5ms | GC: 0.0ms)
+Completed 200 OK in 74ms (Views: 11.9ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mEquipment Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "equipment"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mEquipment Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "equipment"[0m
+Processing by EquipmentController#create as HTML
+  Parameters: {"equipment" => {"description" => nil, "latitude" => nil, "location" => nil, "longitude" => nil, "name" => nil, "quantity" => nil}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mEquipment Create (0.7ms)[0m  [1m[32mINSERT INTO "equipment" ("created_at", "description", "latitude", "location", "longitude", "name", "quantity", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["created_at", "2026-04-06 12:50:26.874543"], ["description", nil], ["latitude", nil], ["location", nil], ["longitude", nil], ["name", nil], ["quantity", nil], ["updated_at", "2026-04-06 12:50:26.874543"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/equipment/1
+Completed 302 Found in 16ms (ActiveRecord: 1.6ms (1 query, 0 cached) | GC: 0.0ms)
+  [1m[36mEquipment Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "equipment"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+Processing by EquipmentController#create as HTML
+  Parameters: {"equipment" => {"description" => nil, "latitude" => nil, "location" => nil, "longitude" => nil, "name" => nil, "quantity" => nil}}
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mEquipment Create (0.4ms)[0m  [1m[32mINSERT INTO "equipment" ("created_at", "description", "latitude", "location", "longitude", "name", "quantity", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["created_at", "2026-04-06 12:50:26.892057"], ["description", nil], ["latitude", nil], ["location", nil], ["longitude", nil], ["name", nil], ["quantity", nil], ["updated_at", "2026-04-06 12:50:26.892057"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/equipment/1
+Completed 302 Found in 3ms (ActiveRecord: 0.4ms (1 query, 0 cached) | GC: 0.0ms)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+Processing by EquipmentController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering equipment/new.html.erb within layouts/application
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+  Rendered equipment/new.html.erb within layouts/application (Duration: 0.2ms | GC: 0.0ms)
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+  Rendered layout layouts/application.html.erb (Duration: 0.5ms | GC: 0.0ms)
+Completed 200 OK in 3ms (Views: 1.0ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "schema_sha1"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+Processing by EquipmentController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering equipment/index.html.erb within layouts/application
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+  Rendered equipment/index.html.erb within layouts/application (Duration: 0.2ms | GC: 0.0ms)
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+  Rendered layout layouts/application.html.erb (Duration: 0.5ms | GC: 0.0ms)
+Completed 200 OK in 63ms (Views: 10.9ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mEquipment Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "equipment"[0m
+Processing by EquipmentController#create as HTML
+  Parameters: {"equipment" => {"description" => "HD Projector", "latitude" => "22.418199", "location" => "ERB Room 101", "longitude" => "114.207988", "name" => "Projector", "quantity" => "3"}}
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mEquipment Create (0.5ms)[0m  [1m[32mINSERT INTO "equipment" ("created_at", "description", "latitude", "location", "longitude", "name", "quantity", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["created_at", "2026-04-06 12:52:11.311541"], ["description", "HD Projector"], ["latitude", 22.418199], ["location", "ERB Room 101"], ["longitude", 114.207988], ["name", "Projector"], ["quantity", 3], ["updated_at", "2026-04-06 12:52:11.311541"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/equipment/1
+Completed 302 Found in 10ms (ActiveRecord: 1.0ms (1 query, 0 cached) | GC: 0.0ms)
+  [1m[36mEquipment Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "equipment"[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+Processing by EquipmentController#create as HTML
+  Parameters: {"equipment" => {"description" => "HD Projector", "latitude" => "22.418199", "location" => "ERB Room 101", "longitude" => "114.207988", "name" => "Projector", "quantity" => "3"}}
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mEquipment Create (0.3ms)[0m  [1m[32mINSERT INTO "equipment" ("created_at", "description", "latitude", "location", "longitude", "name", "quantity", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["created_at", "2026-04-06 12:52:11.320116"], ["description", "HD Projector"], ["latitude", 22.418199], ["location", "ERB Room 101"], ["longitude", 114.207988], ["name", "Projector"], ["quantity", 3], ["updated_at", "2026-04-06 12:52:11.320116"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/equipment/1
+Completed 302 Found in 2ms (ActiveRecord: 0.4ms (1 query, 0 cached) | GC: 0.0ms)
+  [1m[36mEquipment Load (0.1ms)[0m  [1m[34mSELECT "equipment".* FROM "equipment" ORDER BY "equipment"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mEquipment Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "equipment"[0m
+Processing by EquipmentController#create as HTML
+  Parameters: {"equipment" => {"description" => nil, "latitude" => nil, "location" => nil, "longitude" => nil, "name" => nil, "quantity" => nil}}
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mEquipment Create (0.4ms)[0m  [1m[32mINSERT INTO "equipment" ("created_at", "description", "latitude", "location", "longitude", "name", "quantity", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["created_at", "2026-04-06 12:52:11.326208"], ["description", nil], ["latitude", nil], ["location", nil], ["longitude", nil], ["name", nil], ["quantity", nil], ["updated_at", "2026-04-06 12:52:11.326208"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/equipment/1
+Completed 302 Found in 2ms (ActiveRecord: 0.5ms (1 query, 0 cached) | GC: 0.0ms)
+  [1m[36mEquipment Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "equipment"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+Processing by EquipmentController#create as HTML
+  Parameters: {"equipment" => {"description" => nil, "latitude" => nil, "location" => nil, "longitude" => nil, "name" => nil, "quantity" => nil}}
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mEquipment Create (0.4ms)[0m  [1m[32mINSERT INTO "equipment" ("created_at", "description", "latitude", "location", "longitude", "name", "quantity", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["created_at", "2026-04-06 12:52:11.336567"], ["description", nil], ["latitude", nil], ["location", nil], ["longitude", nil], ["name", nil], ["quantity", nil], ["updated_at", "2026-04-06 12:52:11.336567"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/equipment/1
+Completed 302 Found in 2ms (ActiveRecord: 0.5ms (1 query, 0 cached) | GC: 0.0ms)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mEquipment Create (0.3ms)[0m  [1m[32mINSERT INTO "equipment" ("created_at", "description", "latitude", "location", "longitude", "name", "quantity", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["created_at", "2026-04-06 12:52:11.340882"], ["description", "HD Projector"], ["latitude", 22.418199], ["location", "ERB Room 101"], ["longitude", 114.207988], ["name", "Projector"], ["quantity", 3], ["updated_at", "2026-04-06 12:52:11.340882"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by EquipmentController#show as HTML
+  Parameters: {"id" => "1"}
+  [1m[36mEquipment Load (0.2ms)[0m  [1m[34mSELECT "equipment".* FROM "equipment" WHERE "equipment"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering equipment/show.html.erb within layouts/application
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+  Rendered equipment/show.html.erb within layouts/application (Duration: 0.3ms | GC: 0.0ms)
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+  Rendered layout layouts/application.html.erb (Duration: 0.8ms | GC: 0.0ms)
+Completed 200 OK in 133ms (Views: 1.9ms | ActiveRecord: 0.2ms (1 query, 0 cached) | GC: 0.0ms)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+Processing by EquipmentController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering equipment/new.html.erb within layouts/application
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+  Rendered equipment/new.html.erb within layouts/application (Duration: 0.2ms | GC: 0.0ms)
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+  Rendered layout layouts/application.html.erb (Duration: 0.6ms | GC: 0.0ms)
+Completed 200 OK in 4ms (Views: 1.3ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mEquipment Create (0.6ms)[0m  [1m[32mINSERT INTO "equipment" ("created_at", "description", "latitude", "location", "longitude", "name", "quantity", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["created_at", "2026-04-06 12:52:11.489974"], ["description", "HD Projector"], ["latitude", 22.418199], ["location", "ERB Room 101"], ["longitude", 114.207988], ["name", "Projector"], ["quantity", 3], ["updated_at", "2026-04-06 12:52:11.489974"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by EquipmentController#edit as HTML
+  Parameters: {"id" => "1"}
+  [1m[36mEquipment Load (0.1ms)[0m  [1m[34mSELECT "equipment".* FROM "equipment" WHERE "equipment"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering equipment/edit.html.erb within layouts/application
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+  Rendered equipment/edit.html.erb within layouts/application (Duration: 0.3ms | GC: 0.0ms)
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+  Rendered layout layouts/application.html.erb (Duration: 0.8ms | GC: 0.0ms)
+Completed 200 OK in 17ms (Views: 1.8ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.0ms)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mEquipment Create (0.8ms)[0m  [1m[32mINSERT INTO "equipment" ("created_at", "description", "latitude", "location", "longitude", "name", "quantity", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["created_at", "2026-04-06 12:52:11.515083"], ["description", "HD Projector"], ["latitude", 22.418199], ["location", "ERB Room 101"], ["longitude", 114.207988], ["name", "Projector"], ["quantity", 3], ["updated_at", "2026-04-06 12:52:11.515083"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by EquipmentController#update as HTML
+  Parameters: {"equipment" => {"name" => ""}, "id" => "1"}
+  [1m[36mEquipment Load (0.1ms)[0m  [1m[34mSELECT "equipment".* FROM "equipment" WHERE "equipment"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mEquipment Update (0.5ms)[0m  [1m[33mUPDATE "equipment" SET "name" = ?, "updated_at" = ? WHERE "equipment"."id" = ?[0m  [["name", ""], ["updated_at", "2026-04-06 12:52:11.521834"], ["id", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/equipment/1
+Completed 302 Found in 5ms (ActiveRecord: 0.7ms (2 queries, 0 cached) | GC: 0.0ms)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mEquipment Create (1.2ms)[0m  [1m[32mINSERT INTO "equipment" ("created_at", "description", "latitude", "location", "longitude", "name", "quantity", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["created_at", "2026-04-06 12:52:11.527904"], ["description", "HD Projector"], ["latitude", 22.418199], ["location", "ERB Room 101"], ["longitude", 114.207988], ["name", "Projector"], ["quantity", 3], ["updated_at", "2026-04-06 12:52:11.527904"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by EquipmentController#update as HTML
+  Parameters: {"equipment" => {"description" => "Updated Description", "latitude" => "22.419", "location" => "Updated Location", "longitude" => "114.208", "name" => "Updated Projector", "quantity" => "5"}, "id" => "1"}
+  [1m[36mEquipment Load (0.1ms)[0m  [1m[34mSELECT "equipment".* FROM "equipment" WHERE "equipment"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mEquipment Update (0.4ms)[0m  [1m[33mUPDATE "equipment" SET "description" = ?, "latitude" = ?, "location" = ?, "longitude" = ?, "name" = ?, "quantity" = ?, "updated_at" = ? WHERE "equipment"."id" = ?[0m  [["description", "Updated Description"], ["latitude", 22.419], ["location", "Updated Location"], ["longitude", 114.208], ["name", "Updated Projector"], ["quantity", 5], ["updated_at", "2026-04-06 12:52:11.533299"], ["id", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/equipment/1
+Completed 302 Found in 3ms (ActiveRecord: 0.6ms (2 queries, 0 cached) | GC: 0.0ms)
+  [1m[36mEquipment Load (0.1ms)[0m  [1m[34mSELECT "equipment".* FROM "equipment" WHERE "equipment"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mEquipment Create (0.5ms)[0m  [1m[32mINSERT INTO "equipment" ("created_at", "description", "latitude", "location", "longitude", "name", "quantity", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["created_at", "2026-04-06 12:52:11.550940"], ["description", "HD Projector"], ["latitude", 22.418199], ["location", "ERB Room 101"], ["longitude", 114.207988], ["name", "Projector"], ["quantity", 3], ["updated_at", "2026-04-06 12:52:11.550940"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by EquipmentController#update as HTML
+  Parameters: {"equipment" => {"description" => "Updated Description", "latitude" => "22.419", "location" => "Updated Location", "longitude" => "114.208", "name" => "Updated Projector", "quantity" => "5"}, "id" => "1"}
+  [1m[36mEquipment Load (0.1ms)[0m  [1m[34mSELECT "equipment".* FROM "equipment" WHERE "equipment"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mEquipment Update (0.3ms)[0m  [1m[33mUPDATE "equipment" SET "description" = ?, "latitude" = ?, "location" = ?, "longitude" = ?, "name" = ?, "quantity" = ?, "updated_at" = ? WHERE "equipment"."id" = ?[0m  [["description", "Updated Description"], ["latitude", 22.419], ["location", "Updated Location"], ["longitude", 114.208], ["name", "Updated Projector"], ["quantity", 5], ["updated_at", "2026-04-06 12:52:11.556260"], ["id", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/equipment/1
+Completed 302 Found in 3ms (ActiveRecord: 0.5ms (2 queries, 0 cached) | GC: 0.0ms)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mEquipment Create (0.4ms)[0m  [1m[32mINSERT INTO "equipment" ("created_at", "description", "latitude", "location", "longitude", "name", "quantity", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["created_at", "2026-04-06 12:52:11.561217"], ["description", "HD Projector"], ["latitude", 22.418199], ["location", "ERB Room 101"], ["longitude", 114.207988], ["name", "Projector"], ["quantity", 3], ["updated_at", "2026-04-06 12:52:11.561217"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mEquipment Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "equipment"[0m
+Processing by EquipmentController#destroy as HTML
+  Parameters: {"id" => "1"}
+  [1m[36mEquipment Load (0.1ms)[0m  [1m[34mSELECT "equipment".* FROM "equipment" WHERE "equipment"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mEquipment Destroy (0.3ms)[0m  [1m[31mDELETE FROM "equipment" WHERE "equipment"."id" = ?[0m  [["id", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/equipment/index
+Completed 302 Found in 2ms (ActiveRecord: 0.4ms (2 queries, 0 cached) | GC: 0.0ms)
+  [1m[36mEquipment Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "equipment"[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mEquipment Create (0.4ms)[0m  [1m[32mINSERT INTO "equipment" ("created_at", "description", "latitude", "location", "longitude", "name", "quantity", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["created_at", "2026-04-06 12:52:11.568945"], ["description", "HD Projector"], ["latitude", 22.418199], ["location", "ERB Room 101"], ["longitude", 114.207988], ["name", "Projector"], ["quantity", 3], ["updated_at", "2026-04-06 12:52:11.568945"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by EquipmentController#destroy as HTML
+  Parameters: {"id" => "1"}
+  [1m[36mEquipment Load (0.1ms)[0m  [1m[34mSELECT "equipment".* FROM "equipment" WHERE "equipment"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mEquipment Destroy (0.2ms)[0m  [1m[31mDELETE FROM "equipment" WHERE "equipment"."id" = ?[0m  [["id", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/equipment/index
+Completed 302 Found in 2ms (ActiveRecord: 0.3ms (2 queries, 0 cached) | GC: 0.0ms)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("created_at", "email", "encrypted_password", "remember_created_at", "reset_password_sent_at", "reset_password_token", "role", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["created_at", "2026-04-06 12:52:11.603274"], ["email", "[FILTERED]"], ["encrypted_password", "[FILTERED]"], ["remember_created_at", nil], ["reset_password_sent_at", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["role", "student"], ["updated_at", "2026-04-06 12:52:11.603274"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mEquipment Create (0.5ms)[0m  [1m[32mINSERT INTO "equipment" ("created_at", "description", "latitude", "location", "longitude", "name", "quantity", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["created_at", "2026-04-06 12:52:11.614764"], ["description", "HD Projector"], ["latitude", 22.418199], ["location", "ERB Room 101"], ["longitude", 114.207988], ["name", "Projector"], ["quantity", 3], ["updated_at", "2026-04-06 12:52:11.614764"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mBooking Create (0.4ms)[0m  [1m[32mINSERT INTO "bookings" ("created_at", "end_time", "equipment_id", "notes", "start_time", "status", "updated_at", "user_id", "venue_id") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["created_at", "2026-04-06 12:52:11.619753"], ["end_time", "2025-10-04 11:00:00"], ["equipment_id", 1], ["notes", nil], ["start_time", "2025-10-04 10:00:00"], ["status", "pending"], ["updated_at", "2026-04-06 12:52:11.619753"], ["user_id", 1], ["venue_id", nil]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("created_at", "email", "encrypted_password", "remember_created_at", "reset_password_sent_at", "reset_password_token", "role", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["created_at", "2026-04-06 12:52:11.696246"], ["email", "[FILTERED]"], ["encrypted_password", "[FILTERED]"], ["remember_created_at", nil], ["reset_password_sent_at", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["role", "student"], ["updated_at", "2026-04-06 12:52:11.696246"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mEquipment Create (0.5ms)[0m  [1m[32mINSERT INTO "equipment" ("created_at", "description", "latitude", "location", "longitude", "name", "quantity", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["created_at", "2026-04-06 12:52:11.699478"], ["description", "HD Projector"], ["latitude", 22.418199], ["location", "ERB Room 101"], ["longitude", 114.207988], ["name", "Projector"], ["quantity", 3], ["updated_at", "2026-04-06 12:52:11.699478"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mBooking Create (0.7ms)[0m  [1m[32mINSERT INTO "bookings" ("created_at", "end_time", "equipment_id", "notes", "start_time", "status", "updated_at", "user_id", "venue_id") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["created_at", "2026-04-06 12:52:11.706510"], ["end_time", "2025-10-04 11:00:00"], ["equipment_id", 1], ["notes", nil], ["start_time", "2025-10-04 10:00:00"], ["status", "pending"], ["updated_at", "2026-04-06 12:52:11.706510"], ["user_id", 1], ["venue_id", nil]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("created_at", "email", "encrypted_password", "remember_created_at", "reset_password_sent_at", "reset_password_token", "role", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["created_at", "2026-04-06 12:52:11.718076"], ["email", "[FILTERED]"], ["encrypted_password", "[FILTERED]"], ["remember_created_at", nil], ["reset_password_sent_at", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["role", "student"], ["updated_at", "2026-04-06 12:52:11.718076"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mEquipment Create (17.9ms)[0m  [1m[32mINSERT INTO "equipment" ("created_at", "description", "latitude", "location", "longitude", "name", "quantity", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["created_at", "2026-04-06 12:52:11.720508"], ["description", "HD Projector"], ["latitude", 22.418199], ["location", "ERB Room 101"], ["longitude", 114.207988], ["name", "Projector"], ["quantity", 3], ["updated_at", "2026-04-06 12:52:11.720508"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mBooking Create (0.7ms)[0m  [1m[32mINSERT INTO "bookings" ("created_at", "end_time", "equipment_id", "notes", "start_time", "status", "updated_at", "user_id", "venue_id") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["created_at", "2026-04-06 12:52:11.740857"], ["end_time", "2025-10-04 11:00:00"], ["equipment_id", 1], ["notes", nil], ["start_time", "2025-10-04 10:00:00"], ["status", "pending"], ["updated_at", "2026-04-06 12:52:11.740857"], ["user_id", 1], ["venue_id", nil]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("created_at", "email", "encrypted_password", "remember_created_at", "reset_password_sent_at", "reset_password_token", "role", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["created_at", "2026-04-06 12:52:11.747146"], ["email", "[FILTERED]"], ["encrypted_password", "[FILTERED]"], ["remember_created_at", nil], ["reset_password_sent_at", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["role", "student"], ["updated_at", "2026-04-06 12:52:11.747146"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mEquipment Create (0.4ms)[0m  [1m[32mINSERT INTO "equipment" ("created_at", "description", "latitude", "location", "longitude", "name", "quantity", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["created_at", "2026-04-06 12:52:11.748956"], ["description", "HD Projector"], ["latitude", 22.418199], ["location", "ERB Room 101"], ["longitude", 114.207988], ["name", "Projector"], ["quantity", 3], ["updated_at", "2026-04-06 12:52:11.748956"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mEquipment Create (0.4ms)[0m  [1m[32mINSERT INTO "equipment" ("created_at", "description", "latitude", "location", "longitude", "name", "quantity", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["created_at", "2026-04-06 12:52:11.774339"], ["description", "HD Projector"], ["latitude", 22.418199], ["location", "ERB Room 101"], ["longitude", 114.207988], ["name", "Projector"], ["quantity", 3], ["updated_at", "2026-04-06 12:52:11.774339"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mEquipment Create (0.3ms)[0m  [1m[32mINSERT INTO "equipment" ("created_at", "description", "latitude", "location", "longitude", "name", "quantity", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["created_at", "2026-04-06 12:52:11.777665"], ["description", "HD Projector"], ["latitude", 22.418199], ["location", "ERB Room 101"], ["longitude", 114.207988], ["name", "Projector"], ["quantity", 3], ["updated_at", "2026-04-06 12:52:11.777665"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mEquipment Create (0.3ms)[0m  [1m[32mINSERT INTO "equipment" ("created_at", "description", "latitude", "location", "longitude", "name", "quantity", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["created_at", "2026-04-06 12:52:11.780165"], ["description", "HD Projector"], ["latitude", 22.418199], ["location", "ERB Room 101"], ["longitude", 114.207988], ["name", "Projector"], ["quantity", 3], ["updated_at", "2026-04-06 12:52:11.780165"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mEquipment Create (0.3ms)[0m  [1m[32mINSERT INTO "equipment" ("created_at", "description", "latitude", "location", "longitude", "name", "quantity", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["created_at", "2026-04-06 12:52:11.781731"], ["description", "HD Camera"], ["latitude", 22.42], ["location", "MMW Room 102"], ["longitude", 114.209], ["name", "Camera"], ["quantity", 2], ["updated_at", "2026-04-06 12:52:11.781731"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("created_at", "email", "encrypted_password", "remember_created_at", "reset_password_sent_at", "reset_password_token", "role", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["created_at", "2026-04-06 12:52:11.811660"], ["email", "[FILTERED]"], ["encrypted_password", "[FILTERED]"], ["remember_created_at", nil], ["reset_password_sent_at", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["role", "student"], ["updated_at", "2026-04-06 12:52:11.811660"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("created_at", "email", "encrypted_password", "remember_created_at", "reset_password_sent_at", "reset_password_token", "role", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["created_at", "2026-04-06 12:52:11.819377"], ["email", "[FILTERED]"], ["encrypted_password", "[FILTERED]"], ["remember_created_at", nil], ["reset_password_sent_at", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["role", "student"], ["updated_at", "2026-04-06 12:52:11.819377"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("created_at", "email", "encrypted_password", "remember_created_at", "reset_password_sent_at", "reset_password_token", "role", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["created_at", "2026-04-06 12:52:11.828911"], ["email", "[FILTERED]"], ["encrypted_password", "[FILTERED]"], ["remember_created_at", nil], ["reset_password_sent_at", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["role", "student"], ["updated_at", "2026-04-06 12:52:11.828911"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("created_at", "email", "encrypted_password", "remember_created_at", "reset_password_sent_at", "reset_password_token", "role", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["created_at", "2026-04-06 12:52:11.835525"], ["email", "[FILTERED]"], ["encrypted_password", "[FILTERED]"], ["remember_created_at", nil], ["reset_password_sent_at", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["role", "student"], ["updated_at", "2026-04-06 12:52:11.835525"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("created_at", "email", "encrypted_password", "remember_created_at", "reset_password_sent_at", "reset_password_token", "role", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["created_at", "2026-04-06 12:52:11.842950"], ["email", "[FILTERED]"], ["encrypted_password", "[FILTERED]"], ["remember_created_at", nil], ["reset_password_sent_at", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["role", "student"], ["updated_at", "2026-04-06 12:52:11.842950"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "schema_sha1"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+Processing by EquipmentController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering equipment/index.html.erb within layouts/application
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+  Rendered equipment/index.html.erb within layouts/application (Duration: 0.2ms | GC: 0.0ms)
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+  Rendered layout layouts/application.html.erb (Duration: 0.6ms | GC: 0.0ms)
+Completed 200 OK in 68ms (Views: 13.2ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mEquipment Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "equipment"[0m
+Processing by EquipmentController#create as HTML
+  Parameters: {"equipment" => {"description" => "HD Projector", "latitude" => "22.418199", "location" => "ERB Room 101", "longitude" => "114.207988", "name" => "Projector1", "quantity" => "3"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mEquipment Create (0.6ms)[0m  [1m[32mINSERT INTO "equipment" ("created_at", "description", "latitude", "location", "longitude", "name", "quantity", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["created_at", "2026-04-06 13:01:40.268773"], ["description", "HD Projector"], ["latitude", 22.418199], ["location", "ERB Room 101"], ["longitude", 114.207988], ["name", "Projector1"], ["quantity", 3], ["updated_at", "2026-04-06 13:01:40.268773"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/equipment/1
+Completed 302 Found in 14ms (ActiveRecord: 1.1ms (1 query, 0 cached) | GC: 0.0ms)
+  [1m[36mEquipment Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "equipment"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+Processing by EquipmentController#create as HTML
+  Parameters: {"equipment" => {"description" => "HD Projector", "latitude" => "22.418199", "location" => "ERB Room 101", "longitude" => "114.207988", "name" => "Projector2", "quantity" => "3"}}
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mEquipment Create (0.3ms)[0m  [1m[32mINSERT INTO "equipment" ("created_at", "description", "latitude", "location", "longitude", "name", "quantity", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["created_at", "2026-04-06 13:01:40.282033"], ["description", "HD Projector"], ["latitude", 22.418199], ["location", "ERB Room 101"], ["longitude", 114.207988], ["name", "Projector2"], ["quantity", 3], ["updated_at", "2026-04-06 13:01:40.282033"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/equipment/1
+Completed 302 Found in 3ms (ActiveRecord: 0.4ms (1 query, 0 cached) | GC: 0.0ms)
+  [1m[36mEquipment Load (0.3ms)[0m  [1m[34mSELECT "equipment".* FROM "equipment" ORDER BY "equipment"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mEquipment Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "equipment"[0m
+Processing by EquipmentController#create as HTML
+  Parameters: {"equipment" => {"description" => nil, "latitude" => nil, "location" => nil, "longitude" => nil, "name" => nil, "quantity" => nil}}
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mEquipment Create (0.3ms)[0m  [1m[32mINSERT INTO "equipment" ("created_at", "description", "latitude", "location", "longitude", "name", "quantity", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["created_at", "2026-04-06 13:01:40.290993"], ["description", nil], ["latitude", nil], ["location", nil], ["longitude", nil], ["name", nil], ["quantity", nil], ["updated_at", "2026-04-06 13:01:40.290993"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/equipment/1
+Completed 302 Found in 3ms (ActiveRecord: 0.5ms (1 query, 0 cached) | GC: 0.0ms)
+  [1m[36mEquipment Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "equipment"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+Processing by EquipmentController#create as HTML
+  Parameters: {"equipment" => {"description" => nil, "latitude" => nil, "location" => nil, "longitude" => nil, "name" => nil, "quantity" => nil}}
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mEquipment Create (0.4ms)[0m  [1m[32mINSERT INTO "equipment" ("created_at", "description", "latitude", "location", "longitude", "name", "quantity", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["created_at", "2026-04-06 13:01:40.302440"], ["description", nil], ["latitude", nil], ["location", nil], ["longitude", nil], ["name", nil], ["quantity", nil], ["updated_at", "2026-04-06 13:01:40.302440"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/equipment/1
+Completed 302 Found in 3ms (ActiveRecord: 0.5ms (1 query, 0 cached) | GC: 0.0ms)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mEquipment Create (0.3ms)[0m  [1m[32mINSERT INTO "equipment" ("created_at", "description", "latitude", "location", "longitude", "name", "quantity", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["created_at", "2026-04-06 13:01:40.307206"], ["description", "HD Projector"], ["latitude", 22.418199], ["location", "ERB Room 101"], ["longitude", 114.207988], ["name", "Projector3"], ["quantity", 3], ["updated_at", "2026-04-06 13:01:40.307206"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by EquipmentController#show as HTML
+  Parameters: {"id" => "1"}
+  [1m[36mEquipment Load (0.2ms)[0m  [1m[34mSELECT "equipment".* FROM "equipment" WHERE "equipment"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering equipment/show.html.erb within layouts/application
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+  Rendered equipment/show.html.erb within layouts/application (Duration: 0.2ms | GC: 0.0ms)
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+  Rendered layout layouts/application.html.erb (Duration: 0.6ms | GC: 0.0ms)
+Completed 200 OK in 8ms (Views: 1.4ms | ActiveRecord: 0.2ms (1 query, 0 cached) | GC: 0.0ms)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+Processing by EquipmentController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering equipment/new.html.erb within layouts/application
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+  Rendered equipment/new.html.erb within layouts/application (Duration: 0.2ms | GC: 0.0ms)
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+  Rendered layout layouts/application.html.erb (Duration: 0.6ms | GC: 0.0ms)
+Completed 200 OK in 4ms (Views: 1.2ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mEquipment Create (0.4ms)[0m  [1m[32mINSERT INTO "equipment" ("created_at", "description", "latitude", "location", "longitude", "name", "quantity", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["created_at", "2026-04-06 13:01:40.335795"], ["description", "HD Projector"], ["latitude", 22.418199], ["location", "ERB Room 101"], ["longitude", 114.207988], ["name", "Projector4"], ["quantity", 3], ["updated_at", "2026-04-06 13:01:40.335795"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by EquipmentController#edit as HTML
+  Parameters: {"id" => "1"}
+  [1m[36mEquipment Load (0.1ms)[0m  [1m[34mSELECT "equipment".* FROM "equipment" WHERE "equipment"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering equipment/edit.html.erb within layouts/application
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+  Rendered equipment/edit.html.erb within layouts/application (Duration: 0.2ms | GC: 0.0ms)
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+  Rendered layout layouts/application.html.erb (Duration: 0.4ms | GC: 0.0ms)
+Completed 200 OK in 4ms (Views: 0.8ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.0ms)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mEquipment Create (0.3ms)[0m  [1m[32mINSERT INTO "equipment" ("created_at", "description", "latitude", "location", "longitude", "name", "quantity", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["created_at", "2026-04-06 13:01:40.344558"], ["description", "HD Projector"], ["latitude", 22.418199], ["location", "ERB Room 101"], ["longitude", 114.207988], ["name", "Projector5"], ["quantity", 3], ["updated_at", "2026-04-06 13:01:40.344558"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by EquipmentController#update as HTML
+  Parameters: {"equipment" => {"name" => ""}, "id" => "1"}
+  [1m[36mEquipment Load (0.1ms)[0m  [1m[34mSELECT "equipment".* FROM "equipment" WHERE "equipment"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mEquipment Update (0.3ms)[0m  [1m[33mUPDATE "equipment" SET "name" = ?, "updated_at" = ? WHERE "equipment"."id" = ?[0m  [["name", ""], ["updated_at", "2026-04-06 13:01:40.347800"], ["id", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/equipment/1
+Completed 302 Found in 3ms (ActiveRecord: 0.5ms (2 queries, 0 cached) | GC: 0.0ms)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mEquipment Create (0.5ms)[0m  [1m[32mINSERT INTO "equipment" ("created_at", "description", "latitude", "location", "longitude", "name", "quantity", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["created_at", "2026-04-06 13:01:40.351892"], ["description", "HD Projector"], ["latitude", 22.418199], ["location", "ERB Room 101"], ["longitude", 114.207988], ["name", "Projector6"], ["quantity", 3], ["updated_at", "2026-04-06 13:01:40.351892"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by EquipmentController#update as HTML
+  Parameters: {"equipment" => {"description" => "Updated Description", "latitude" => "22.419", "location" => "Updated Location", "longitude" => "114.208", "name" => "Updated Projector", "quantity" => "5"}, "id" => "1"}
+  [1m[36mEquipment Load (0.2ms)[0m  [1m[34mSELECT "equipment".* FROM "equipment" WHERE "equipment"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mEquipment Update (0.3ms)[0m  [1m[33mUPDATE "equipment" SET "description" = ?, "latitude" = ?, "location" = ?, "longitude" = ?, "name" = ?, "quantity" = ?, "updated_at" = ? WHERE "equipment"."id" = ?[0m  [["description", "Updated Description"], ["latitude", 22.419], ["location", "Updated Location"], ["longitude", 114.208], ["name", "Updated Projector"], ["quantity", 5], ["updated_at", "2026-04-06 13:01:40.360515"], ["id", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/equipment/1
+Completed 302 Found in 4ms (ActiveRecord: 0.6ms (2 queries, 0 cached) | GC: 0.0ms)
+  [1m[36mEquipment Load (0.1ms)[0m  [1m[34mSELECT "equipment".* FROM "equipment" WHERE "equipment"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mEquipment Create (0.4ms)[0m  [1m[32mINSERT INTO "equipment" ("created_at", "description", "latitude", "location", "longitude", "name", "quantity", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["created_at", "2026-04-06 13:01:40.368186"], ["description", "HD Projector"], ["latitude", 22.418199], ["location", "ERB Room 101"], ["longitude", 114.207988], ["name", "Projector7"], ["quantity", 3], ["updated_at", "2026-04-06 13:01:40.368186"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by EquipmentController#update as HTML
+  Parameters: {"equipment" => {"description" => "Updated Description", "latitude" => "22.419", "location" => "Updated Location", "longitude" => "114.208", "name" => "Updated Projector", "quantity" => "5"}, "id" => "1"}
+  [1m[36mEquipment Load (0.1ms)[0m  [1m[34mSELECT "equipment".* FROM "equipment" WHERE "equipment"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mEquipment Update (0.3ms)[0m  [1m[33mUPDATE "equipment" SET "description" = ?, "latitude" = ?, "location" = ?, "longitude" = ?, "name" = ?, "quantity" = ?, "updated_at" = ? WHERE "equipment"."id" = ?[0m  [["description", "Updated Description"], ["latitude", 22.419], ["location", "Updated Location"], ["longitude", 114.208], ["name", "Updated Projector"], ["quantity", 5], ["updated_at", "2026-04-06 13:01:40.373600"], ["id", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/equipment/1
+Completed 302 Found in 4ms (ActiveRecord: 0.5ms (2 queries, 0 cached) | GC: 0.0ms)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mEquipment Create (0.3ms)[0m  [1m[32mINSERT INTO "equipment" ("created_at", "description", "latitude", "location", "longitude", "name", "quantity", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["created_at", "2026-04-06 13:01:40.378847"], ["description", "HD Projector"], ["latitude", 22.418199], ["location", "ERB Room 101"], ["longitude", 114.207988], ["name", "Projector8"], ["quantity", 3], ["updated_at", "2026-04-06 13:01:40.378847"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mEquipment Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "equipment"[0m
+Processing by EquipmentController#destroy as HTML
+  Parameters: {"id" => "1"}
+  [1m[36mEquipment Load (0.1ms)[0m  [1m[34mSELECT "equipment".* FROM "equipment" WHERE "equipment"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mEquipment Destroy (0.2ms)[0m  [1m[31mDELETE FROM "equipment" WHERE "equipment"."id" = ?[0m  [["id", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/equipment/index
+Completed 302 Found in 2ms (ActiveRecord: 0.4ms (2 queries, 0 cached) | GC: 0.0ms)
+  [1m[36mEquipment Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "equipment"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mEquipment Create (0.4ms)[0m  [1m[32mINSERT INTO "equipment" ("created_at", "description", "latitude", "location", "longitude", "name", "quantity", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["created_at", "2026-04-06 13:01:40.387297"], ["description", "HD Projector"], ["latitude", 22.418199], ["location", "ERB Room 101"], ["longitude", 114.207988], ["name", "Projector9"], ["quantity", 3], ["updated_at", "2026-04-06 13:01:40.387297"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by EquipmentController#destroy as HTML
+  Parameters: {"id" => "1"}
+  [1m[36mEquipment Load (0.1ms)[0m  [1m[34mSELECT "equipment".* FROM "equipment" WHERE "equipment"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mEquipment Destroy (0.2ms)[0m  [1m[31mDELETE FROM "equipment" WHERE "equipment"."id" = ?[0m  [["id", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/equipment/index
+Completed 302 Found in 1ms (ActiveRecord: 0.3ms (2 queries, 0 cached) | GC: 0.0ms)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("created_at", "email", "encrypted_password", "remember_created_at", "reset_password_sent_at", "reset_password_token", "role", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["created_at", "2026-04-06 13:01:40.414546"], ["email", "[FILTERED]"], ["encrypted_password", "[FILTERED]"], ["remember_created_at", nil], ["reset_password_sent_at", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["role", "student"], ["updated_at", "2026-04-06 13:01:40.414546"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mEquipment Create (0.4ms)[0m  [1m[32mINSERT INTO "equipment" ("created_at", "description", "latitude", "location", "longitude", "name", "quantity", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["created_at", "2026-04-06 13:01:40.421180"], ["description", "HD Projector"], ["latitude", 22.418199], ["location", "ERB Room 101"], ["longitude", 114.207988], ["name", "Projector10"], ["quantity", 3], ["updated_at", "2026-04-06 13:01:40.421180"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mBooking Create (0.3ms)[0m  [1m[32mINSERT INTO "bookings" ("created_at", "end_time", "equipment_id", "notes", "start_time", "status", "updated_at", "user_id", "venue_id") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["created_at", "2026-04-06 13:01:40.426170"], ["end_time", "2025-10-04 11:00:00"], ["equipment_id", 1], ["notes", nil], ["start_time", "2025-10-04 10:00:00"], ["status", "pending"], ["updated_at", "2026-04-06 13:01:40.426170"], ["user_id", 1], ["venue_id", nil]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("created_at", "email", "encrypted_password", "remember_created_at", "reset_password_sent_at", "reset_password_token", "role", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["created_at", "2026-04-06 13:01:40.436089"], ["email", "[FILTERED]"], ["encrypted_password", "[FILTERED]"], ["remember_created_at", nil], ["reset_password_sent_at", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["role", "student"], ["updated_at", "2026-04-06 13:01:40.436089"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mEquipment Create (0.3ms)[0m  [1m[32mINSERT INTO "equipment" ("created_at", "description", "latitude", "location", "longitude", "name", "quantity", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["created_at", "2026-04-06 13:01:40.437902"], ["description", "HD Projector"], ["latitude", 22.418199], ["location", "ERB Room 101"], ["longitude", 114.207988], ["name", "Projector12"], ["quantity", 3], ["updated_at", "2026-04-06 13:01:40.437902"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mBooking Create (0.3ms)[0m  [1m[32mINSERT INTO "bookings" ("created_at", "end_time", "equipment_id", "notes", "start_time", "status", "updated_at", "user_id", "venue_id") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["created_at", "2026-04-06 13:01:40.439471"], ["end_time", "2025-10-04 11:00:00"], ["equipment_id", 1], ["notes", nil], ["start_time", "2025-10-04 10:00:00"], ["status", "pending"], ["updated_at", "2026-04-06 13:01:40.439471"], ["user_id", 1], ["venue_id", nil]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("created_at", "email", "encrypted_password", "remember_created_at", "reset_password_sent_at", "reset_password_token", "role", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["created_at", "2026-04-06 13:01:40.446731"], ["email", "[FILTERED]"], ["encrypted_password", "[FILTERED]"], ["remember_created_at", nil], ["reset_password_sent_at", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["role", "student"], ["updated_at", "2026-04-06 13:01:40.446731"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mEquipment Create (0.3ms)[0m  [1m[32mINSERT INTO "equipment" ("created_at", "description", "latitude", "location", "longitude", "name", "quantity", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["created_at", "2026-04-06 13:01:40.448822"], ["description", "HD Projector"], ["latitude", 22.418199], ["location", "ERB Room 101"], ["longitude", 114.207988], ["name", "Projector14"], ["quantity", 3], ["updated_at", "2026-04-06 13:01:40.448822"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mBooking Create (0.3ms)[0m  [1m[32mINSERT INTO "bookings" ("created_at", "end_time", "equipment_id", "notes", "start_time", "status", "updated_at", "user_id", "venue_id") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["created_at", "2026-04-06 13:01:40.450236"], ["end_time", "2025-10-04 11:00:00"], ["equipment_id", 1], ["notes", nil], ["start_time", "2025-10-04 10:00:00"], ["status", "pending"], ["updated_at", "2026-04-06 13:01:40.450236"], ["user_id", 1], ["venue_id", nil]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("created_at", "email", "encrypted_password", "remember_created_at", "reset_password_sent_at", "reset_password_token", "role", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["created_at", "2026-04-06 13:01:40.454618"], ["email", "[FILTERED]"], ["encrypted_password", "[FILTERED]"], ["remember_created_at", nil], ["reset_password_sent_at", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["role", "student"], ["updated_at", "2026-04-06 13:01:40.454618"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mEquipment Create (0.3ms)[0m  [1m[32mINSERT INTO "equipment" ("created_at", "description", "latitude", "location", "longitude", "name", "quantity", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["created_at", "2026-04-06 13:01:40.457495"], ["description", "HD Projector"], ["latitude", 22.418199], ["location", "ERB Room 101"], ["longitude", 114.207988], ["name", "Projector15"], ["quantity", 3], ["updated_at", "2026-04-06 13:01:40.457495"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mEquipment Create (1.9ms)[0m  [1m[32mINSERT INTO "equipment" ("created_at", "description", "latitude", "location", "longitude", "name", "quantity", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["created_at", "2026-04-06 13:01:40.486781"], ["description", "HD Projector"], ["latitude", 22.418199], ["location", "ERB Room 101"], ["longitude", 114.207988], ["name", "Projector"], ["quantity", 3], ["updated_at", "2026-04-06 13:01:40.486781"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mEquipment Create (0.5ms)[0m  [1m[32mINSERT INTO "equipment" ("created_at", "description", "latitude", "location", "longitude", "name", "quantity", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["created_at", "2026-04-06 13:01:40.492576"], ["description", "HD Projector"], ["latitude", 22.418199], ["location", "ERB Room 101"], ["longitude", 114.207988], ["name", "Projector32"], ["quantity", 3], ["updated_at", "2026-04-06 13:01:40.492576"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mEquipment Create (0.4ms)[0m  [1m[32mINSERT INTO "equipment" ("created_at", "description", "latitude", "location", "longitude", "name", "quantity", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["created_at", "2026-04-06 13:01:40.496307"], ["description", "HD Projector"], ["latitude", 22.418199], ["location", "ERB Room 101"], ["longitude", 114.207988], ["name", "Projector33"], ["quantity", 3], ["updated_at", "2026-04-06 13:01:40.496307"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mEquipment Create (0.3ms)[0m  [1m[32mINSERT INTO "equipment" ("created_at", "description", "latitude", "location", "longitude", "name", "quantity", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["created_at", "2026-04-06 13:01:40.498183"], ["description", "HD Camera"], ["latitude", 22.42], ["location", "MMW Room 102"], ["longitude", 114.209], ["name", "Camera"], ["quantity", 2], ["updated_at", "2026-04-06 13:01:40.498183"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("created_at", "email", "encrypted_password", "remember_created_at", "reset_password_sent_at", "reset_password_token", "role", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["created_at", "2026-04-06 13:01:40.532653"], ["email", "[FILTERED]"], ["encrypted_password", "[FILTERED]"], ["remember_created_at", nil], ["reset_password_sent_at", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["role", "student"], ["updated_at", "2026-04-06 13:01:40.532653"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("created_at", "email", "encrypted_password", "remember_created_at", "reset_password_sent_at", "reset_password_token", "role", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["created_at", "2026-04-06 13:01:40.543318"], ["email", "[FILTERED]"], ["encrypted_password", "[FILTERED]"], ["remember_created_at", nil], ["reset_password_sent_at", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["role", "student"], ["updated_at", "2026-04-06 13:01:40.543318"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("created_at", "email", "encrypted_password", "remember_created_at", "reset_password_sent_at", "reset_password_token", "role", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["created_at", "2026-04-06 13:01:40.553045"], ["email", "[FILTERED]"], ["encrypted_password", "[FILTERED]"], ["remember_created_at", nil], ["reset_password_sent_at", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["role", "student"], ["updated_at", "2026-04-06 13:01:40.553045"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("created_at", "email", "encrypted_password", "remember_created_at", "reset_password_sent_at", "reset_password_token", "role", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["created_at", "2026-04-06 13:01:40.561919"], ["email", "[FILTERED]"], ["encrypted_password", "[FILTERED]"], ["remember_created_at", nil], ["reset_password_sent_at", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["role", "student"], ["updated_at", "2026-04-06 13:01:40.561919"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("created_at", "email", "encrypted_password", "remember_created_at", "reset_password_sent_at", "reset_password_token", "role", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["created_at", "2026-04-06 13:01:40.569225"], ["email", "[FILTERED]"], ["encrypted_password", "[FILTERED]"], ["remember_created_at", nil], ["reset_password_sent_at", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["role", "student"], ["updated_at", "2026-04-06 13:01:40.569225"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK TRANSACTION[0m

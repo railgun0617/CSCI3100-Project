@@ -1,13 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Equipment, type: :model do
-  subject do
-    described_class.new(
-      name: "Projector", description: "HD Projector", 
-      location: "ERB Room 101", quantity: 3,
-      latitude: 22.418199, longitude: 114.207988
-    )
-  end
+  subject { build(:equipment) }
 
   describe "add equipment validations" do
     it "is valid with all attributes" do
@@ -100,17 +94,16 @@ RSpec.describe Equipment, type: :model do
     end
 
     it "requires unique name" do
-      create(:equipment)
-      duplicate = Equipment.new(name: "Projector", description: "Another Projector", location: "MMW Room 102", quantity: 2, latitude: 22.42, longitude: 114.209)
+      create(:equipment, name: "Projector")
+      duplicate = build(:equipment, name: "Projector", description: "Another Projector", location: "MMW Room 102", quantity: 2, latitude: 22.42, longitude: 114.209)
       expect(duplicate).not_to be_valid
       expect(duplicate.errors[:name]).to include("has already been taken")
     end
   end
 
+  
   describe "edit equipment validations" do
-    let!(:existing_equipment) do
-      create(:equipment)
-    end
+    let!(:existing_equipment) { create(:equipment) }
 
     it "is valid with valid attributes" do
       existing_equipment.description = "Updated Description"

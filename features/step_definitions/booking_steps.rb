@@ -1,3 +1,13 @@
+include ActiveSupport::Testing::TimeHelpers
+
+Given(/^the current time is "(.*)"$/) do |time_string|
+  travel_to Time.zone.parse(time_string)
+end
+
+After do
+  travel_back # reset time after each scenario
+end
+
 Given (/^I book the (.*?) "(.*?)"$/) do |item_type, item_name|
   case item_type
   when 'equipment'
