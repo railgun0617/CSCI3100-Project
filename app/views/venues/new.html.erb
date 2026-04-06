@@ -31,6 +31,23 @@
       </div>
     </div>
 
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+      <div>
+        <%= f.label :open_time, "Opening Time", class: "block text-gray-700 font-medium mb-1" %>
+          <%= f.select :open_time, 
+            (9..17).map { |h| ["#{h.to_s.rjust(2, '0')}:00", "#{h.to_s.rjust(2, '0')}:00"] },
+            { selected: @venue.open_time&.strftime("%H:%M") || "09:00", include_blank: 'Select opening time' },
+            { class: "w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" } %>
+      </div>
+      <div>
+        <%= f.label :close_time, "Closing Time", class: "block text-gray-700 font-medium mb-1" %>
+          <%= f.select :close_time,
+          (9..17).map { |h| ["#{h.to_s.rjust(2, '0')}:00", "#{h.to_s.rjust(2, '0')}:00"] },
+          { selected: @venue.close_time&.strftime("%H:%M") || "17:00", include_blank: 'Select closing time' },
+          { class: "w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" } %>
+      </div>
+    </div>
+
     <div class="flex justify-end space-x-3 pt-4">
       <%= link_to "Cancel", venues_path, class: "px-4 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50 transition" %>
       <%= f.submit "Create Venue", class: "bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-md transition cursor-pointer" %>

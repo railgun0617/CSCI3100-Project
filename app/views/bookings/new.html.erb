@@ -15,6 +15,9 @@
       <thead>
         <tr class="bg-gray-100 border-b">
           <th class="px-4 py-2 text-left text-sm font-semibold text-gray-700">Date</th>
+          <% if @resource.is_a?(Equipment) %>
+            <th class="px-4 py-2 text-left text-sm font-semibold text-gray-700">Quantity</th>
+          <% end %>
           <th class="px-4 py-2 text-left text-sm font-semibold text-gray-700">Time</th>
           <th class="px-4 py-2 text-left text-sm font-semibold text-gray-700">Status</th>
           <th class="px-4 py-2 text-left text-sm font-semibold text-gray-700">Action</th>
@@ -24,6 +27,20 @@
         <% @time_slots.each do |slot| %>
           <tr class="border-b hover:bg-gray-50">
             <td class="px-4 py-2"><%= slot[:time].strftime("%A, %b %d") %></td>
+            <% if @resource.is_a?(Equipment) && slot[:status] == 'available' %>
+              <% max_qty = @max_quantities[slot[:time].to_i] || 0 %>
+              <td class="px-4 py-2">
+                <select class="quantity-select w-20 px-2 py-1 border border-gray-300 rounded text-sm" 
+                  data-btn-id="btn_<%= slot[:time].to_i %>"
+                  data-max="<%= max_qty %>">
+                  <% (1..max_qty).each do |q| %>
+                    <option value="<%= q %>" <%= q == 1 ? 'selected' : '' %>><%= q %></option>
+                  <% end %>
+                </select>
+              </td>
+            <% elsif @resource.is_a?(Equipment) %>
+              <td class="px-4 py-2">-</td> <%# non-available can still maintain the td structure %>
+            <% end %>
             <td class="px-4 py-2"><%= slot[:time].strftime("%I:%M %p") %></td>
             <td class="px-4 py-2">
               <span class="px-2 py-1 text-xs rounded-full
@@ -39,7 +56,9 @@
                       params: { resource_type: @resource.class.name.underscore,
                                 resource_id: @resource.id,
                                 start_time: slot[:time].iso8601,
-                                end_time: (slot[:time] + 1.hour).iso8601 },
+                                end_time: (slot[:time] + 1.hour).iso8601,
+                                quantity: nil },
+                      id: "btn_#{slot[:time].to_i}",
                       class: "bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 rounded text-sm" %>
               <% else %>
                 <span class="text-gray-400 text-sm">Not available</span>
@@ -55,3 +74,39 @@
     <%= link_to "Back to Resources", resources_path, class: "text-blue-600 hover:underline" %>
   </div>
 </div>
+
+<% if @resource.is_a?(Equipment) %>
+  <script>
+    function updateQuantity(select) {
+      const btnId = select.dataset.btnId;
+      if (!btnId) return;
+    
+      const quantity = select.value;
+      const form = document.getElementById(btnId)?.closest('form');
+    
+      if (!form) {
+        console.error('Form not found for', btnId);
+        return;
+      }
+    
+      let qtyInput = form.querySelector('input[name="quantity"]');
+    
+      if (!qtyInput) {
+        qtyInput = document.createElement('input');
+        qtyInput.type = 'hidden';
+        qtyInput.name = 'quantity';
+        form.appendChild(qtyInput);
+      }
+    
+      qtyInput.value = quantity;
+    }
+  
+     // initalize all quantity select menu
+    document.querySelectorAll('.quantity-select').forEach(select => {
+      // set default value
+      updateQuantity(select);
+      // link to listener
+      select.addEventListener('change', () => updateQuantity(select));
+    });
+  </script>
+<% end %>
