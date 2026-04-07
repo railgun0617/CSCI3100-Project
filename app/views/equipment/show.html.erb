@@ -10,7 +10,7 @@
         <li>Available quantity: <%= @equipment.quantity %></li>
         <li>College/Dept: <%= @equipment.tenant&.name %></li>
       </ul>
-      <%= link_to "Book This Equipment", new_booking_path(equipment_id: @equipment.id), 
+      <%= link_to "Book This Equipment", new_booking_path(resource_type: "equipment", resource_id: @equipment.id), 
                   class: "mt-4 inline-block bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700" %>
     </div>
 
