@@ -34,7 +34,7 @@ end
 unless Venue.find_by(name: "LT")
   Venue.create!(
     name: "LT",
-    description: "",
+    description: "LT",
     capacity: 50,
     open_time: "10:00",
     close_time: "17:00",

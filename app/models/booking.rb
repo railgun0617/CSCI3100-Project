@@ -72,50 +72,28 @@ class Booking < ApplicationRecord
         true
     end
 
-    def complete!
-        return false unless approved?
-        return false if status == 'completed'
-    
-        # check if is on time
-        if end_time > Time.current
-          errors.add(:base, "Cannot complete booking before the end time")
-            return false
-        end
-    
-        transaction do
-            if equipment.present? && booking_type == 'equipment'
-                equipment.with_lock do
-                    #return equipment with correct quantity
-                    equipment.increment_quantity!(quantity, lock: false)
-                    update!(status: :approved)
-                end
-            else
-                update!(status: :approved)
-            end
-        end
-        true
-    end
-
     def reject!
-        return false unless pending? || approved?
-        return false if complete?
-
-        if approved? && start_time < 30.minutes.from.now
-            errors.add(:base, "30 mins before start time of booking cannot be cancel.")
-            return false        
-        end
+        return false unless pending?
+        return false if approved?
 
         transaction do
             if approved? && booking_type == 'equipment'
                 equipment.with_lock do
                     equipment.increment_quantity(quantity, lock: false)
-                    update!(status: :cancelled)
+                    update!(status: :rejected)
                 end
             else
-                update!(status: :cancelled)
+                update!(status: :rejected)
             end
         end
         true
+    end
+
+    def deletable_by?(actor)
+        return false if actor.nil?
+        return true if actor == user
+        return true if actor.role == 'staff' || actor.role == 'admin'
+        false
     end
 
     private

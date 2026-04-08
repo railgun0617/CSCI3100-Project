@@ -3,6 +3,22 @@ class Equipment < ApplicationRecord
     has_many :bookings
     has_many :users, through: :bookings
 
+    validates :name, uniqueness: true, presence: true
+    validates :description, :location, presence: true
+    validates :quantity, presence: true, numericality: { greater_than: 0, only_integer: true }
+    validates :latitude, presence: true, numericality: { 
+        only_integer: false, 
+        allow_nil: false, 
+        greater_than_or_equal_to: 0,
+        less_than_or_equal_to: 90 }
+    validates :longitude, presence: true, numericality: { 
+        only_integer: false, 
+        allow_nil: false, 
+        greater_than_or_equal_to: 0,
+        less_than_or_equal_to: 180 }
+
+    validate :check_raw_numeric_inputs
+
     # check available quantity for different time slot
     def available_quantity_for_slot(start_time, end_time)
         booked = bookings
@@ -36,6 +52,19 @@ class Equipment < ApplicationRecord
             end
         else
             increment!(:quantity, amount)
+        end
+    end
+
+    private
+
+    def check_raw_numeric_inputs
+        [:latitude, :longitude].each do |field|
+            raw_value = attributes_before_type_cast[field.to_s]
+            next if raw_value.blank?
+      
+            if raw_value.is_a?(String) && raw_value !~ /\A\d+(?:\.\d+)?\z/
+                errors.add(field, "is not a number")
+            end
         end
     end
 end
