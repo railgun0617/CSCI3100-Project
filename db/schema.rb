@@ -12,7 +12,7 @@
 
 ActiveRecord::Schema[8.1].define(version: 2026_04_05_194828) do
   create_table "bookings", force: :cascade do |t|
-    t.string "booking_type", default: "standard", null: false
+    t.string "booking_type", null: false
     t.datetime "created_at", null: false
     t.datetime "end_time"
     t.integer "equipment_id"

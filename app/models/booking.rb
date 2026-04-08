@@ -17,8 +17,11 @@ class Booking < ApplicationRecord
     validate :no_venue_booking_time_conflict, if: ->{ venue.present? } # Only one booking is allowed in a time interval
     validate :within_venue_opening_hours, if: ->{ venue.present? } # The venue must be opening at booking time
 
-    # validate :sufficient_equipment, if: ->{ equipment.present? }
-    # validates :quantity, presence: true, numericality: { greater_than: 0, only_integer: true }, if: -> { equipment.present? }
+    validate :sufficient_equipment, if: ->{ equipment.present? }
+    validates :quantity, presence: true, numericality: { greater_than: 0, only_integer: true }, if: -> { equipment.present? }
+
+    # conflict validation
+    validate :no_duplicate_booking_for_same_user_and_slot
 
     def venue_conflict_exists?
         return false if venue.blank? || start_time.blank? || end_time.blank?
@@ -61,7 +64,7 @@ class Booking < ApplicationRecord
             elsif equipment.present? && booking_type == 'equipment'
                 # equipment need to check if there are sufficient quantity
                 equipment.with_lock do # avoid over booking
-                    return false unless equipment.sufficient_quantity?(quantity)
+                    return false unless equipment.sufficient_quantity_for_slot?(quantity, start_time, end_time)
                     update!(status: :approved)
                 end
             end
@@ -95,7 +98,7 @@ class Booking < ApplicationRecord
 
     def reject!
         return false unless pending? || approved?
-        return false if completed?
+        return false if complete?
 
         if approved? && start_time < 30.minutes.from.now
             errors.add(:base, "30 mins before start time of booking cannot be cancel.")
@@ -175,11 +178,41 @@ class Booking < ApplicationRecord
     end
 
     # check if the remain equipment is enough for booking
-    def sufficient_equipment_availability
+    def sufficient_equipment
         return if equipment.blank?
 
-        if equipment.quantity > 0
+        if equipment.quantity < quantity # all quantity check
             errors.add(:base, "#{equipment.name} are no enough.")
+        elsif !equipment.sufficient_quantity_for_slot?(quantity, start_time, end_time) # check available quantity in the booked time
+            errors.add(:base, "Remain #{equipment.name} are no enough.")
+        end
+    end
+
+    def no_duplicate_booking_for_same_user_and_slot
+        return unless user && (equipment || venue) && start_time && end_time && booking_type
+
+        if booking_type = 'equipment' && equipment.present?
+            existing_booking = Booking.where(
+                                user_id: user_id,
+                                equipment_id: equipment_id,
+                                status: ['pending', 'approved'],
+                                quantity: quantity,
+                                start_time: start_time,
+                                end_time: end_time
+                            ).where.not(id: id)
+        elsif booking_type = 'venue' && venue.present?
+            existing_booking = Booking.where(
+                                user_id: user_id,
+                                venue_id: venue_id,
+                                status: ['pending', 'approved'],
+                                start_time: start_time,
+                                end_time: end_time
+                            ).where.not(id: id)
+        end
+
+        if existing_booking.exists?
+            errors.add(:base, "You already have a booking for this equipment at this time")
+            errors.add(:user_id, "already booked this time slot")
         end
     end
 end
