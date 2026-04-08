@@ -8,8 +8,8 @@ Feature: Equipment Page
     Given I am logged in as a staff
 
   Scenario: See All of the Equipments
-    Given the equipment "Projector" exists
-    And the equipment "Microphone" exists
+    Given the equipment "Projector" exists with 2 quantity
+    And the equipment "Microphone" exists with 3 quantity
     When I am on the equipment page
     Then I should see the equipment "Projector"
     Then I should see the equipment "Microphone"
@@ -43,13 +43,13 @@ Feature: Equipment Page
     And I am on the add equipment page
 
   Scenario: Cancel Edit Equipment
-    Given the equipment "Projector" exists
+    Given the equipment "Projector" exists with 2 quantity
     Given I am on the edit equipment page for equipment "Projector"
     When I click the "Cancel" link
     Then I should be on the equipment page
 
   Scenario: Successful Edit Equipment
-    Given the equipment "Projector" exists
+    Given the equipment "Projector" exists with 2 quantity
     And I am on the edit equipment page for equipment "Projector"
     And I type the Description as "Very Good Projector"
     And I type the Location as "MMW Room 102"
@@ -59,7 +59,7 @@ Feature: Equipment Page
     And I should be on the details page for equipment "Projector"
 
   Scenario: Fail Edit Equipment
-    Given the equipment "Projector" exists
+    Given the equipment "Projector" exists with 2 quantity
     And I am on the edit equipment page for equipment "Projector"
     When I type the Name as ""
     And I click the "Update Equipment" button
@@ -68,7 +68,7 @@ Feature: Equipment Page
 
   Scenario: Delete Equipment
     Given I am on the manage resources page
-    And the equipment "Projector" exists
+    And the equipment "Projector" exists with 2 quantity
     When I click the "Delete" button of the equipment "Projector"
     Then I should see "Equipment was deleted."
     And I should be on the equipment page

@@ -6,7 +6,7 @@ Feature: Manage Resources Page
 
   Scenario: See All of the Equipments and Venues
     Given I am a staff
-    And the equipment "Projector" exists
+    And the equipment "Projector" exists with 2 quantity
     And the venue "Library" exists
     When I am on the manage resources page
     Then I should see the equipment "Projector"

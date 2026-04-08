@@ -1,4 +1,4 @@
-Given(/^I am on the (.*) page$/) do |page_name|
+Given(/^I am on the (.*?) page$/) do |page_name|
   case page_name
   when 'main'
     visit root_path
@@ -8,6 +8,8 @@ Given(/^I am on the (.*) page$/) do |page_name|
     visit new_user_registration_path
   when 'edit account'
     visit edit_user_registration_path
+  when 'create staff'
+    visit new_admin_user_path
   when 'equipment'
     visit equipment_index_path
   when 'add equipment'
@@ -19,19 +21,24 @@ Given(/^I am on the (.*) page$/) do |page_name|
     visit resources_path
   when 'booking'
     visit bookings_path
+  when 'my bookings'
+    visit bookings_path
   when 'manage resources'
     # if !current_user.staff?
     #   raise 'Only staff can manage resources' and return
     # end
     visit manage_resources_path
-  when 'create staff'
-    visit new_admin_user_path
+  when 'staff dashboard'
+    # if !current_user.staff?
+    #   raise 'Only staff can access dashboard' and return
+    # end
+    visit staff_dashboard_path
   else
     raise 'Unknown Page'
   end
 end
 
-Given(/^I am a (.*)$/) do |user_type|
+Given(/^I am a (.*?)$/) do |user_type|
   role = user_type.strip.downcase
   unless %w[student staff].include?(role)
     raise "Unknown User Type: #{user_type}"
@@ -53,7 +60,7 @@ When(/^I click the "(.*?)" button$/) do |button_text|
   click_button button_text
 end
 
-When(/^I click the "(.*)" link$/) do |link_text|
+When(/^I click the "(.*?)" link$/) do |link_text|
     click_link link_text
 end
 

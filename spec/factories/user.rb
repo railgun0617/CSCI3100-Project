@@ -11,5 +11,9 @@ FactoryBot.define do
     trait :staff do
       role { "staff" }
     end
+
+    trait :default do
+      role { "student" }
+    end
   end
 end
