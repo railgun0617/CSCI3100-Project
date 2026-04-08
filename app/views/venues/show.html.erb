@@ -9,7 +9,7 @@
         <li>Open time: <%= @venue.open_time.strftime("%H:%M") %> - <%= @venue.close_time.strftime("%H:%M") %> </li>
         <li>Capacity: <%= @venue.capacity %></li>
       </ul>
-      <%= link_to "Book This Venue", new_booking_path(venue_id: @venue.id), 
+      <%= link_to "Book This Venue", new_booking_path(resource_type: "venue", resource_id: @venue.id), 
                   class: "mt-4 inline-block bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700" %>
     </div>
 
