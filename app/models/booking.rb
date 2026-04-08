@@ -44,6 +44,11 @@ class Booking < ApplicationRecord
         remaining_equipment >= quantity
     end
 
+    def sufficient_quantity?
+        return false if equipment.blank? || quantity.blank?
+        remaining_equipment >= quantity
+    end
+
     def approve!
         return false unless pending?
     

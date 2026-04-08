@@ -7,18 +7,12 @@ Given("I have signed up as a student") do
 end
 
 Given("I am logged in as a student") do
-  @student = create(:user, email: "1155123456@link.cuhk.edu.hk", password: "password123")
-  visit new_user_session_path
-  fill_in "Email", with: @student.email
-  fill_in "Password", with: "password123"
-  click_button "Log in"
+  @current_user = create(:user, :student, email: "1155123456@link.cuhk.edu.hk", password: "password123")
+  login_as(@current_user, scope: :user)
 end
 
 Given("I am logged in as a staff") do
-  @staff = create(:user, :staff, email: "staff@link.cuhk.edu.hk", password: "password123")
-  visit new_user_session_path
-  fill_in "Email", with: @staff.email
-  fill_in "Password", with: "password123"
-  click_button "Log in"
+  @current_user = create(:user, :staff, email: "staff@link.cuhk.edu.hk", password: "password123")
+  login_as(@current_user, scope: :user)
 end
 

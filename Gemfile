@@ -72,6 +72,8 @@ group :test do
   gem "simplecov", require: false
   gem "simplecov-console", require: false
   gem "rspec-expectations"
+  gem "rails-controller-testing"
+  gem "rspec"
 end
 
 gem "tailwindcss-rails", "~> 4.4"

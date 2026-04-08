@@ -1,8 +1,9 @@
-Given (/^the equipment "(.*?)" exists$/) do |item|
-  @equipment = Equipment.create(
+Given (/^the equipment "(.*?)" exists with (.*?) quantity$/) do |item, quantity|
+  @equipments ||= {}
+  @equipments[item] = Equipment.create(
     name: item, description: "Description for #{item}", 
-    location: "Location for #{item}", quantity: 1
-    )
+    location: "Location for #{item}", quantity: quantity.to_i, latitude: 22.418199, longitude: 114.207988
+  )
 end
 
 Given (/^I am on the edit equipment page for equipment "(.*?)"$/) do |item|

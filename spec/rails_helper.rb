@@ -34,8 +34,13 @@ begin
 rescue ActiveRecord::PendingMigrationError => e
   abort e.to_s.strip
 end
+
+require 'devise'
 RSpec.configure do |config|
   config.include Warden::Test::Helpers
+  config.include FactoryBot::Syntax::Methods
+  config.include ActiveSupport::Testing::TimeHelpers
+  config.include Devise::Test::ControllerHelpers, type: :controller
   config.after(type: :system) { Warden.test_reset! }
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_paths = [
