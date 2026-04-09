@@ -7,12 +7,20 @@ Given("I have signed up as a student") do
 end
 
 Given("I am logged in as a student") do
-  @current_user = create(:user, :student, email: "1155123456@link.cuhk.edu.hk", password: "password123")
-  login_as(@current_user, scope: :user)
+  logout(:user) rescue Warden.test_reset!
+  @student = User.find_or_create_by!(email: "1155123456@link.cuhk.edu.hk") do |u|
+    u.password = "password123"
+    u.role = :student
+  end
+  login_as(@student, scope: :user)
 end
 
 Given("I am logged in as a staff") do
-  @current_user = create(:user, :staff, email: "staff@link.cuhk.edu.hk", password: "password123")
-  login_as(@current_user, scope: :user)
+  logout(:user) rescue Warden.test_reset!
+  @staff = User.find_or_create_by!(email: "staff@link.cuhk.edu.hk") do |u|
+    u.password = "password123"
+    u.role = :staff
+  end
+  login_as(@staff, scope: :user)
 end
 

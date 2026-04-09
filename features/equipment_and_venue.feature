@@ -5,7 +5,8 @@ Feature: Equipment and Venue Page
   I want to check the equipments and venues
 
   Scenario: See All of the Equipments and Venues
-    Given the equipment "Projector" exists with 2 quantity
+    Given I am logged in as a staff
+    And the equipment "Projector" exists with 2 quantity
     And the venue "Library" exists
     When I am on the equipment and venue page
     Then I should see the equipment "Projector"

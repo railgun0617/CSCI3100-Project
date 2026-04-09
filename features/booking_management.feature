@@ -16,14 +16,16 @@ Feature: Booking Management Page
     When I click "Approve" for the equipment "Projector" booked by "1155123456@link.cuhk.edu.hk" start at "2025-10-06 11:00" and end at "2025-10-06 12:00"
     Then I should see the message "Booking approved."
     And I should see equipment "Projector" booked by "1155123456@link.cuhk.edu.hk" start at "2025-10-06 11:00" and end at "2025-10-06 12:00" have status "Approved"
-    When I am on the my bookings page
+    When I am logged in as a student
+    And I am on the my bookings page
     Then I should see a booking for the equipment "Projector" with date "2025-10-06" and time "11:00 - 12:00" and status "Approved"
 
   Scenario: Reject Booking
     When I click "Reject" for the equipment "Projector" booked by "1155123456@link.cuhk.edu.hk" start at "2025-10-06 11:00" and end at "2025-10-06 12:00"
     Then I should see the message "Booking rejected."
     And I should see equipment "Projector" booked by "1155123456@link.cuhk.edu.hk" start at "2025-10-06 11:00" and end at "2025-10-06 12:00" have status "Rejected"
-    When I am on the my bookings page
+    When I am logged in as a student
+    And I am on the my bookings page
     Then I should see a booking for the equipment "Projector" with date "2025-10-06" and time "11:00 - 12:00" and status "Rejected"
 
   Scenario: Delete Booking

@@ -1,6 +1,6 @@
 Given (/^the equipment "(.*?)" exists with (.*?) quantity$/) do |item, quantity|
-  @equipments ||= {}
-  @equipments[item] = Equipment.create(
+  @equipment ||= {}
+  @equipment[item] = Equipment.create(
     name: item, description: "Description for #{item}", 
     location: "Location for #{item}", quantity: quantity.to_i, latitude: 22.418199, longitude: 114.207988
   )
@@ -16,18 +16,23 @@ When (/^I select position with latitude: (.*?) and longitude: (.*?) on the map$/
   page.execute_script("document.getElementById('equipment_longitude').value = #{longitude}")
 end
 
-When (/^I click the "Delete" button of the equipment "(.*?)"$/) do |item|
-  equipment = Equipment.find_by(name: item)
-  within("#equipment_#{equipment.id}") do
-    click_button "Delete"
-  end
-end
+When(/^I click the "(.*?)" button of the (.*?) "(.*?)"$/) do |button_text, item_type, item|
+  # Find the row in the Equipment table that contains the equipment name
+  row = all("tbody tr").find { |tr| tr.has_text?(item) }
 
-Then (/^I should see the equipment "(.*?)" details$/) do |item|
-  expect(page).to have_content(item)
-  expect(page).to have_content("Description for #{item}")
-  expect(page).to have_content("Location for #{item}")
-  expect(page).to have_content("Quantity: 1")
+  expect(row).to be_present, "Could not find a row for #{item_type} #{item}"
+
+  within(row) do
+    # Try clicking a button first
+    if has_button?(button_text, wait: 0)
+      click_button(button_text)
+    # Otherwise fall back to link
+    elsif has_link?(button_text, wait: 0)
+      click_link(button_text)
+    else
+      raise "No button or link with text '#{button_text}' found in row for #{item}"
+    end
+  end
 end
 
 Then (/^I should be on the details page for equipment "(.*?)"$/) do |item|

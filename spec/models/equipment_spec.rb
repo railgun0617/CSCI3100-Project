@@ -106,13 +106,13 @@ RSpec.describe Equipment, type: :model do
     let!(:existing_equipment) { create(:equipment) }
 
     it "is valid with valid attributes" do
-      existing_equipment.description = "Updated Description"
+      existing_equipment.description = "New Projector Description"
       expect(existing_equipment).to be_valid
     end
 
     it "is invalid when name is changed to a duplicate" do
-      create(:equipment, name: "Camera", description: "HD Camera", location: "MMW Room 102", quantity: 2, latitude: 22.42, longitude: 114.209)
-      existing_equipment.name = "Camera"
+      create(:equipment, name: "Projector", description: "HD Projector 2", location: "MMW Room 102", quantity: 2, latitude: 22.42, longitude: 114.209)
+      existing_equipment.name = "Projector"
       expect(existing_equipment).not_to be_valid
       expect(existing_equipment.errors[:name]).to include("has already been taken")
     end
