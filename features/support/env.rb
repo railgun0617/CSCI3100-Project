@@ -56,10 +56,7 @@ end
 Cucumber::Rails::Database.javascript_strategy = :truncation
 
 require 'factory_bot'
-
 World(FactoryBot::Syntax::Methods)
-World(Warden::Test::Helpers)
-Warden.test_mode!
 
 
 # Capybara.javascript_driver = :selenium_chrome_headless if you want to run headless by default.

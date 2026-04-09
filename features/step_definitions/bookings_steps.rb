@@ -5,14 +5,14 @@ Given(/^the current time is "(.*?)"$/) do |time_string|
 end
 
 After do
-  travel_back # reset time after each scenario
+  travel_back
 end
 
 Given(/^I have booked the equipment "(.*?)" with (\d+) quantity at date "(.*?)" and timeslot "(.*?)"$/) do |name, quantity, date_str, timeslot_str|
-  equipment = create(:equipment, name: "Projector")
+  equipment = create(:equipment, name: "#{name}")
   slot_time = parse_slot_time(date_str, timeslot_str)
     create(:booking_equipment,
-    user: @current_user,
+    user: @student || @staff,
     equipment: equipment,
     start_time: slot_time,
     end_time: slot_time + 1.hour,
@@ -21,11 +21,16 @@ Given(/^I have booked the equipment "(.*?)" with (\d+) quantity at date "(.*?)" 
   )
 end
 
-Given(/^I have booked the venue "(.*?)"$/) do |name|
-  venue = Venue.find_by!(name: name) || create(:venue, name: name)
-  user = create(:user)
-  start_time = 1.day.from_now.change(hour: 11, min: 0)
-  create(:booking, user: user, resource: venue, start_time: start_time, end_time: start_time + 1.hour, status: "confirmed")
+Given(/^I have booked the venue "(.*?)" at date "(.*?)" and timeslot "(.*?)"$/) do |name, date_str, timeslot_str|
+  venue = create(:venue, name: "#{name}")
+  slot_time = parse_slot_time(date_str, timeslot_str)
+    create(:booking_venue,
+    user: @student || @staff,
+    venue: venue,
+    start_time: slot_time,
+    end_time: slot_time + 1.hour,
+    status: "pending"
+  )
 end
 
 When (/^I click "Book" of the (.*?) "(.*?)"$/) do |item_type, item_name|
@@ -54,21 +59,19 @@ end
 
 When(/^I click "Book" at date "(.*?)" and timeslot "(.*?)"$/) do |date_str, timeslot_str|
   slot_time = parse_slot_time(date_str, timeslot_str)
-
   btn_id = "btn_#{slot_time.to_i}"
-  select_el = find("select.quantity-select[data-btn-id='#{btn_id}']", visible: true, match: :first)
-  row = select_el.first(:xpath, "ancestor::tr")
-  within(row) do
-    if has_button?("Book")
+  if page.has_css?("select.quantity-select[data-btn-id='#{btn_id}']")
+    select_el = find("select.quantity-select[data-btn-id='#{btn_id}']", visible: true, match: :first)
+    row = select_el.first(:xpath, "ancestor::tr")
+    within(row) do
       click_button("Book")
-    else
-      find("input[type=submit], button[type=submit]", match: :first).click
     end
+  else
+    find("##{btn_id}").click
   end
 end
 
 When(/^I click "(.*?)" for the equipment "(.*?)" booked by "(.*?)" start at "(.*?)" and end at "(.*?)"$/) do |action, equipment, email, start_time, end_time|
-  # Scope to the row that contains all identifying text
   within(:xpath, "//tr[td[contains(.,'#{equipment}') and contains(.,'Equipment')] 
                      and td[contains(.,'#{email}')] 
                      and td[contains(.,'#{start_time}')] 
@@ -93,38 +96,24 @@ end
 Then(/^I should see the date "(.*?)" and timeslot "(.*?)" is unavailable$/) do |date_str, timeslot_str|
   slot_time = parse_slot_time(date_str, timeslot_str)
   btn_id = "btn_#{slot_time.to_i}"
-
-  puts "Looking for btn_id=#{btn_id}"
-  save_and_open_page
-
-  # find the select by the shared data-btn-id, then scope to its row
-  select_el = find("select.quantity-select[data-btn-id='#{btn_id}']", visible: :all, match: :first)
-  row = select_el.first(:xpath, "ancestor::tr")
-
+  row = find(:xpath, "//tr[td[contains(.,'#{date_str}')]][td[contains(.,'#{timeslot_str}')]]")
   within(row) do
-    # visible "Not available" label
     expect(page).to have_content("Not available")
-    # ensure there is no enabled quantity select in this row
-    expect(row).not_to have_selector("select.quantity-select:not([disabled])", visible: :all)
+    expect(page).not_to have_selector("select.quantity-select", visible: :all)
+    expect(page).not_to have_button("Book")
   end
 end
 
 Then(/^I should see the date "(.*?)" and timeslot "(.*?)" cannot pick (\d+) quantity$/) do |date_str, timeslot_str, quantity|
   slot_time = parse_slot_time(date_str, timeslot_str)
   btn_id = "btn_#{slot_time.to_i}"
-
   select_el = find("select.quantity-select[data-btn-id='#{btn_id}']", visible: :all, match: :first)
   row = select_el.first(:xpath, "ancestor::tr")
-
   within(row) do
-    # locate the option (may be absent or present but disabled)
     option = select_el.first("option[value='#{quantity}']", visible: :all) rescue nil
-
     if option.nil?
-      # option not present — cannot pick that quantity
       expect(option).to be_nil
     else
-      # option present but should be disabled (or marked aria-disabled)
       disabled_attr = option[:disabled] || option['aria-disabled']
       expect(disabled_attr).to be_truthy
     end
@@ -132,22 +121,41 @@ Then(/^I should see the date "(.*?)" and timeslot "(.*?)" cannot pick (\d+) quan
 end
 
 Then(/^I should see a booking for the equipment "(.*?)" with date "(.*?)" and time "(.*?)" and status "(.*?)"$/) do |equipment, date, time_range, status|
-  rows = all("tbody tr")
-  row = rows.find do |r|
+  row = all("tbody tr").find do |r|
+    r.has_text?("#{equipment} (Equipment)") &&
+      r.has_text?(date) &&
+      r.has_text?(time_range) &&
+      r.has_text?(status)
+  end
+  expect(row).to be_present, "expected to find a row for #{equipment} #{date} #{time_range} with status #{status}"
+end
+
+Then(/^I should not see a booking for the equipment "(.*?)" with date "(.*?)" and time "(.*?)"$/) do |equipment, date, time_range|
+  row = all("tbody tr").find do |r|
     r.has_text?("#{equipment} (Equipment)") &&
       r.has_text?(date) &&
       r.has_text?(time_range)
   end
-
-  expect(row).to be_present, "expected to find a row for #{equipment} #{date} #{time_range}"
-  expect(row).to have_content(status)
+  expect(row).to be_nil, "expected not to find a row for #{equipment} #{date} #{time_range}"
 end
 
-Then(/^I should not see a booking for the equipment "(.*?)" with date "(.*?)" and time "(.*?)" and status "(.*?)"$/) do |equipment, date, time_range, status|
-  expect(page).not_to have_selector("tr", text: "#{equipment} (Equipment)")
-    .and have_content(date)
-    .and have_content(time_range)
-    .and have_content(status)
+Then(/^I should see a booking for the venue "(.*?)" with date "(.*?)" and time "(.*?)" and status "(.*?)"$/) do |venue, date, time_range, status|
+  row = all("tbody tr").find do |r|
+    r.has_text?("#{venue} (Venue)") &&
+      r.has_text?(date) &&
+      r.has_text?(time_range) &&
+      r.has_text?(status)
+  end
+  expect(row).to be_present, "expected to find a row for #{venue} #{date} #{time_range} with status #{status}"
+end
+
+Then(/^I should not see a booking for the venue "(.*?)" with date "(.*?)" and time "(.*?)"$/) do |venue, date, time_range|
+  row = all("tbody tr").find do |r|
+    r.has_text?("#{venue} (Venue)") &&
+      r.has_text?(date) &&
+      r.has_text?(time_range)
+  end
+  expect(row).to be_nil, "expected not to find a row for #{venue} #{date} #{time_range}"
 end
 
 Then(/^I should see equipment "(.*?)" booked by "(.*?)" start at "(.*?)" and end at "(.*?)" have status "(.*?)"$/) do |equipment, email, start_time_str, end_time_str, status|
@@ -161,3 +169,13 @@ Then(/^I should not see equipment "(.*?)" booked by "(.*?)" start at "(.*?)" and
   expect(page).not_to have_xpath(xpath)
 end
 
+Then(/^I should see venue "(.*?)" booked by "(.*?)" start at "(.*?)" and end at "(.*?)" have status "(.*?)"$/) do |venue, email, start_time_str, end_time_str, status|
+  within(:xpath, "//tr[td[contains(.,'#{venue}')] and td[contains(.,'#{email}')] and td[contains(.,'#{start_time_str}')] and td[contains(.,'#{end_time_str}')]]") do
+    expect(page).to have_content(status)
+  end
+end
+
+Then(/^I should not see venue "(.*?)" booked by "(.*?)" start at "(.*?)" and end at "(.*?)" have status "(.*?)"$/) do |venue, email, start_time_str, end_time_str, status|
+  xpath = "//tr[td[contains(.,'#{venue}')] and td[contains(.,'#{email}')] and td[contains(.,'#{start_time_str}')] and td[contains(.,'#{end_time_str}')] and td[contains(.,'#{status}')]]"
+  expect(page).not_to have_xpath(xpath)
+end

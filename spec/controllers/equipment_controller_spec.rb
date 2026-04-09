@@ -78,9 +78,9 @@ RSpec.describe EquipmentController, type: :controller do
     let(:equipment) { create(:equipment) }
     let(:new_attributes) do
       {
-        name: "Updated Projector",
-        description: "Updated Description",
-        location: "Updated Location",
+        name: "New Projector",
+        description: "New Description",
+        location: "New Location",
         quantity: 5,
         latitude: 22.419000,
         longitude: 114.208000

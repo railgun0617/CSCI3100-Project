@@ -7,7 +7,11 @@ Then(/^I should be on the (.*?) page$/) do |page_name|
     when 'edit account' then edit_user_registration_path
     when 'equipment' then equipment_index_path
     when 'add equipment' then new_equipment_path
+    when 'venue' then venues_path
+    when 'add venue' then new_venue_path
     when 'equipment and venue' then resources_path
+    when 'manage resources' then manage_resources_path
+    when 'staff dashboard' then staff_dashboard_path
     when 'my bookings' then bookings_path
     else raise 'Unknown page'
     end

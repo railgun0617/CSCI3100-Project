@@ -8,6 +8,9 @@ Feature: Sign Up Page
     Given I am on the sign up page
 
   Scenario: Successful Registerion
+    Given I am on the equipment and venue page
+    When I click the "Sign Up" link
+    Then I should be on the sign up page
     And I type the Email as "1155123456@link.cuhk.edu.hk"
     And I type the Password as "qwerty123"
     And I type the Password confirmation as "qwerty123"
@@ -21,9 +24,10 @@ Feature: Sign Up Page
 
   Scenario: Duplicated Email
     Given I have signed up as a student
-    When I type the Email as "1155123456@link.cuhk.edu.hk"
+    And I type the Email as "1155123456@link.cuhk.edu.hk"
     And I type the Password as "asdfghjkl"
     And I type the Password confirmation as "asdfghjkl"
+    When I click the "Sign Up" button
     Then I should see the error message "Email has already been taken"
 
 
