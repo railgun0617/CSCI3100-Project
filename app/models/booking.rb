@@ -136,7 +136,19 @@ class Booking < ApplicationRecord
     # start time must not be in the past
     def start_time_not_in_past
         if start_time.present?
-            if start_time < Time.current
+            # Only compare the date, hour, minute, and second without considering time zone
+            # Add 8 hours to current time to align with the user's local time (UTC+8) because Time.current is UTC time zone
+            current_time = Time.current + 8.hours
+
+            # Convert both times to seconds since midnight for time-of-day comparison
+            user_time_of_day = start_time.hour * 3600 + start_time.min * 60 + start_time.sec
+            current_time_of_day = current_time.hour * 3600 + current_time.min * 60 + current_time.sec
+
+            # Reject if the booking date is in the past
+            if start_time.to_date < Time.current.to_date
+                errors.add(:start_time, "cannot be in the past")
+            # Reject if it's today but the time has already passed
+            elsif start_time.to_date == Time.current.to_date && user_time_of_day < current_time_of_day
                 errors.add(:start_time, "cannot be in the past")
             end
         end

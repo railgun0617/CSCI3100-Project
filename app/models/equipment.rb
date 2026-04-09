@@ -1,10 +1,11 @@
 class Equipment < ApplicationRecord
-    belongs_to :tenant, optional: true
+    belongs_to :tenant
     has_many :bookings
     has_many :users, through: :bookings
 
     validates :name, uniqueness: true, presence: true
     validates :description, :location, presence: true
+    validates :tenant, presence: true
     validates :quantity, presence: true, numericality: { greater_than: 0, only_integer: true }
     validates :latitude, presence: true, numericality: { 
         only_integer: false, 

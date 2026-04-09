@@ -2,10 +2,10 @@ class Venue < ApplicationRecord
 
     has_many :bookings, dependent: :destroy
     has_many :users
-    belongs_to :tenant, optional: true
-    belongs_to :department, optional: true
-
+    belongs_to :tenant
+    
     validates :name, uniqueness: true, presence: true
+    validates :tenant, presence: true
     validates :description, presence: true
     validates :capacity, presence: true, numericality: { greater_than: 0, only_integer: true }
     validates :latitude, presence: true, numericality: { 
@@ -29,10 +29,14 @@ class Venue < ApplicationRecord
     # Comparing may error
     def is_venue_open?(start_t, end_t)
         return false if open_time.blank? || close_time.blank?
-    
-        # only compare the hours and mins part
-        start_t.to_time.strftime("%H:%M") >= open_time.strftime("%H:%M") && 
-        end_t.to_time.strftime("%H:%M") <= close_time.strftime("%H:%M")
+  
+        # use time zone in config
+        start_local = start_t.in_time_zone
+        end_local = end_t.in_time_zone
+        
+        # compare 
+        start_local.strftime("%H:%M") >= open_time.strftime("%H:%M") && 
+        end_local.strftime("%H:%M") <= close_time.strftime("%H:%M")
     end
 
     private

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_04_05_194828) do
+ActiveRecord::Schema[8.1].define(version: 2026_04_09_075854) do
   create_table "bookings", force: :cascade do |t|
     t.string "booking_type", null: false
     t.datetime "created_at", null: false
@@ -34,7 +34,9 @@ ActiveRecord::Schema[8.1].define(version: 2026_04_05_194828) do
     t.float "longitude"
     t.string "name"
     t.integer "quantity"
+    t.integer "tenant_id"
     t.datetime "updated_at", null: false
+    t.index ["tenant_id"], name: "index_equipment_on_tenant_id"
   end
 
   create_table "tenants", force: :cascade do |t|
@@ -66,6 +68,11 @@ ActiveRecord::Schema[8.1].define(version: 2026_04_05_194828) do
     t.float "longitude"
     t.string "name"
     t.time "open_time"
+    t.integer "tenant_id"
     t.datetime "updated_at", null: false
+    t.index ["tenant_id"], name: "index_venues_on_tenant_id"
   end
+
+  add_foreign_key "equipment", "tenants"
+  add_foreign_key "venues", "tenants"
 end

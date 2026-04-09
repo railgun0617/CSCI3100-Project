@@ -7,6 +7,30 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+# db/seeds.rb
+
+# create tenant
+unless Tenant.find_by(slug: "main_campus")
+  Tenant.create!(
+    name: "Main Campus",
+    slug: "main_campus"
+  )
+  puts "Created Main Campus tenant"
+end
+
+unless Tenant.find_by(slug: "na_college")
+  Tenant.create!(
+    name: "NA College",
+    slug: "na_college"
+  )
+  puts "Created NA College tenant"
+end
+
+# get tenant object
+tenant1 = Tenant.find_by(slug: "main_campus")
+tenant2 = Tenant.find_by(slug: "na_college")
+
+# create user
 unless User.find_by(email: "staff@example.com")
   User.create!(
     email: "staff@example.com",
@@ -17,7 +41,7 @@ unless User.find_by(email: "staff@example.com")
   puts "Created staff"
 end
 
-# check and create venue
+# create venue
 unless Venue.find_by(name: "Library")
   Venue.create!(
     name: "Library",
@@ -26,7 +50,8 @@ unless Venue.find_by(name: "Library")
     open_time: "09:00",
     close_time: "16:00",
     latitude: 22.4195,
-    longitude: 114.2052
+    longitude: 114.2052,
+    tenant: tenant1
   )
   puts "Created Library"
 end
@@ -39,12 +64,13 @@ unless Venue.find_by(name: "LT")
     open_time: "10:00",
     close_time: "17:00",
     latitude: 22.4200,
-    longitude: 114.2055
+    longitude: 114.2055,
+    tenant: tenant1
   )
   puts "Created LT"
 end
 
-# check and create equipment
+# create equipment
 unless Equipment.find_by(name: "Laptop")
   Equipment.create!(
     name: "Laptop",
@@ -52,7 +78,8 @@ unless Equipment.find_by(name: "Laptop")
     quantity: 20,
     location: "IT Support Center",
     latitude: 22.4195,
-    longitude: 114.2052
+    longitude: 114.2052,
+    tenant: tenant1
   )
   puts "Created Laptop"
 end
@@ -62,9 +89,10 @@ unless Equipment.find_by(name: "Projector")
     name: "Projector",
     description: "HDMI projector, 3000 lumens",
     quantity: 10,
-    location: "Wys room 202",
+    location: "NA room 202",
     latitude: 22.4198,
-    longitude: 114.2054
+    longitude: 114.2054,
+    tenant: tenant2
   )
   puts "Created Projector"
 end
