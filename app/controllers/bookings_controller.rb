@@ -74,10 +74,15 @@ class BookingsController < ApplicationController
   end
 
   def approve
-    @booking = Booking.find(params[:id])
+    booking = Booking.find(params[:id])
 
-    if @booking.update(status: 'approved')
-      BookingMailer.booking_approved(@booking).deliver_later
+    unless can_manage_booking?(booking)
+      redirect_to staff_dashboard_path, alert: "You are not authorized to approve this booking."
+      return
+    end
+
+    if booking.approve!
+      BookingMailer.booking_approved(booking).deliver_later
       redirect_to staff_dashboard_path, 
                   notice: "Booking approved"
     else
@@ -87,10 +92,14 @@ class BookingsController < ApplicationController
   end
 
   def reject
-    @booking = Booking.find(params[:id])
+    booking = Booking.find(params[:id])
+    unless can_manage_booking?(booking)
+      redirect_to staff_dashboard_path, alert: "You are not authorized to reject this booking."
+      return
+    end
 
-    if @booking.update(status: 'rejected')
-      BookingMailer.booking_rejected(@booking).deliver_later
+    if  booking.reject!
+      BookingMailer.booking_rejected(booking).deliver_later
       redirect_to staff_dashboard_path, 
                   notice: "Booking rejected."
     else
