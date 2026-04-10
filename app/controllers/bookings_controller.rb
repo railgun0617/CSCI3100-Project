@@ -59,23 +59,40 @@ class BookingsController < ApplicationController
     end
 
     if booking.save
-      redirect_to bookings_path, notice: "Booking request submitted for #{start_time.strftime('%b %d, %I:%M %p')}."
+      # Send confirmation email to the user
+      BookingMailer.booking_confirmation(booking).deliver_later
+      redirect_to bookings_path, 
+          notice: "Booking request submitted"
     else
       redirect_to new_booking_path(resource_type: resource_type, resource_id: resource_id),
-                  alert: booking.errors.full_messages.to_sentence
+          alert: booking.errors.full_messages.to_sentence
     end
   end
 
   def approve
-    booking = Booking.find(params[:id])
-    booking.update(status: 'approved')
-    redirect_to staff_dashboard_path, notice: "Booking approved."
+    @booking = Booking.find(params[:id])
+
+    if @booking.update(status: 'approved')
+      BookingMailer.booking_approved(@booking).deliver_later
+      redirect_to staff_dashboard_path, 
+                  notice: "Booking approved"
+    else
+      redirect_to staff_dashboard_path, 
+                  alert: "Failed to approve booking."
+    end
   end
 
   def reject
-    booking = Booking.find(params[:id])
-    booking.update(status: 'rejected')
-    redirect_to staff_dashboard_path, notice: "Booking rejected."
+    @booking = Booking.find(params[:id])
+
+    if @booking.update(status: 'rejected')
+      BookingMailer.booking_rejected(@booking).deliver_later
+      redirect_to staff_dashboard_path, 
+                  notice: "Booking rejected."
+    else
+      redirect_to staff_dashboard_path, 
+                  alert: "Failed to reject booking."
+    end
   end
 
   def destroy
