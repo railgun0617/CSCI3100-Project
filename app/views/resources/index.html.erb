@@ -5,15 +5,15 @@
   <%= search_form_for @q || Ransack::Search.new(Venue.none), 
                       url: resources_path, 
                       method: :get, 
-                      class: "flex gap-3" do |f| %>
+                      class: "flex gap-3 items-center" do |f| %>
     
     <div class="flex-1 relative">
-      <%= f.search_field :name_or_description_or_location_cont,
-                         value: params.dig(:q, :name_or_description_or_location_cont),
-                         placeholder: "Search venues or equipment by name, description or location...",
-                         class: "w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-lg" %>
-      
-      <div class="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none">
+      <%= f.text_field :name_or_description_or_location_cont,
+                       value: params.dig(:q, :name_or_description_or_location_cont),
+                       placeholder: "Search venues or equipment by name, description or location...",
+                       class: "w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-lg" %>
+      <!-- Magnifying glass icon (left side) -->
+      <div class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none">
         <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 01-14 0 7 7 0 0114 0z" />
         </svg>
@@ -78,6 +78,12 @@
               </svg>
               <span>Capacity: <strong><%= resource.capacity %></strong> people</span>
             </div>
+            <div class="flex items-center gap-2">
+              <svg class="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l2-2m-2 2l2 2m0 0l-2 2M7 12l2-2m0 0l2-2m-2 2l2 2m0 0l-2 2m2-8h6m2 0h2a2 2 0 012 2v8a2 2 0 01-2 2h-2m-6 0H5a2 2 0 01-2-2v-4m2 0h4"/>
+              </svg>
+              <span>Department: <strong><%= resource.tenant&.name || 'N/A' %></strong></span>   <!-- added -->
+            </div>
           <% elsif resource.is_a?(Equipment) %>
             <div class="flex items-center gap-2">
               <svg class="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -91,6 +97,12 @@
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/>
               </svg>
               <span>Quantity: <strong><%= resource.quantity %></strong> available</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <svg class="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l2-2m-2 2l2 2m0 0l-2 2M7 12l2-2m0 0l2-2m-2 2l2 2m0 0l-2 2m2-8h6m2 0h2a2 2 0 012 2v8a2 2 0 01-2 2h-2m-6 0H5a2 2 0 01-2-2v-4m2 0h4"/>
+              </svg>
+              <span>Department: <strong><%= resource.tenant&.name || 'N/A' %></strong></span>   <!-- added -->
             </div>
           <% end %>
         </div>

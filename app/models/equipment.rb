@@ -30,8 +30,14 @@ class Equipment < ApplicationRecord
         quantity - booked
     end
 
-    def sufficient_quantity_for_slot?(requested_quantity, start_time, end_time)
-        available_quantity_for_slot(start_time, end_time) >= requested_quantity
+    def sufficient_quantity_for_slot?(requested_quantity, start_time, end_time, exclude_booking_id = nil)
+    booked = bookings
+            .where(status: ['approved', 'pending'])
+            .where("start_time < ? AND end_time > ?", end_time, start_time)
+    booked = booked.where.not(id: exclude_booking_id) if exclude_booking_id.present?
+    booked_quantity = booked.sum(:quantity)
+
+    (quantity - booked_quantity) >= requested_quantity
     end
 
     # decrease the quantity when it is booking

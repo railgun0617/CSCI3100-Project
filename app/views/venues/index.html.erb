@@ -1,25 +1,38 @@
-<!-- This page lists all venues with a search bar (fuzzy search UI will be added later). -->
-
 <div class="mb-6">
   <h1 class="text-2xl font-bold">Available Venues</h1>
 </div>
 
-<div class="mb-6" data-controller="search">
-  <input type="text"
-         data-search-target="input"
-         data-action="input->search#search"
-         placeholder="Search venues..."
-         class="w-full p-2 border rounded-lg">
-  <div data-search-target="results" class="absolute bg-white border rounded-lg shadow mt-1 w-full z-10"></div>
+<!-- Fuzzy Search Bar (no overlapping icons) -->
+<div class="mb-8">
+  <%= search_form_for @q, url: venues_path, method: :get, class: "flex gap-3 items-center" do |f| %>
+    <div class="flex-1 relative">
+      <%= f.text_field :name_or_description_cont,
+                       value: params.dig(:q, :name_or_description_cont),
+                       placeholder: "Search venues by name or description...",
+                       class: "w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500" %>
+      <!-- Magnifying glass icon (left side) -->
+      <div class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+        </svg>
+      </div>
+    </div>
+    <%= f.submit "Search", class: "px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg" %>
+    <% if params[:q].present? && params[:q][:name_or_description_cont].present? %>
+      <%= link_to "Clear", venues_path, class: "px-6 py-3 text-gray-600 hover:text-gray-800" %>
+    <% end %>
+  <% end %>
 </div>
 
+<!-- Venues Grid (unchanged) -->
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
   <% @venues.each do |venue| %>
     <div class="bg-white rounded-lg shadow p-4">
       <h2 class="text-xl font-semibold"><%= link_to venue.name, venue, class: "text-blue-600 hover:underline" %></h2>
       <p class="text-gray-600"><%= venue.description %></p>
       <p class="text-sm text-gray-500 mt-2">Capacity: <%= venue.capacity %></p>
-      <%= link_to "Book", new_booking_path(venue_id: venue.id), class: "mt-3 inline-block bg-green-600 text-white px-3 py-1 rounded hover:bg-green-700" %>
+      <p class="text-sm text-gray-500">Department: <%= venue.tenant&.name || 'N/A' %></p>
+      <%= link_to "Book", new_booking_path(resource_type: 'venue', resource_id: venue.id), class: "mt-3 inline-block bg-green-600 text-white px-3 py-1 rounded hover:bg-green-700" %>
     </div>
   <% end %>
 </div>

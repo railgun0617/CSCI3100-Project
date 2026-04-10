@@ -3,8 +3,13 @@ class ManageResourcesController < ApplicationController
   before_action :authorize_staff!
 
   def index
-    @venues = Venue.all
-    @equipment = Equipment.all
+    if current_user.staff? && current_user.tenant&.name == "Admin"
+      @venues = Venue.all
+      @equipment = Equipment.all
+    else
+      @venues = current_user.tenant.venues
+      @equipment = current_user.tenant.equipment
+    end
   end
 
   private
