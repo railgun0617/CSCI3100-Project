@@ -8,6 +8,9 @@ Bundler.require(*Rails.groups)
 
 module Csci3100Project
   class Application < Rails::Application
+    # Email configuration - Set to false to disable sending emails
+    config.send_emails = true
+
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 8.1
 
