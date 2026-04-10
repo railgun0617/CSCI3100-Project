@@ -10,6 +10,7 @@
 # db/seeds.rb
 
 # create tenant
+admin_tenant = Tenant.find_or_create_by(name: "Admin", slug: "admin")
 unless Tenant.find_by(slug: "main_campus")
   Tenant.create!(
     name: "Main Campus",
@@ -31,12 +32,13 @@ tenant1 = Tenant.find_by(slug: "main_campus")
 tenant2 = Tenant.find_by(slug: "na_college")
 
 # create user
-unless User.find_by(email: "staff@example.com")
+unless User.find_by(email: "admin@cuhk.edu.hk")
   User.create!(
-    email: "staff@example.com",
+    email: "admin@cuhk.edu.hk",
     password: "password123",
     password_confirmation: "password123",
-    role: "staff"
+    role: "staff",
+    tenant: admin_tenant
   )
   puts "Created staff"
 end

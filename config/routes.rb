@@ -3,9 +3,13 @@ Rails.application.routes.draw do
   get "resources/index"
   devise_for :users, controllers: { registrations: "registrations" }
   namespace :admin do
+    get "tenants/index"
+    get "tenants/new"
+    get "tenants/create"
     get "users/new"
     get "users/create"
     resources :users, only: [:new, :create]
+    resources :tenants, only: [:index, :new, :create, :edit, :update, :destroy]
   end
   # get "equipment/index"
   # get "equipment/show"

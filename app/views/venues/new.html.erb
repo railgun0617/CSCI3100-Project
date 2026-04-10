@@ -36,9 +36,14 @@
           { class: "w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" } %>
       </div>
     </div>
+
     <%= render "shared/map_picker", f: f, latitude: @venue.latitude, longitude: @venue.longitude %>
 
-
+    <!-- Tenant (department) handling -->
+    <% if current_user&.staff? %>
+      <%= f.hidden_field :tenant_id, value: current_user.tenant_id %>
+      <div class="text-sm text-gray-600">Department: <%= current_user.tenant&.name || 'N/A' %></div>
+    <% end %>
 
     <div class="flex justify-end space-x-3 pt-4">
       <%= link_to "Cancel", venues_path, class: "px-4 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50 transition" %>

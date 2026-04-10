@@ -2,7 +2,11 @@ class BookingsController < ApplicationController
   before_action :authenticate_user!   # ensure only logged-in users can access
 
   def index
-    @bookings = current_user.bookings.order(start_time: :desc)
+    if current_user.staff? && current_user.tenant&.name == "Admin"
+      @bookings = Booking.order(start_time: :asc).all
+    else
+      @bookings = current_user.bookings.order(start_time: :asc)
+    end
   end
 
   def new
@@ -16,7 +20,7 @@ class BookingsController < ApplicationController
     end
     @time_slots = generate_time_slots(@resource)
 
-    @max_quantities = calculate_max_quantities(@resource, @time_slots) if @resource.is_a?(Equipment) # calculate max quantity for each timeslot
+    @max_quantities = calculate_max_quantities(@resource, @time_slots) if @resource.is_a?(Equipment)
   end
 
   def create_booking
@@ -38,7 +42,7 @@ class BookingsController < ApplicationController
       
       if quantity > (resource.quantity - booked)
         redirect_to new_booking_path(resource_type: resource_type, resource_id: resource_id),
-                    alert: "Only #{resource.total_quantity - booked} items available"
+                    alert: "Only #{resource.quantity - booked} items available"
         return
       end
     else
@@ -51,7 +55,7 @@ class BookingsController < ApplicationController
       start_time: start_time,
       end_time: end_time,
       status: "pending",
-      booking_type: resource_type # Ensure the type of booking
+      booking_type: resource_type
     )
 
     if resource_type == "equipment"
@@ -97,8 +101,8 @@ class BookingsController < ApplicationController
 
   def destroy
     @booking = Booking.find(params[:id])
-    # Only allow the booking owner or a staff member to delete
-    if current_user == @booking.user || current_user.staff?
+    # Allow owner to delete, or staff who can manage the booking (tenant match)
+    if current_user == @booking.user || (current_user.staff? && can_manage_booking?(@booking))
       @booking.destroy
       redirect_to request.referer || bookings_path, notice: "Booking was successfully deleted."
     else
@@ -111,31 +115,24 @@ class BookingsController < ApplicationController
   def generate_time_slots(resource)
     slots = []
     start_date = Date.today
-    # Define working hours (9:00 to 18:00, last slot ends at 18:00)
     (0..6).each do |day_offset|
       date = start_date + day_offset
-      # Skip weekends if you want (optional)
-      # if date.saturday? || date.sunday?
-      #   next
-      # end
       (9..17).each do |hour|
         slot_start = DateTime.new(date.year, date.month, date.day, hour, 0, 0)
         slot_end = slot_start + 1.hour
 
-        # Determine if the slot is closed (e.g., weekends)
         status = if date.saturday? || date.sunday? 
                   "closed"
                 elsif resource.is_a?(Venue) && !resource.is_venue_open?(slot_start, slot_end)
-                  "closed" # not in open hours 
+                  "closed"
                 elsif resource.is_a?(Equipment)
                   booked = Booking.where(equipment_id: resource.id, status: [:pending, :approved])
                                   .where("start_time < ? AND end_time > ?", slot_end, slot_start)
                                   .sum(:quantity)
                   resource.quantity - booked > 0 ? "available" : "booked"
                 else
-                  # Check if there is any booking (pending or approved) that overlaps this time slot
                   overlapping_booking = resource.bookings
-                    .where("status IN (?)", ['pending', 'approved'])
+                    .where(status: ['pending', 'approved'])
                     .where("start_time < ? AND end_time > ?", slot_end, slot_start)
                     .exists?
                   overlapping_booking ? "booked" : "available"
@@ -162,5 +159,23 @@ class BookingsController < ApplicationController
       max_qty[slot[:time].to_i] = resource.quantity - booked
     end
     max_qty
+  end
+
+  def can_manage_booking?(booking)
+    # Admin can manage any booking
+    return true if current_user.staff? && current_user.tenant&.name == "Admin"
+    # Non‑admin staff can only manage bookings for resources in their own tenant
+    if current_user.staff?
+      tenant_id = current_user.tenant_id
+      if booking.venue.present?
+        booking.venue.tenant_id == tenant_id
+      elsif booking.equipment.present?
+        booking.equipment.tenant_id == tenant_id
+      else
+        false
+      end
+    else
+      false
+    end
   end
 end
