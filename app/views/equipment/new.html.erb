@@ -25,9 +25,15 @@
     <!-- Map picker partial (no existing coordinates for new record) -->
     <%= render "shared/map_picker", f: f %>
 
+    <!-- Tenant (department) handling -->
+    <% if current_user&.staff? %>
+      <%= f.hidden_field :tenant_id, value: current_user.tenant_id %>
+      <div class="text-sm text-gray-600 mb-4">Department: <%= current_user.tenant&.name || 'N/A' %></div>
+    <% end %>
+
     <div class="flex justify-end space-x-2">
       <%= link_to "Cancel", equipment_index_path, class: "px-4 py-2 border rounded-lg hover:bg-gray-100" %>
       <%= f.submit "Create Equipment", class: "bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700" %>
     </div>
   <% end %>
-</div>  
+</div>

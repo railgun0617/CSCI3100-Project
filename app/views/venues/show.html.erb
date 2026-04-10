@@ -6,17 +6,17 @@
     <div>
       <h2 class="font-semibold text-lg">Details</h2>
       <ul class="mt-2 space-y-1">
+        <li>Open time: <%= @venue.open_time.strftime("%H:%M") %> - <%= @venue.close_time.strftime("%H:%M") %></li>
         <li>Capacity: <%= @venue.capacity %></li>
+        <li>Department: <%= @venue.tenant&.name || 'N/A' %></li>   <!-- added -->
       </ul>
-      <%= link_to "Book This Venue", new_booking_path(venue_id: @venue.id), 
+      <%= link_to "Book This Venue", new_booking_path(resource_type: "venue", resource_id: @venue.id), 
                   class: "mt-4 inline-block bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700" %>
     </div>
 
     <div>
-
       <% if @venue.latitude.present? && @venue.longitude.present? %>
         <div id="venue-map" style="height: 400px; width: 100%; border-radius: 8px; border: 1px solid #ddd;"></div>
-        
         <div class="mt-2 text-sm text-gray-600">
           <%= @venue.latitude.to_f.round(6) %>, <%= @venue.longitude.to_f.round(6) %>
         </div>
@@ -40,16 +40,14 @@
       mapTypeId: "roadmap"
     });
 
-    // Fixed marker (non-draggable)
     new google.maps.Marker({
       position: position,
       map: map,
       title: "<%= @venue.name %>",
-      animation: google.maps.Animation.DROP   // nice drop effect on load
+      animation: google.maps.Animation.DROP
     });
   }
 
-  // Load Google Maps API
   if (typeof google === "undefined" || typeof google.maps === "undefined") {
     const script = document.createElement("script");
     script.src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyB9rihEzb0gyIuURXCuzVk_kjc2RIHNnOg&callback=initVenueMap";

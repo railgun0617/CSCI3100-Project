@@ -6,8 +6,14 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag "tailwind", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "tailwind", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "tailwind", "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+    <link rel="icon" type="image/png" href="<%= asset_path 'favicon/favicon-96x96.png' %>" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="<%= asset_path 'favicon/favicon.svg' %>" />
+    <link rel="shortcut icon" href="<%= asset_path 'favicon/favicon.ico' %>" />
+    <link rel="manifest" href="<%= asset_path 'favicon/site.webmanifest' %>" />
   </head>
 
   <body class="bg-gray-100">
@@ -27,6 +33,7 @@
               <!-- Visible only to staff -->
               <%= link_to "Staff Dashboard", staff_dashboard_path, class: "text-gray-700 hover:text-blue-600" %>
               <%= link_to "Manage Resources", manage_resources_path, class: "text-gray-700 hover:text-blue-600" %>
+              <%= link_to "Manage Departments", admin_tenants_path, class: "text-gray-700 hover:text-blue-600" %>
               <%= link_to "Create Staff", new_admin_user_path, class: "text-gray-700 hover:text-blue-600" %>
             <% end %>
 

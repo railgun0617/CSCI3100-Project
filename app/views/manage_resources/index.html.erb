@@ -17,6 +17,7 @@
           <tr>
             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Name</th>
             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Capacity</th>
+            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Department</th>   <!-- added -->
             <th class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
           </tr>
         </thead>
@@ -25,6 +26,7 @@
             <tr class="hover:bg-gray-50 transition">
               <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900"><%= venue.name %></td>
               <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500"><%= venue.capacity %></td>
+              <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500"><%= venue.tenant&.name || 'N/A' %></td>   <!-- added -->
               <td class="px-6 py-4 whitespace-nowrap text-sm text-right">
                 <div class="flex items-center justify-end gap-2">
                   <%= link_to edit_venue_path(venue), class: "bg-blue-500 hover:bg-blue-600 text-white py-1.5 px-3 rounded-md text-sm font-medium inline-flex items-center gap-1 transition duration-150" do %>
@@ -39,7 +41,7 @@
               </td>
             </tr>
           <% end %>
-        </tbody>
+        </tbody>  
       </table>
     </div>
   </div>
@@ -61,6 +63,7 @@
             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Name</th>
             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Location</th>
             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Quantity</th>
+            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Department</th>   <!-- added -->
             <th class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
           </tr>
         </thead>
@@ -70,6 +73,7 @@
               <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900"><%= item.name %></td>
               <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500"><%= item.location %></td>
               <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500"><%= item.quantity %></td>
+              <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500"><%= item.tenant&.name || 'N/A' %></td>   <!-- added -->
               <td class="px-6 py-4 whitespace-nowrap text-sm text-right">
                 <div class="flex items-center justify-end gap-2">
                   <%= link_to edit_equipment_path(item), class: "bg-blue-500 hover:bg-blue-600 text-white py-1.5 px-3 rounded-md text-sm font-medium inline-flex items-center gap-1 transition duration-150" do %>

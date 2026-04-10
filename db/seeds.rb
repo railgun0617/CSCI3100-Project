@@ -7,3 +7,96 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+# db/seeds.rb
+
+# create tenant
+admin_tenant = Tenant.find_or_create_by(name: "Admin", slug: "admin")
+unless Tenant.find_by(slug: "main_campus")
+  Tenant.create!(
+    name: "Main Campus",
+    slug: "main_campus"
+  )
+  puts "Created Main Campus tenant"
+end
+
+unless Tenant.find_by(slug: "na_college")
+  Tenant.create!(
+    name: "NA College",
+    slug: "na_college"
+  )
+  puts "Created NA College tenant"
+end
+
+# get tenant object
+tenant1 = Tenant.find_by(slug: "main_campus")
+tenant2 = Tenant.find_by(slug: "na_college")
+
+# create user
+unless User.find_by(email: "admin@cuhk.edu.hk")
+  User.create!(
+    email: "admin@cuhk.edu.hk",
+    password: "password123",
+    password_confirmation: "password123",
+    role: "staff",
+    tenant: admin_tenant
+  )
+  puts "Created staff"
+end
+
+# create venue
+unless Venue.find_by(name: "Library")
+  Venue.create!(
+    name: "Library",
+    description: "A quiet place",
+    capacity: 50,
+    open_time: "09:00",
+    close_time: "16:00",
+    latitude: 22.4195,
+    longitude: 114.2052,
+    tenant: tenant1
+  )
+  puts "Created Library"
+end
+
+unless Venue.find_by(name: "LT")
+  Venue.create!(
+    name: "LT",
+    description: "LT",
+    capacity: 50,
+    open_time: "10:00",
+    close_time: "17:00",
+    latitude: 22.4200,
+    longitude: 114.2055,
+    tenant: tenant1
+  )
+  puts "Created LT"
+end
+
+# create equipment
+unless Equipment.find_by(name: "Laptop")
+  Equipment.create!(
+    name: "Laptop",
+    description: "Dell XPS 13, Windows 11, 16GB RAM",
+    quantity: 20,
+    location: "IT Support Center",
+    latitude: 22.4195,
+    longitude: 114.2052,
+    tenant: tenant1
+  )
+  puts "Created Laptop"
+end
+
+unless Equipment.find_by(name: "Projector")
+  Equipment.create!(
+    name: "Projector",
+    description: "HDMI projector, 3000 lumens",
+    quantity: 10,
+    location: "NA room 202",
+    latitude: 22.4198,
+    longitude: 114.2054,
+    tenant: tenant2
+  )
+  puts "Created Projector"
+end
+
+puts "Seed completed successfully!"

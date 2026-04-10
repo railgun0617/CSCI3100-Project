@@ -17,15 +17,30 @@
       <%= f.number_field :capacity, class: "w-full p-2 border rounded-lg" %>
     </div>
 
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+      <div>
+        <%= f.label :open_time, "Opening Time", class: "block text-gray-700 font-medium mb-1" %>
+        <%= f.select :open_time, 
+          (9..17).map { |h| ["#{h.to_s.rjust(2, '0')}:00", "#{h.to_s.rjust(2, '0')}:00"] },
+          { selected: @venue.open_time&.strftime("%H:%M") || "09:00", include_blank: 'Select opening time' },
+          { class: "w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" } %>
+      </div>
+      <div>
+        <%= f.label :close_time, "Closing Time", class: "block text-gray-700 font-medium mb-1" %>
+        <%= f.select :close_time,
+          (9..17).map { |h| ["#{h.to_s.rjust(2, '0')}:00", "#{h.to_s.rjust(2, '0')}:00"] },
+          { selected: @venue.close_time&.strftime("%H:%M") || "17:00", include_blank: 'Select closing time' },
+          { class: "w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" } %>
+      </div>
+    </div>
+
     <!-- Map Picker -->
     <div class="mb-6">
       <label class="block text-gray-700 font-medium mb-1">Select Location on Map</label>
       <div id="map-picker" style="height: 400px; width: 100%; border-radius: 8px; border: 1px solid #ddd;"></div>
-      
       <div id="map-info" class="mt-2 text-sm text-gray-600">
         Click on the map to select a location, then click "Confirm Location".
       </div>
-
       <button type="button" id="confirm-location" 
               class="mt-2 px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 hidden">
         Confirm Location
@@ -35,6 +50,12 @@
     <!-- Hidden fields for latitude and longitude -->
     <%= f.hidden_field :latitude, id: "venue_latitude" %>
     <%= f.hidden_field :longitude, id: "venue_longitude" %>
+
+    <!-- Tenant (department) handling -->
+    <% if current_user&.staff? %>
+      <%= f.hidden_field :tenant_id, value: current_user.tenant_id %>
+      <div class="text-sm text-gray-600 mb-4">Department: <%= current_user.tenant&.name || 'N/A' %></div>
+    <% end %>
 
     <div class="flex justify-end space-x-2">
       <%= link_to "Cancel", venues_path, class: "px-4 py-2 border rounded-lg hover:bg-gray-100" %>
@@ -47,10 +68,8 @@
   let map, marker, currentLocation;
 
   function initMapPicker() {
-    // Default location (Hong Kong area)
     const defaultLat = <%= @venue.latitude.present? ? @venue.latitude.to_f : 22.419513 %>;
     const defaultLng = <%= @venue.longitude.present? ? @venue.longitude.to_f : 114.205158 %>;
-
     const defaultLocation = { lat: defaultLat, lng: defaultLng };
 
     map = new google.maps.Map(document.getElementById("map-picker"), {
@@ -58,22 +77,17 @@
       center: defaultLocation,
     });
 
-    // If editing and has existing coordinates, show the marker
     const latField = document.getElementById("venue_latitude");
     const lngField = document.getElementById("venue_longitude");
 
     if (latField.value && lngField.value) {
-      const pos = { 
-        lat: parseFloat(latField.value), 
-        lng: parseFloat(lngField.value) 
-      };
+      const pos = { lat: parseFloat(latField.value), lng: parseFloat(lngField.value) };
       placeMarker(pos);
       showCoordinates(pos);
       currentLocation = pos;
       document.getElementById("confirm-location").classList.remove("hidden");
     }
 
-    // Click on map to change location
     map.addListener("click", (event) => {
       const location = event.latLng;
       placeMarker(location);
@@ -99,30 +113,24 @@
   function showCoordinates(location) {
     const lat = typeof location.lat === 'function' ? location.lat() : location.lat;
     const lng = typeof location.lng === 'function' ? location.lng() : location.lng;
-    
     document.getElementById("map-info").innerHTML = 
       `Selected: Latitude ${parseFloat(lat).toFixed(6)}, Longitude ${parseFloat(lng).toFixed(6)}`;
   }
 
-  // Confirm button
   document.getElementById("confirm-location").addEventListener("click", () => {
     if (currentLocation) {
       const lat = typeof currentLocation.lat === 'function' ? currentLocation.lat() : currentLocation.lat;
       const lng = typeof currentLocation.lng === 'function' ? currentLocation.lng() : currentLocation.lng;
-
       document.getElementById("venue_latitude").value = lat;
       document.getElementById("venue_longitude").value = lng;
-
       document.getElementById("map-info").innerHTML = 
         `Confirmed: Latitude ${parseFloat(lat).toFixed(6)}, Longitude ${parseFloat(lng).toFixed(6)} (ready to submit)`;
-      
       document.getElementById("confirm-location").classList.add("hidden");
     } else {
       alert("No location selected. Click on the map first.");
     }
   });
 
-  // Load Google Maps API
   if (typeof google === "undefined" || typeof google.maps === "undefined") {
     const script = document.createElement("script");
     script.src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyB9rihEzb0gyIuURXCuzVk_kjc2RIHNnOg&callback=initMapPicker";

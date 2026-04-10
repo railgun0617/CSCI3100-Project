@@ -3,14 +3,18 @@ Rails.application.routes.draw do
   get "resources/index"
   devise_for :users, controllers: { registrations: "registrations" }
   namespace :admin do
+    get "tenants/index"
+    get "tenants/new"
+    get "tenants/create"
     get "users/new"
     get "users/create"
     resources :users, only: [:new, :create]
+    resources :tenants, only: [:index, :new, :create, :edit, :update, :destroy]
   end
-  get "equipment/index"
-  get "equipment/show"
-  get "equipment/new"
-  get "equipment/edit"
+  # get "equipment/index"
+  # get "equipment/show"
+  # get "equipment/new"
+  # get "equipment/edit"
   get "staff/dashboard"
   get "bookings/index"
   get "bookings/new"
@@ -49,4 +53,6 @@ Rails.application.routes.draw do
   get 'staff/dashboard', to: 'staff#dashboard'
   get 'resources', to: 'resources#index'
   get 'manage_resources', to: 'manage_resources#index'  # or use department/manage
+  get '/favicon.ico', to: redirect('/assets/favicon.ico')
+
 end
