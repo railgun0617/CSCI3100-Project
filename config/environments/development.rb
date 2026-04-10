@@ -20,7 +20,10 @@ Rails.application.configure do
   # Enable server timing.
   config.server_timing = true
 
-  # Enable/disable Action Controller caching. By default Action Controller caching is disabled.
+
+  # Toggle emails on/off during development
+  config.send_emails = false     # ← Change to true when you want emails
+  
   # Run rails dev:cache to toggle Action Controller caching.
   if Rails.root.join("tmp/caching-dev.txt").exist?
     config.action_controller.perform_caching = true

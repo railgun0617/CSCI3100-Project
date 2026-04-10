@@ -64,7 +64,9 @@ class BookingsController < ApplicationController
 
     if booking.save
       # Send confirmation email to the user
-      BookingMailer.booking_confirmation(booking).deliver_later
+      if Rails.application.config.send_emails
+        BookingMailer.booking_confirmation(booking).deliver_later
+      end
       redirect_to bookings_path, 
           notice: "Booking request submitted"
     else
@@ -82,7 +84,9 @@ class BookingsController < ApplicationController
     end
 
     if booking.approve!
-      BookingMailer.booking_approved(booking).deliver_later
+      if Rails.application.config.send_emails
+        BookingMailer.booking_approved(@booking).deliver_later
+      end
       redirect_to staff_dashboard_path, 
                   notice: "Booking approved"
     else
@@ -99,7 +103,9 @@ class BookingsController < ApplicationController
     end
 
     if  booking.reject!
-      BookingMailer.booking_rejected(booking).deliver_later
+      if Rails.application.config.send_emails
+        BookingMailer.booking_rejected(booking).deliver_later
+      end
       redirect_to staff_dashboard_path, 
                   notice: "Booking rejected."
     else
