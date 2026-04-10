@@ -68,4 +68,13 @@ class Equipment < ApplicationRecord
             end
         end
     end
+
+    def self.ransackable_attributes(auth_object = nil)
+        %w[name description location]
+    end
+
+  # Ransack: Allow these associations
+    def self.ransackable_associations(auth_object = nil)
+        %w[latitude longitude quantity]
+    end
 end

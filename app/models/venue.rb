@@ -59,4 +59,14 @@ class Venue < ApplicationRecord
             end
         end
     end
+
+def self.ransackable_attributes(auth_object = nil)
+    %w[name description]
+  end
+
+  # Ransack: Allow these associations (you can keep them or reduce if you want)
+  def self.ransackable_associations(auth_object = nil)
+    %w[capacity latitude longitude open_time close_time]   # safe to include even if not searching them
+  end
+
 end
