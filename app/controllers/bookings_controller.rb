@@ -63,24 +63,35 @@ class BookingsController < ApplicationController
     end
 
     if booking.save
-      redirect_to bookings_path, notice: "Booking request submitted for #{start_time.strftime('%b %d, %I:%M %p')}."
+      # Send confirmation email to the user
+      if Rails.application.config.send_emails
+        BookingMailer.booking_confirmation(booking).deliver_later
+      end
+      redirect_to bookings_path, 
+          notice: "Booking request submitted"
     else
       redirect_to new_booking_path(resource_type: resource_type, resource_id: resource_id),
-                  alert: booking.errors.full_messages.to_sentence
+          alert: booking.errors.full_messages.to_sentence
     end
   end
 
   def approve
     booking = Booking.find(params[:id])
+
     unless can_manage_booking?(booking)
       redirect_to staff_dashboard_path, alert: "You are not authorized to approve this booking."
       return
     end
 
     if booking.approve!
-      redirect_to staff_dashboard_path, notice: "Booking approved."
+      if Rails.application.config.send_emails
+        BookingMailer.booking_approved(@booking).deliver_later
+      end
+      redirect_to staff_dashboard_path, 
+                  notice: "Booking approved"
     else
-      redirect_to staff_dashboard_path, alert: "Could not approve booking. It may conflict with another booking."
+      redirect_to staff_dashboard_path, 
+                  alert: "Failed to approve booking."
     end
   end
 
@@ -91,10 +102,15 @@ class BookingsController < ApplicationController
       return
     end
 
-    if booking.reject!
-      redirect_to staff_dashboard_path, notice: "Booking rejected."
+    if  booking.reject!
+      if Rails.application.config.send_emails
+        BookingMailer.booking_rejected(booking).deliver_later
+      end
+      redirect_to staff_dashboard_path, 
+                  notice: "Booking rejected."
     else
-      redirect_to staff_dashboard_path, alert: "Could not reject booking."
+      redirect_to staff_dashboard_path, 
+                  alert: "Failed to reject booking."
     end
   end
 
