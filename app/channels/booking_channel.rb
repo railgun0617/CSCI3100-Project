@@ -2,7 +2,6 @@ class BookingChannel < ApplicationCable::Channel
     # auto-call when user connect
     def subscribed
         stream_from "booking_channel"
-        broadcast_current_locks
     end
 
     # auto-call when user disconnect
@@ -62,7 +61,6 @@ class BookingChannel < ApplicationCable::Channel
       
         rescue => e
             transmit({ type: 'book_failed', message: "Error: #{e.message}" })
-        end
     end
 
     private

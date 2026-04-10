@@ -52,14 +52,12 @@
             </td>
             <td class="px-4 py-2">
               <% if slot[:status] == 'available' %>
-                <%= button_to "Book", create_booking_path, method: :post,
-                      params: { resource_type: @resource.class.name.underscore,
-                                resource_id: @resource.id,
-                                start_time: slot[:time].iso8601,
-                                end_time: (slot[:time] + 1.hour).iso8601,
-                                quantity: nil },
-                      id: "btn_#{slot[:time].to_i}",
-                      class: "bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 rounded text-sm" %>
+                <button type="button"
+                  class="book-btn bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 rounded text-sm"
+                  data-start-time="<%= slot[:time].iso8601 %>"
+                  data-end-time="<%= (slot[:time] + 1.hour).iso8601 %>">
+                  Book
+                </button>
               <% else %>
                 <span class="text-gray-400 text-sm">Not available</span>
               <% end %>
@@ -120,11 +118,13 @@
       connected() { console.log('WebSocket connected'); },
       disconnected() { console.log('WebSocket disconnected'); },
       received(data) {
+        console.log('Received:', data); 
         if (data.type === 'book_success') {
           alert(data.message);
           location.reload();
         } else if (data.type === 'book_failed') {
           alert(data.message);
+          location.reload();
         }
       },
       attempt_book(params) { this.perform('attempt_book', params); }
@@ -151,8 +151,13 @@
       });
     };
 
-    document.querySelectorAll('.book-btn').forEach(btn => {
-      btn.addEventListener('click', () => window.attemptBook(btn));
-    });
+    function bindButtons() {
+      document.querySelectorAll('.book-btn').forEach(btn => {
+        if (btn.dataset.bound) return;
+        btn.dataset.bound = 'true';
+        btn.addEventListener('click', () => window.attemptBook(btn));
+      });
+    }
+    bindButtons();
   })();
 </script>
