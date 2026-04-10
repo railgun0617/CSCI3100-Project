@@ -10,12 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_04_10_132355) do
+ActiveRecord::Schema[8.1].define(version: 2026_04_10_184316) do
   create_table "bookings", force: :cascade do |t|
     t.string "booking_type", null: false
     t.datetime "created_at", null: false
     t.datetime "end_time"
     t.integer "equipment_id"
+    t.datetime "locked_at"
+    t.integer "locked_by_id"
     t.text "notes"
     t.integer "quantity"
     t.datetime "start_time"
@@ -24,6 +26,9 @@ ActiveRecord::Schema[8.1].define(version: 2026_04_10_132355) do
     t.integer "user_id"
     t.integer "venue_id"
     t.index ["booking_type"], name: "index_bookings_on_booking_type"
+    t.index ["equipment_id", "start_time", "end_time", "status"], name: "idx_on_equipment_id_start_time_end_time_status_254d8b5721"
+    t.index ["locked_by_id"], name: "index_bookings_on_locked_by_id"
+    t.index ["venue_id", "start_time", "end_time", "status"], name: "idx_on_venue_id_start_time_end_time_status_5cb8ddd9f5"
   end
 
   create_table "equipment", force: :cascade do |t|

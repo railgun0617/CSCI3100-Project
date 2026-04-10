@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   get "manage_resources/index"
   get "resources/index"
   devise_for :users, controllers: { registrations: "registrations" }
+  mount ActionCable.server => '/cable'
   namespace :admin do
     get "tenants/index"
     get "tenants/new"

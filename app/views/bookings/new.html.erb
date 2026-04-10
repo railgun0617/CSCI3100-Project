@@ -110,3 +110,49 @@
     });
   </script>
 <% end %>
+
+<%= action_cable_meta_tag %>
+<script src="https://cdn.jsdelivr.net/npm/@rails/actioncable@7.0.0/app/assets/javascripts/actioncable.js"></script>
+<script>
+  (function() {
+    const cable = ActionCable.createConsumer('/cable');
+    const subscription = cable.subscriptions.create('BookingChannel', {
+      connected() { console.log('WebSocket connected'); },
+      disconnected() { console.log('WebSocket disconnected'); },
+      received(data) {
+        if (data.type === 'book_success') {
+          alert(data.message);
+          location.reload();
+        } else if (data.type === 'book_failed') {
+          alert(data.message);
+        }
+      },
+      attempt_book(params) { this.perform('attempt_book', params); }
+    });
+
+    window.attemptBook = function(button) {
+      const row = button.closest('tr');
+      const resourceType = '<%= @resource.class.name.underscore %>';
+      const resourceId = <%= @resource.id %>;
+      const startTime = button.dataset.startTime;
+      const endTime = button.dataset.endTime;
+      let quantity = null;
+      if (resourceType === 'equipment') {
+        const select = row.querySelector('.quantity-select');
+        if (select) quantity = select.value;
+      }
+      subscription.attempt_book({
+        resource_type: resourceType,
+        resource_id: resourceId,
+        start_time: startTime,
+        end_time: endTime,
+        quantity: quantity,
+        notes: ''
+      });
+    };
+
+    document.querySelectorAll('.book-btn').forEach(btn => {
+      btn.addEventListener('click', () => window.attemptBook(btn));
+    });
+  })();
+</script>
