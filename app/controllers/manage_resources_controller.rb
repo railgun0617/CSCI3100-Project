@@ -7,8 +7,8 @@ class ManageResourcesController < ApplicationController
       @venues = Venue.all
       @equipment = Equipment.all
     else
-      @venues = current_user.tenant.venues
-      @equipment = current_user.tenant.equipment
+      @venues = current_user.tenant&.venues || Venue.none
+      @equipment = current_user.tenant&.equipment || Equipment.none
     end
   end
 
