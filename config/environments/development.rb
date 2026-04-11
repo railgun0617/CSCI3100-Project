@@ -22,7 +22,7 @@ Rails.application.configure do
 
 
   # Toggle emails on/off during development
-  config.send_emails = true     # ← Change to true when you want emails
+  config.send_emails = false    # ← Change to true when you want emails
   
   # Run rails dev:cache to toggle Action Controller caching.
   if Rails.root.join("tmp/caching-dev.txt").exist?

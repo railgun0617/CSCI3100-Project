@@ -113,34 +113,170 @@
 <script src="https://cdn.jsdelivr.net/npm/@rails/actioncable@7.0.0/app/assets/javascripts/actioncable.js"></script>
 <script>
   (function() {
+    const resourceType = '<%= @resource.class.name.underscore %>';
+    const resourceId = <%= @resource.id %>;
+    
     const cable = ActionCable.createConsumer('/cable');
     const subscription = cable.subscriptions.create('BookingChannel', {
-      connected() { console.log('WebSocket connected'); },
-      disconnected() { console.log('WebSocket disconnected'); },
+      connected() { 
+        console.log('WebSocket connected'); 
+      },
+      disconnected() { 
+        console.log('WebSocket disconnected'); 
+      },
       received(data) {
-        console.log('Received:', data); 
-        if (data.type === 'book_success') {
-          alert(data.message);
-          location.reload();
-        } else if (data.type === 'book_failed') {
-          alert(data.message);
-          location.reload();
+        // handle venue slot_booked
+        if (data.type === 'slot_booked') {
+          if (data.resource_type === resourceType && data.resource_id === resourceId) {
+            updateVenueSlot(data);
+          }
+        }
+        // handle equipment slot_updated
+        else if (data.type === 'slot_updated') {
+          if (data.resource_type === resourceType && data.resource_id === resourceId) {
+            updateEquipmentSlot(data);
+          }
+        }
+        else if (data.type === 'book_success') {
+          showMessage(data.message, 'success');
+          setTimeout(() => {
+            location.reload();
+          }, 1500);
+        } 
+        else if (data.type === 'book_failed') {
+          showMessage(data.message, 'error');
         }
       },
-      attempt_book(params) { this.perform('attempt_book', params); }
+      attempt_book(params) { 
+        this.perform('attempt_book', params); 
+      }
     });
 
+    // Toast notification function (top center)
+    function showMessage(message, type) {
+      // Remove existing toast
+      const existingToast = document.querySelector('.custom-toast');
+      if (existingToast) existingToast.remove();
+      
+      const colors = {
+        success: '#10b981',
+        error: '#ef4444'
+      };
+      
+      const toast = document.createElement('div');
+      toast.className = 'custom-toast';
+      toast.textContent = message;
+      toast.style.cssText = `
+        position: fixed;
+        top: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        padding: 10px 20px;
+        background: ${colors[type] || '#3b82f6'};
+        color: white;
+        border-radius: 6px;
+        font-size: 14px;
+        z-index: 9999;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+      `;
+      
+      document.body.appendChild(toast);
+      
+      setTimeout(() => {
+        if (toast.parentNode) toast.remove();
+      }, 3000);
+    }
+
+    // Venue Update
+    function updateVenueSlot(data) {
+      const targetTime = new Date(data.start_time);
+      const buttons = document.querySelectorAll('.book-btn');
+      
+      buttons.forEach(button => {
+        const buttonStartTime = new Date(button.dataset.startTime);
+        if (Math.abs(buttonStartTime - targetTime) < 60000) {
+          const row = button.closest('tr');
+          
+          // Venue: Date | Time | Status | Action
+          const statusCell = row.querySelector('td:nth-child(3)');
+          const actionCell = row.querySelector('td:nth-child(4)');
+          
+          if (statusCell) {
+            statusCell.innerHTML = '<span class="px-2 py-1 text-xs rounded-full bg-red-100 text-red-800">Booked</span>';
+          }
+          if (actionCell) {
+            actionCell.innerHTML = '<span class="text-gray-400 text-sm">Not available</span>';
+          }
+        }
+      });
+    }
+
+    // Equipment Update
+    function updateEquipmentSlot(data) {
+      const targetTime = new Date(data.start_time);
+      const buttons = document.querySelectorAll('.book-btn');
+      
+      buttons.forEach(button => {
+        const buttonStartTime = new Date(button.dataset.startTime);
+        if (Math.abs(buttonStartTime - targetTime) < 60000) {
+          const row = button.closest('tr');
+          
+          // Equipment: Date | Quantity | Time | Status | Action
+          const quantityCell = row.querySelector('td:nth-child(2)');
+          const statusCell = row.querySelector('td:nth-child(4)');
+          const actionCell = row.querySelector('td:nth-child(5)');
+          
+          if (data.is_fully_booked) {
+            if (quantityCell) {
+              quantityCell.innerHTML = '-';
+            }
+            if (statusCell) {
+              statusCell.innerHTML = '<span class="px-2 py-1 text-xs rounded-full bg-red-100 text-red-800">Booked</span>';
+            }
+            if (actionCell) {
+              actionCell.innerHTML = '<span class="text-gray-400 text-sm">Not available</span>';
+            }
+          } else {
+            // Update pull menu
+            if (quantityCell && data.remaining_quantity) {
+              const select = quantityCell.querySelector('.quantity-select');
+              if (select) {
+                const currentMax = data.remaining_quantity;
+                // new pull menu create
+                let options = '';
+                for (let i = 1; i <= currentMax; i++) {
+                  options += `<option value="${i}">${i}</option>`;
+                }
+                select.innerHTML = options;
+                
+                // max limit
+                if (parseInt(select.value) > currentMax) {
+                  select.value = currentMax;
+                }
+                
+                select.dataset.max = currentMax;
+              }
+            }
+            // Status Available
+            if (statusCell && !statusCell.innerHTML.includes('Available')) {
+              statusCell.innerHTML = '<span class="px-2 py-1 text-xs rounded-full bg-green-100 text-green-800">Available</span>';
+            }
+          }
+        }
+      });
+    }
+    
     window.attemptBook = function(button) {
       const row = button.closest('tr');
-      const resourceType = '<%= @resource.class.name.underscore %>';
-      const resourceId = <%= @resource.id %>;
       const startTime = button.dataset.startTime;
       const endTime = button.dataset.endTime;
       let quantity = null;
+      
       if (resourceType === 'equipment') {
         const select = row.querySelector('.quantity-select');
         if (select) quantity = select.value;
       }
+      
       subscription.attempt_book({
         resource_type: resourceType,
         resource_id: resourceId,
@@ -150,7 +286,7 @@
         notes: ''
       });
     };
-
+    
     function bindButtons() {
       document.querySelectorAll('.book-btn').forEach(btn => {
         if (btn.dataset.bound) return;
