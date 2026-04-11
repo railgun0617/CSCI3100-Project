@@ -85,7 +85,7 @@ class BookingsController < ApplicationController
 
     if booking.approve!
       if Rails.application.config.send_emails
-        BookingMailer.booking_approved(@booking).deliver_later
+        BookingMailer.booking_approved(booking).deliver_later
       end
       redirect_to staff_dashboard_path, 
                   notice: "Booking approved"

@@ -54,6 +54,9 @@ class BookingChannel < ApplicationCable::Channel
                     end_time: end_time.iso8601})
 
                 transmit({ type: 'book_success', message: 'Booking submitted! Waiting for approval.', booking_id: booking.id })
+                if Rails.application.config.send_emails
+                    BookingMailer.booking_confirmation(booking).deliver_later
+                end
             else
                 transmit({ type: 'book_failed', message: booking.errors.full_messages.to_sentence })
             end
