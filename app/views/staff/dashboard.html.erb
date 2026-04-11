@@ -36,7 +36,10 @@
                 <%= button_to "Reject", reject_booking_path(booking), method: :patch,
                       class: "bg-red-600 hover:bg-red-700 text-white px-3 py-1 rounded text-sm" %>
                 <%= button_to "Delete", booking_path(booking), method: :delete,
-                      data: { confirm: "Permanently delete this booking?" },
+                      data: { 
+                            confirm: "Permanently delete this booking?",
+                            turbo_frame: "_top"
+                            },
                       class: "bg-gray-600 hover:bg-gray-700 text-white px-3 py-1 rounded text-sm" %>
               </div>
             </td>
