@@ -1,7 +1,8 @@
 FactoryBot.define do
   factory :venue do
+    association :tenant
     sequence(:name) { |n| "Library #{n}" }
-    description { "A place to let students to study" }
+    description { "A place for students to study" }
     capacity { 50 }
     open_time { Time.zone.parse("09:00") }
     close_time { Time.zone.parse("18:00") }

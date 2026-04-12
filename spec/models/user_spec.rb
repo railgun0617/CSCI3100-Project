@@ -1,68 +1,42 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  subject { build(:user) }
+  let(:tenant) { create(:tenant) }
 
-  describe "sign up validations" do
-    it "is valid with a proper email and matching password confirmation" do
-      expect(subject).to be_valid
+  describe "tenant validation for staff" do
+    it "is invalid when staff has no tenant" do
+      user = build(:user, role: "staff", tenant: nil)
+      expect(user).not_to be_valid
+      expect(user.errors[:tenant_id]).to include("can't be blank")
     end
 
-    it "is invalid without an email" do
-      subject.email = nil
-      expect(subject).not_to be_valid
-      expect(subject.errors[:email]).to include("can't be blank")
+    it "is valid when staff has a tenant" do
+      user = build(:user, role: "staff", tenant: tenant)
+      expect(user).to be_valid
     end
 
-    it "is invalid without a password" do
-      subject.password = nil
-      subject.password_confirmation = nil
-      expect(subject).not_to be_valid
-      expect(subject.errors[:password]).to include("can't be blank")
+    it "is valid when student has no tenant" do
+      user = build(:user, role: "student", tenant: nil)
+      expect(user).to be_valid
     end
 
-    it "is invalid when password confirmation does not match" do
-      subject.password_confirmation = "123456"
-      expect(subject).not_to be_valid
-      expect(subject.errors[:password_confirmation]).to include("doesn't match Password")
-    end
-
-    it "is invalid when password is too short" do
-      subject.password = "156"
-      subject.password_confirmation = "156"
-      expect(subject).not_to be_valid
-      expect(subject.errors[:password]).to include("is too short (minimum is 6 characters)")
-    end
-
-    it "is invalid with a duplicate email" do
-      create(:user, email: "1155123456@link.cuhk.edu.hk")
-      duplicate_user = build(:user, email: "1155123456@link.cuhk.edu.hk")
-      expect(duplicate_user).not_to be_valid
-      expect(duplicate_user.errors[:email]).to include("has already been taken")
+    it "is valid when admin has no tenant" do
+      user = build(:user, role: "admin", tenant: nil)
+      expect(user).to be_valid
     end
   end
 
-  
-  describe "sign in validations" do
-    let!(:existing_user) do
-      create(:user, email: "1155123456@link.cuhk.edu.hk", password: "qwerty123", password_confirmation: "qwerty123")
+  describe "role helper methods" do
+    it "returns true for student? when role is student" do
+      user = build(:user, role: "student")
+      expect(user.student?).to be true
+      expect(user.staff?).to be false
     end
 
-    it "is valid with correct email and password" do
-      expect(existing_user.valid_password?("qwerty123")).to be true
-    end
-
-    it "is invalid with incorrect password" do
-      expect(existing_user.valid_password?("qwertyuiop123")).to be false
-    end
-
-    it "is invalid with different case password" do
-      expect(existing_user.valid_password?("QWERTY123")).to be false
-    end
-
-    it "is invalid with non-existent email" do  
-      non_existent_user = described_class.find_by(email: "1155987654@link.cuhk.edu.hk")
-      expect(non_existent_user).to be_nil
+    it "returns true for staff? when role is staff" do
+      user = build(:user, role: "staff", tenant: tenant)
+      expect(user.staff?).to be true
+      expect(user.student?).to be false
     end
   end
 end

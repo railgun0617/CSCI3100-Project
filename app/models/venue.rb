@@ -42,10 +42,8 @@ class Venue < ApplicationRecord
     private
 
     def close_time_after_open_time
-        if open_time.present? && close_time.present?
-            if close_time < open_time
-                errors.add(:base, "venue close time must be after open time.")
-            end
+        if open_time.present? && close_time.present? && close_time <= open_time
+            errors.add(:close_time, "must be after open time")
         end
     end
 
@@ -68,5 +66,5 @@ def self.ransackable_attributes(auth_object = nil)
   def self.ransackable_associations(auth_object = nil)
     %w[capacity latitude longitude open_time close_time]   # safe to include even if not searching them
   end
-
+  
 end

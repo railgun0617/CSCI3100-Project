@@ -39,7 +39,6 @@ class BookingsController < ApplicationController
       booked = Booking.where(equipment_id: resource_id, status: [:pending, :approved])
                       .where("start_time < ? AND end_time > ?", end_time, start_time)
                       .sum(:quantity)
-      
       if quantity > (resource.quantity - booked)
         redirect_to new_booking_path(resource_type: resource_type, resource_id: resource_id),
                     alert: "Only #{resource.quantity - booked} items available"
@@ -88,7 +87,7 @@ class BookingsController < ApplicationController
         BookingMailer.booking_approved(booking).deliver_later
       end
       redirect_to staff_dashboard_path, 
-                  notice: "Booking approved"
+                  notice: "Booking approved."
     else
       redirect_to staff_dashboard_path, 
                   alert: "Failed to approve booking."

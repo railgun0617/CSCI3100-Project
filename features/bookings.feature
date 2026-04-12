@@ -10,14 +10,16 @@ Feature: Booking Page
     And the venue "Library" exists
     And the current time is "2025-10-04 08:00:00"
 
+  @javascript
   Scenario: Successful Booking an Equipment
     Given I am on the equipment and venue page
     When I click "Book" of the equipment "Projector"
     Then I should see the title "Book Projector"
-    When I select 2 quantity at date "Monday, Oct 06" and timeslot "11:00 AM"
+    When I select 1 quantity at date "Monday, Oct 06" and timeslot "11:00 AM"
     And I click "Book" at date "Monday, Oct 06" and timeslot "11:00 AM"
-    Then I should see the message "Booking request submitted for Oct 06, 11:00 AM."
-    And I should be on the my bookings page
+    Then I should find the notification "Booking submitted! Waiting for approval." on the top
+    And I should be on the booking page of the equipment "Projector"
+    And I should see the date "Monday, Oct 06" and timeslot "11:00 AM" cannot pick 2 quantity
   
   Scenario: Unavailable Booking Slots
     Given I have booked the equipment "Projector" with 2 quantity at date "Monday, Oct 06" and timeslot "11:00 AM"
@@ -31,21 +33,15 @@ Feature: Booking Page
     And I should see the date "Monday, Oct 06" and timeslot "01:00 PM" cannot pick 2 quantity
     And I should see the date "Wednesday, Oct 08" and timeslot "03:00 PM" is unavailable
 
-  # Scneario: Fail Booking an Equipment due to not enough equipment
-  #   Given
-  #   When
-  #   Then 
-
+  @javascript
   Scenario: Successful Booking a Venue
     Given I am on the equipment and venue page
     When I click "Book" of the venue "Library"
     Then I should see the title "Book Library"
     When I click "Book" at date "Friday, Oct 10" and timeslot "12:00 PM"
-    Then I should see the message "Booking request submitted for Oct 10, 12:00 PM."
-    And I should be on the my bookings page
-  
-  # Scenario: Fail Booking a Venue due to booked slot
-
+    Then I should find the notification "Booking submitted! Waiting for approval." on the top
+    And I should be on the booking page of the venue "Library"
+    And I should see the date "Friday, Oct 10" and timeslot "12:00 PM" is unavailable
 
   Scenario: See All of the Booking
     Given I have booked the equipment "Projector" with 2 quantity at date "Monday, Oct 06" and timeslot "11:00 AM"

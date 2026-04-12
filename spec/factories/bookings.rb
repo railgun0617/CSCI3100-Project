@@ -1,10 +1,9 @@
 FactoryBot.define do
   factory :booking_equipment, class: 'Booking' do
     association :user
-    association :equipment
     booking_type { "equipment" }
-    start_time { 1.hour.from_now }
-    end_time   { 2.hours.from_now }
+    start_time { 1.day.from_now }
+    end_time   { 1.day.from_now + 1.hour }
     quantity { 1 }
     status { :pending }
 
@@ -19,10 +18,9 @@ FactoryBot.define do
 
   factory :booking_venue, class: 'Booking' do
     association :user
-    association :venue
     booking_type { "venue" }
-    start_time { venue.open_time + 1.hour }
-    end_time   { venue.open_time + 2.hours }
+    start_time { (Time.zone.now.to_date + 1.day).to_time.change(hour: venue.open_time.hour) + 1.hour }
+    end_time   { start_time + 1.hour }
     status { :pending }
 
     trait :approved do

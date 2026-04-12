@@ -1,8 +1,23 @@
 Given (/^the equipment "(.*?)" exists with (.*?) quantity$/) do |item, quantity|
-  @equipment ||= {}
-  @equipment[item] = Equipment.create(
-    name: item, description: "Description for #{item}", 
+  tenant = Tenant.find_or_create_by!(name: "Department of Computer Science and Engineering")
+  @equipments ||= {}
+  @equipments[item] = Equipment.create!(
+    name: item, description: "Description for #{item}", tenant: tenant,
     location: "Location for #{item}", quantity: quantity.to_i, latitude: 22.418199, longitude: 114.207988
+  )
+end
+
+Given(/^the equipment "(.*?)" exists with desciption "(.*?)" and location "(.*?)" and department "(.*?)"$/) do |item, description, location, department|
+  tenant = Tenant.find_or_create_by!(name: department)
+  @equipments ||= {}
+  @equipments[item] = Equipment.create!(
+    name: item,
+    description: description,
+    location: location,
+    tenant: tenant,
+    quantity: 1,
+    latitude: 22.418199,
+    longitude: 114.207988
   )
 end
 
@@ -14,25 +29,6 @@ end
 When (/^I select position with latitude: (.*?) and longitude: (.*?) on the map$/) do |latitude, longitude|
   page.execute_script("document.getElementById('equipment_latitude').value = #{latitude}")
   page.execute_script("document.getElementById('equipment_longitude').value = #{longitude}")
-end
-
-When(/^I click the "(.*?)" button of the (.*?) "(.*?)"$/) do |button_text, item_type, item|
-  # Find the row in the Equipment table that contains the equipment name
-  row = all("tbody tr").find { |tr| tr.has_text?(item) }
-
-  expect(row).to be_present, "Could not find a row for #{item_type} #{item}"
-
-  within(row) do
-    # Try clicking a button first
-    if has_button?(button_text, wait: 0)
-      click_button(button_text)
-    # Otherwise fall back to link
-    elsif has_link?(button_text, wait: 0)
-      click_link(button_text)
-    else
-      raise "No button or link with text '#{button_text}' found in row for #{item}"
-    end
-  end
 end
 
 Then (/^I should be on the details page for equipment "(.*?)"$/) do |item|
