@@ -1,6 +1,7 @@
 FactoryBot.define do
   factory :equipment do
-    sequence(:name) { |n| "Projector#{n}" }
+    association :tenant
+    sequence(:name) { |n| "Projector #{n}" }
     description { "HD Projector" }
     location { "ERB Room 101" }
     quantity { 3 }

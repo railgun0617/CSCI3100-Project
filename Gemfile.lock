@@ -496,6 +496,7 @@ DEPENDENCIES
   brakeman
   bundler-audit
   capybara
+  childprocess (~> 5.1)
   cucumber
   cucumber-rails
   database_cleaner
@@ -506,12 +507,13 @@ DEPENDENCIES
   importmap-rails
   jbuilder
   kamal
-  letter_opener
+  launchy (~> 3.1)
+  letter_opener (~> 1.10)
   propshaft
   puma (>= 5.0)
   rails (~> 8.1.2)
   rails-controller-testing
-  ransack
+  ransack (~> 4.4)
   rspec
   rspec-expectations
   rspec-rails

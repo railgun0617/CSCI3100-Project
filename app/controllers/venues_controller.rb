@@ -54,7 +54,7 @@ class VenuesController < ApplicationController
 
   def destroy
     @venue.destroy
-    redirect_to venues_path, notice: 'Venue was deleted.'
+    redirect_to venues_path, notice: 'Venue was successfully deleted.'
   end
 
   private

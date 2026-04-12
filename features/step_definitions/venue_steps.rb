@@ -1,9 +1,25 @@
 Given (/^the venue "(.*?)" exists$/) do |item|
-  @venue ||= {}
-  @venue[item] = Venue.create(
-    name: item, description: "Description for #{item}",
-    capacity: "Capacity for #{item}", open_time: "09:00", close_time: "17:00",
+  tenant = Tenant.find_or_create_by(name: "Department of Computer Science and Engineering")
+  @venues ||= {}
+  @venues[item] = Venue.create(
+    name: item, tenant: tenant, description: "Description for #{item}",
+    capacity: 50, open_time: Time.zone.parse("09:00"), close_time: Time.zone.parse("17:00"),
     latitude: 22.418199, longitude: 114.207988
+  )
+end
+
+Given(/^the venue "(.*?)" exists with description "(.*?)" and department "(.*?)"$/) do |item, description, department|
+  tenant = Tenant.find_or_create_by!(name: department)
+  @venues ||= {}
+  @venues[item] = Venue.create!(
+    name: item,
+    description: description,
+    tenant: tenant,
+    capacity: 50,
+    open_time: Time.zone.parse("09:00"),
+    close_time: Time.zone.parse("17:00"),
+    latitude: 22.418199,
+    longitude: 114.207988
   )
 end
 
