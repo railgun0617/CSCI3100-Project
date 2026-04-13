@@ -4,7 +4,8 @@ class Admin::TenantsController < ApplicationController
   before_action :set_tenant, only: [:edit, :update, :destroy]
 
   def index
-    @tenants = Tenant.all.order(:name)
+    @q = Tenant.ransack(params[:q])
+    @tenants = @q.result(distinct: true).order(:name)
   end
 
   def new
