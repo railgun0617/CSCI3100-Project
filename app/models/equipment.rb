@@ -73,6 +73,6 @@ class Equipment < ApplicationRecord
   end
 
   def self.ransackable_associations(auth_object = nil)
-    %w[latitude longitude quantity tenant]   # <-- tenant added, array closed
+    %w[latitude longitude quantity tenant]
   end
 end

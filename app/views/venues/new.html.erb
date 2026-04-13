@@ -19,7 +19,7 @@
       <%= f.label :capacity, class: "block text-sm font-medium text-gray-700 mb-1" %>
       <%= f.number_field :capacity, placeholder: "Number of people", class: "w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" %>
     </div>
-    
+
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
       <div>
         <%= f.label :open_time, "Opening Time", class: "block text-gray-700 font-medium mb-1" %>
@@ -31,7 +31,7 @@
       <div>
         <%= f.label :close_time, "Closing Time", class: "block text-gray-700 font-medium mb-1" %>
         <%= f.select :close_time,
-          (10..18).map { |h| ["#{h.to_s.rjust(2, '0')}:00", "#{h.to_s.rjust(2, '0')}:00"] },
+          (9..17).map { |h| ["#{h.to_s.rjust(2, '0')}:00", "#{h.to_s.rjust(2, '0')}:00"] },
           { selected: @venue.close_time&.strftime("%H:%M") || "17:00", include_blank: 'Select closing time' },
           { class: "w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" } %>
       </div>
@@ -40,9 +40,14 @@
     <%= render "shared/map_picker", f: f, latitude: @venue.latitude, longitude: @venue.longitude %>
 
     <!-- Tenant (department) handling -->
-    <% if current_user&.staff? %>
+    <% if current_user&.staff? && current_user.tenant&.name == "Admin" %>
+      <div class="mb-4">
+        <%= f.label :tenant_id, "Department", class: "block text-sm font-medium text-gray-700 mb-1" %>
+        <%= f.collection_select :tenant_id, Tenant.all, :id, :name, { prompt: "Select department" }, class: "w-full px-4 py-3 border border-gray-300 rounded-md" %>
+      </div>
+    <% elsif current_user&.staff? %>
       <%= f.hidden_field :tenant_id, value: current_user.tenant_id %>
-      <div class="text-sm text-gray-600">Department: <%= current_user.tenant&.name || 'N/A' %></div>
+      <div class="text-sm text-gray-600 mb-4">Department: <%= current_user.tenant&.name || 'N/A' %></div>
     <% end %>
 
     <div class="flex justify-end space-x-3 pt-4">
