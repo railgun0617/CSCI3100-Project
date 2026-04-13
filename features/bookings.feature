@@ -22,7 +22,7 @@ Feature: Booking Page
     And I should see the date "Monday, Oct 06" and timeslot "02:00 PM" cannot pick 2 quantity
   
   Scenario: Unavailable Booking Slots
-    Given I have booked the equipment "Projector" with 2 quantity at date "Tuesday, Oct 07" and timeslot "02:00PM"
+    Given I have booked the equipment "Projector" with 2 quantity at date "Tuesday, Oct 07" and timeslot "02:00 PM"
     And I have booked the equipment "Projector" with 2 quantity at date "Wednesday, Oct 08" and timeslot "10:00 AM"
     And I have booked the equipment "Projector" with 1 quantity at date "Thursday, Oct 09" and timeslot "01:00 PM"
     When I am on the equipment and venue page
@@ -30,7 +30,7 @@ Feature: Booking Page
     Then I should see the title "Book Projector"
     Then I should see the date "Monday, Oct 06" and timeslot "11:00 AM" is unavailable
     And I should see the date "Monday, Oct 06" and timeslot "01:00 PM" is unavailable
-    And I should see the date "Tuesday, Oct 07" and timeslot "02:00PM" is unavailable
+    And I should see the date "Tuesday, Oct 07" and timeslot "02:00 PM" is unavailable
     And I should see the date "Wednesday, Oct 08" and timeslot "10:00 AM" is unavailable
     And I should see the date "Thursday, Oct 09" and timeslot "01:00 PM" cannot pick 2 quantity
     And I should see the date "Saturday, Oct 11" and timeslot "02:00 PM" is unavailable

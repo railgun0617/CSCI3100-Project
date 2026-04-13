@@ -58,7 +58,7 @@ Feature: Manage Resource Page (Venue Part)
     And I select the Opening Time as "12:00"
     And I select the Closing Time as "11:00"
     And I click the "Update Venue" button
-    Then I should see the error message "venue close time must be after open time."
+    Then I should see the error message "Close time must be after open time"
     And I should be on the edit venue page for venue "Library"
 
   Scenario: Successful Delete Venue

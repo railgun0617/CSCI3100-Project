@@ -73,7 +73,7 @@ RSpec.describe BookingsController, type: :controller do
     end
 
     context "with valid venue booking" do
-      it "creates booking and redirects" do
+      it "creates booking and redirects back to new booking form" do
         post :create_booking, params: {
           resource_type: "venue",
           resource_id: venue.id,

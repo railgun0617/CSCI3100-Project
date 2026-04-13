@@ -1,6 +1,6 @@
 class Admin::UsersController < ApplicationController
   before_action :authenticate_user!
-  before_action :authorize_staff!
+  before_action :authorize_staff_or_admin!
 
   def new
     @user = User.new
@@ -22,7 +22,7 @@ class Admin::UsersController < ApplicationController
     params.require(:user).permit(:email, :password, :password_confirmation, :tenant_id)
   end
 
-  def authorize_staff!
-    redirect_to root_path, alert: "Access denied." unless current_user.staff?
+  def authorize_staff_or_admin!
+    redirect_to root_path, alert: "Access denied." unless current_user.staff? || current_user.admin?
   end
 end

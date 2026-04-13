@@ -1,5 +1,5 @@
-Given(/^the department "(.*?)" exists with a slug "(.*?)"$/) do |department_name, slug_name|
-  Tenant.create!(name: department_name, slug: slug_name)
+Given(/^the department "(.*?)" exists$/) do |department_name|
+  Tenant.create!(name: department_name)
 end
 
 Given (/^the department "(.*?)" exists with a user$/) do |department_name|

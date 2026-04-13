@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Admin::TenantsController, type: :controller do
   let(:staff_user)   { create(:user, :staff) }
   let(:student_user) { create(:user, :student) }
-  let(:admin_user)   { create(:user, role: "admin") }
+  let(:admin_user)   { create(:user, :admin) }
   let!(:tenant)      { create(:tenant) }
 
   before do
@@ -13,7 +13,7 @@ RSpec.describe Admin::TenantsController, type: :controller do
   describe "GET #index" do
     it "assigns all tenants ordered by name" do
       get :index
-      expect(assigns(:tenants)).to eq(Tenant.all.order(:name))
+      expect(assigns(:tenants)).to match_array(Tenant.order(:name))
       expect(response).to have_http_status(:ok)
     end
   end

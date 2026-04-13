@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Admin::UsersController, type: :controller do
   let(:staff_user)   { create(:user, :staff) }
   let(:student_user) { create(:user, :student) }
-  let(:admin_user)   { create(:user, role: "admin") }
+  let(:admin_user)   { create(:user, :admin) }
   let(:tenant)       { create(:tenant) }
 
   before do
