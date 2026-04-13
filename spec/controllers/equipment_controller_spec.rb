@@ -104,9 +104,10 @@ RSpec.describe EquipmentController, type: :controller do
         }.not_to change(Equipment, :count)
       end
 
-      it "renders the new template again" do
+      it "redirects back to new when invalid" do
         post :create, params: { equipment: invalid_attributes }
-        expect(response).to render_template(:new)
+        expect(response).to redirect_to(new_equipment_path)
+        expect(flash[:alert]).to be_present
       end
     end
 
@@ -175,9 +176,10 @@ RSpec.describe EquipmentController, type: :controller do
       }
     end
 
-    it "re-renders edit when invalid" do
+    it "redirects back to edit when invalid" do
       patch :update, params: { id: equipment.to_param, equipment: { name: "" } }
-      expect(response).to render_template(:edit)
+      expect(response).to redirect_to(edit_equipment_path(equipment))
+      expect(flash[:alert]).to be_present
     end
 
     it "updates the requested equipment" do

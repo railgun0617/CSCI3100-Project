@@ -64,4 +64,3 @@ Feature: Manage Resources Page (Equipment Part)
     Then I should see "Equipment was successfully deleted."
     And I should be on the equipment page
     And I should not see the equipment "Projector"  
-

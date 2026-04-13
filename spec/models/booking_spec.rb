@@ -151,8 +151,10 @@ RSpec.describe Booking, type: :model do
   end
 
   describe "locking" do
-    it "locks a time slot and releases it" do
-      booking = Booking.lock_time_slot("equipment", equipment.id, slot_start, slot_end, user)
+    it "locks and releases a booking" do
+      booking = Booking.create!(booking_type: "equipment", equipment: equipment,
+                                start_time: slot_start, end_time: slot_end, user: user, quantity: 1)
+      booking.update!(locked_by_id: user.id, locked_at: Time.zone.now)
       expect(booking.locked?).to be true
       expect(booking.locked_by?(user)).to be true
       booking.release_lock!

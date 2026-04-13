@@ -106,9 +106,10 @@ RSpec.describe VenuesController, type: :controller do
         }.not_to change(Venue, :count)
       end
 
-      it "renders the new template again" do
+      it "redirects back to new when invalid" do
         post :create, params: { venue: invalid_attributes }
-        expect(response).to render_template(:new)
+        expect(response).to redirect_to(new_venue_path)
+        expect(flash[:alert]).to be_present
       end
     end
 
@@ -191,10 +192,11 @@ RSpec.describe VenuesController, type: :controller do
       expect(response).to redirect_to(venue)
     end
 
-    it "re-renders edit when invalid" do
-      patch :update, params: { id: venue.to_param, venue: { name: "" } }
-      expect(response).to render_template(:edit)
-    end
+      it "redirects back to edit when invalid" do
+        patch :update, params: { id: venue.to_param, venue: { name: "" } }
+        expect(response).to redirect_to(edit_venue_path(venue))
+        expect(flash[:alert]).to be_present
+      end
   end
 
   describe "DELETE #destroy" do
