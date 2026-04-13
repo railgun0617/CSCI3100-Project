@@ -9,6 +9,10 @@
           1,
           null,
           1,
+          null,
+          1,
+          0,
+          null,
           null
         ]
       },
@@ -212,6 +216,7 @@
       },
       "D:/document/study_material/CSCI3100/Project/CSCI3100-Project/app/controllers/manage_resources_controller.rb": {
         "lines": [
+          null,
           1,
           1,
           1,
@@ -224,6 +229,18 @@
           20,
           20,
           null,
+          null,
+          20,
+          0,
+          0,
+          0,
+          null,
+          20,
+          20,
+          null,
+          null,
+          20,
+          20,
           null,
           null,
           1,
@@ -1260,6 +1277,7 @@
           null,
           1,
           18,
+          18,
           null,
           null,
           1,
@@ -1374,7 +1392,7 @@
         "branches": {}
       }
     },
-    "timestamp": 1776059187
+    "timestamp": 1776059853
   },
   "RSpec": {
     "coverage": {
@@ -1639,6 +1657,7 @@
           1,
           null,
           1,
+          2,
           2,
           null,
           null,
@@ -2082,6 +2101,7 @@
       },
       "D:/document/study_material/CSCI3100/Project/CSCI3100-Project/app/controllers/manage_resources_controller.rb": {
         "lines": [
+          null,
           1,
           1,
           1,
@@ -2094,6 +2114,18 @@
           1,
           1,
           null,
+          null,
+          2,
+          0,
+          0,
+          0,
+          null,
+          2,
+          2,
+          null,
+          null,
+          2,
+          2,
           null,
           null,
           1,
@@ -2733,6 +2765,10 @@
           1,
           null,
           1,
+          null,
+          1,
+          0,
+          null,
           null
         ]
       },
@@ -2749,6 +2785,6 @@
         "branches": {}
       }
     },
-    "timestamp": 1776058921
+    "timestamp": 1776059606
   }
 }
