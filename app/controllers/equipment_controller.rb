@@ -22,7 +22,7 @@ class EquipmentController < ApplicationController
   end
 
   def new
-    @equipment = Equipment.new
+    @equipment = Equipment.new(flash[:equipment_params] || {})
     # For non‑admin staff, pre‑assign their tenant; admin will choose via form
     if current_user.staff? && current_user.tenant&.name != "Admin"
       @equipment.tenant = current_user.tenant
@@ -44,7 +44,9 @@ class EquipmentController < ApplicationController
     if @equipment.save
       redirect_to @equipment, notice: 'Equipment was successfully created.'
     else
-      render :new, status: :unprocessable_entity
+      redirect_to new_equipment_path, 
+                alert: @equipment.errors.full_messages.to_sentence,
+                flash: { equipment_params: equipment_params }
     end
   end
 
@@ -52,7 +54,8 @@ class EquipmentController < ApplicationController
     if @equipment.update(equipment_params)
       redirect_to @equipment, notice: 'Equipment was successfully updated.'
     else
-      render :edit, status: :unprocessable_entity
+      redirect_to edit_equipment_path(@equipment),
+                alert: @equipment.errors.full_messages.to_sentence
     end
   end
 

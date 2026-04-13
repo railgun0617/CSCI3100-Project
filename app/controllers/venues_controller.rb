@@ -21,7 +21,7 @@ class VenuesController < ApplicationController
   end
 
   def new
-    @venue = Venue.new
+    @venue = Venue.new(flash[:venue_params] || {})
     @venue.tenant = current_user.tenant if current_user.staff?
   end
 
@@ -40,7 +40,9 @@ class VenuesController < ApplicationController
     if @venue.save
       redirect_to @venue, notice: 'Venue was successfully created.'
     else
-      render :new, status: :unprocessable_entity
+      redirect_to new_venue_path, 
+                alert: @venue.errors.full_messages.to_sentence,
+                flash: { venue_params: venue_params }
     end
   end
 
@@ -48,7 +50,8 @@ class VenuesController < ApplicationController
     if @venue.update(venue_params)
       redirect_to @venue, notice: 'Venue was successfully updated.'
     else
-      render :edit, status: :unprocessable_entity
+      redirect_to edit_venue_path(@venue),
+                alert: @venue.errors.full_messages.to_sentence
     end
   end
 
