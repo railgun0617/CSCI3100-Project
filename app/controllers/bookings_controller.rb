@@ -155,6 +155,8 @@ def destroy
 
         status = if date.saturday? || date.sunday? 
                   "closed"
+                elsif slot_start < (Time.current + 8.hours)
+                  "closed"
                 elsif resource.is_a?(Venue) && !resource.is_venue_open?(slot_start, slot_end)
                   "closed"
                 elsif resource.is_a?(Equipment)

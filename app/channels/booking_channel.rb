@@ -53,8 +53,8 @@ class BookingChannel < ApplicationCable::Channel
                         booking_id: booking.id,
                         resource_type: resource_type,
                         resource_id: resource_id,
-                        start_time: start_time.iso8601,
-                        end_time: end_time.iso8601,
+                        start_time: start_time.iso8601(3),
+                        end_time: end_time.iso8601(3),
                         remaining_quantity: remaining_quantity,
                         is_fully_booked: remaining_quantity == 0})
                 else

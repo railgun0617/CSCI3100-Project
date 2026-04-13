@@ -1,24 +1,25 @@
 {
   "Cucumber Features": {
     "coverage": {
-      "C:/Programming/VS Code/Courses/CSCI3100/Project/CSCI3100-Project/app/models/tenant.rb": {
+      "D:/document/study_material/CSCI3100/Project/CSCI3100-Project/app/models/tenant.rb": {
         "lines": [
           1,
           1,
           1,
           1,
           null,
-          1
+          1,
+          null
         ]
       },
-      "C:/Programming/VS Code/Courses/CSCI3100/Project/CSCI3100-Project/app/models/application_record.rb": {
+      "D:/document/study_material/CSCI3100/Project/CSCI3100-Project/app/models/application_record.rb": {
         "lines": [
           1,
           1,
           null
         ]
       },
-      "C:/Programming/VS Code/Courses/CSCI3100/Project/CSCI3100-Project/app/models/user.rb": {
+      "D:/document/study_material/CSCI3100/Project/CSCI3100-Project/app/models/user.rb": {
         "lines": [
           1,
           1,
@@ -41,10 +42,11 @@
           null,
           1,
           438,
+          null,
           null
         ]
       },
-      "C:/Programming/VS Code/Courses/CSCI3100/Project/CSCI3100-Project/app/models/equipment.rb": {
+      "D:/document/study_material/CSCI3100/Project/CSCI3100-Project/app/models/equipment.rb": {
         "lines": [
           1,
           1,
@@ -134,7 +136,7 @@
           null
         ]
       },
-      "C:/Programming/VS Code/Courses/CSCI3100/Project/CSCI3100-Project/app/models/venue.rb": {
+      "D:/document/study_material/CSCI3100/Project/CSCI3100-Project/app/models/venue.rb": {
         "lines": [
           1,
           null,
@@ -204,10 +206,11 @@
           1,
           60,
           null,
+          null,
           null
         ]
       },
-      "C:/Programming/VS Code/Courses/CSCI3100/Project/CSCI3100-Project/app/controllers/manage_resources_controller.rb": {
+      "D:/document/study_material/CSCI3100/Project/CSCI3100-Project/app/controllers/manage_resources_controller.rb": {
         "lines": [
           1,
           1,
@@ -227,10 +230,11 @@
           null,
           1,
           21,
+          null,
           null
         ]
       },
-      "C:/Programming/VS Code/Courses/CSCI3100/Project/CSCI3100-Project/app/controllers/application_controller.rb": {
+      "D:/document/study_material/CSCI3100/Project/CSCI3100-Project/app/controllers/application_controller.rb": {
         "lines": [
           1,
           null,
@@ -241,69 +245,71 @@
           null,
           null,
           null,
+          null,
           null
         ]
       },
-      "C:/Programming/VS Code/Courses/CSCI3100/Project/CSCI3100-Project/app/helpers/application_helper.rb": {
+      "D:/document/study_material/CSCI3100/Project/CSCI3100-Project/app/helpers/application_helper.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "C:/Programming/VS Code/Courses/CSCI3100/Project/CSCI3100-Project/app/helpers/admin/tenants_helper.rb": {
+      "D:/document/study_material/CSCI3100/Project/CSCI3100-Project/app/helpers/admin/tenants_helper.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "C:/Programming/VS Code/Courses/CSCI3100/Project/CSCI3100-Project/app/helpers/admin/users_helper.rb": {
+      "D:/document/study_material/CSCI3100/Project/CSCI3100-Project/app/helpers/admin/users_helper.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "C:/Programming/VS Code/Courses/CSCI3100/Project/CSCI3100-Project/app/helpers/bookings_helper.rb": {
+      "D:/document/study_material/CSCI3100/Project/CSCI3100-Project/app/helpers/bookings_helper.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "C:/Programming/VS Code/Courses/CSCI3100/Project/CSCI3100-Project/app/helpers/equipment_helper.rb": {
+      "D:/document/study_material/CSCI3100/Project/CSCI3100-Project/app/helpers/equipment_helper.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "C:/Programming/VS Code/Courses/CSCI3100/Project/CSCI3100-Project/app/helpers/home_helper.rb": {
+      "D:/document/study_material/CSCI3100/Project/CSCI3100-Project/app/helpers/home_helper.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "C:/Programming/VS Code/Courses/CSCI3100/Project/CSCI3100-Project/app/helpers/login_helper.rb": {
-        "lines": [
-          1
-        ]
-      },
-      "C:/Programming/VS Code/Courses/CSCI3100/Project/CSCI3100-Project/app/helpers/manage_resources_helper.rb": {
+      "D:/document/study_material/CSCI3100/Project/CSCI3100-Project/app/helpers/login_helper.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "C:/Programming/VS Code/Courses/CSCI3100/Project/CSCI3100-Project/app/helpers/staff_helper.rb": {
+      "D:/document/study_material/CSCI3100/Project/CSCI3100-Project/app/helpers/manage_resources_helper.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "C:/Programming/VS Code/Courses/CSCI3100/Project/CSCI3100-Project/app/helpers/venues_helper.rb": {
+      "D:/document/study_material/CSCI3100/Project/CSCI3100-Project/app/helpers/staff_helper.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "C:/Programming/VS Code/Courses/CSCI3100/Project/CSCI3100-Project/app/controllers/venues_controller.rb": {
+      "D:/document/study_material/CSCI3100/Project/CSCI3100-Project/app/helpers/venues_helper.rb": {
+        "lines": [
+          1,
+          null
+        ]
+      },
+      "D:/document/study_material/CSCI3100/Project/CSCI3100-Project/app/controllers/venues_controller.rb": {
         "lines": [
           1,
           1,
@@ -386,10 +392,11 @@
           null,
           1,
           11,
+          null,
           null
         ]
       },
-      "C:/Programming/VS Code/Courses/CSCI3100/Project/CSCI3100-Project/app/controllers/resources_controller.rb": {
+      "D:/document/study_material/CSCI3100/Project/CSCI3100-Project/app/controllers/resources_controller.rb": {
         "lines": [
           1,
           1,
@@ -405,10 +412,11 @@
           null,
           null,
           20,
+          null,
           null
         ]
       },
-      "C:/Programming/VS Code/Courses/CSCI3100/Project/CSCI3100-Project/app/controllers/equipment_controller.rb": {
+      "D:/document/study_material/CSCI3100/Project/CSCI3100-Project/app/controllers/equipment_controller.rb": {
         "lines": [
           1,
           1,
@@ -499,10 +507,11 @@
           null,
           1,
           11,
+          null,
           null
         ]
       },
-      "C:/Programming/VS Code/Courses/CSCI3100/Project/CSCI3100-Project/app/models/booking.rb": {
+      "D:/document/study_material/CSCI3100/Project/CSCI3100-Project/app/models/booking.rb": {
         "lines": [
           1,
           1,
@@ -612,43 +621,6 @@
           0,
           null,
           null,
-          1,
-          0,
-          null,
-          0,
-          0,
-          null,
-          null,
-          0,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          0,
-          0,
-          null,
-          0,
-          null,
-          0,
-          0,
-          null,
-          null,
-          null,
-          1,
-          null,
-          0,
-          null,
-          0,
-          0,
-          null,
-          0,
-          null,
-          0,
-          null,
-          null,
           null,
           1,
           0,
@@ -752,11 +724,12 @@
           null,
           17,
           0,
+          null,
           null,
           null
         ]
       },
-      "C:/Programming/VS Code/Courses/CSCI3100/Project/CSCI3100-Project/app/controllers/staff_controller.rb": {
+      "D:/document/study_material/CSCI3100/Project/CSCI3100-Project/app/controllers/staff_controller.rb": {
         "lines": [
           1,
           1,
@@ -783,10 +756,11 @@
           null,
           1,
           18,
+          null,
           null
         ]
       },
-      "C:/Programming/VS Code/Courses/CSCI3100/Project/CSCI3100-Project/app/controllers/bookings_controller.rb": {
+      "D:/document/study_material/CSCI3100/Project/CSCI3100-Project/app/controllers/bookings_controller.rb": {
         "lines": [
           1,
           1,
@@ -999,10 +973,11 @@
           null,
           0,
           null,
+          null,
           null
         ]
       },
-      "C:/Programming/VS Code/Courses/CSCI3100/Project/CSCI3100-Project/app/mailers/booking_mailer.rb": {
+      "D:/document/study_material/CSCI3100/Project/CSCI3100-Project/app/mailers/booking_mailer.rb": {
         "lines": [
           1,
           null,
@@ -1039,10 +1014,11 @@
           null,
           null,
           null,
+          null,
           null
         ]
       },
-      "C:/Programming/VS Code/Courses/CSCI3100/Project/CSCI3100-Project/app/mailers/application_mailer.rb": {
+      "D:/document/study_material/CSCI3100/Project/CSCI3100-Project/app/mailers/application_mailer.rb": {
         "lines": [
           1,
           1,
@@ -1050,7 +1026,7 @@
           null
         ]
       },
-      "C:/Programming/VS Code/Courses/CSCI3100/Project/CSCI3100-Project/app/controllers/home_controller.rb": {
+      "D:/document/study_material/CSCI3100/Project/CSCI3100-Project/app/controllers/home_controller.rb": {
         "lines": [
           1,
           1,
@@ -1058,7 +1034,7 @@
           null
         ]
       },
-      "C:/Programming/VS Code/Courses/CSCI3100/Project/CSCI3100-Project/app/channels/application_cable/connection.rb": {
+      "D:/document/study_material/CSCI3100/Project/CSCI3100-Project/app/channels/application_cable/connection.rb": {
         "lines": [
           1,
           1,
@@ -1078,10 +1054,11 @@
           0,
           null,
           null,
+          null,
           null
         ]
       },
-      "C:/Programming/VS Code/Courses/CSCI3100/Project/CSCI3100-Project/app/channels/booking_channel.rb": {
+      "D:/document/study_material/CSCI3100/Project/CSCI3100-Project/app/channels/booking_channel.rb": {
         "lines": [
           1,
           null,
@@ -1222,17 +1199,19 @@
           null,
           0,
           null,
+          null,
           null
         ]
       },
-      "C:/Programming/VS Code/Courses/CSCI3100/Project/CSCI3100-Project/app/channels/application_cable/channel.rb": {
+      "D:/document/study_material/CSCI3100/Project/CSCI3100-Project/app/channels/application_cable/channel.rb": {
         "lines": [
           1,
           1,
+          null,
           null
         ]
       },
-      "C:/Programming/VS Code/Courses/CSCI3100/Project/CSCI3100-Project/app/controllers/admin/users_controller.rb": {
+      "D:/document/study_material/CSCI3100/Project/CSCI3100-Project/app/controllers/admin/users_controller.rb": {
         "lines": [
           1,
           1,
@@ -1260,10 +1239,11 @@
           null,
           1,
           4,
+          null,
           null
         ]
       },
-      "C:/Programming/VS Code/Courses/CSCI3100/Project/CSCI3100-Project/app/controllers/admin/tenants_controller.rb": {
+      "D:/document/study_material/CSCI3100/Project/CSCI3100-Project/app/controllers/admin/tenants_controller.rb": {
         "lines": [
           1,
           1,
@@ -1322,10 +1302,11 @@
           null,
           1,
           30,
+          null,
           null
         ]
       },
-      "C:/Programming/VS Code/Courses/CSCI3100/Project/CSCI3100-Project/app/controllers/registrations_controller.rb": {
+      "D:/document/study_material/CSCI3100/Project/CSCI3100-Project/app/controllers/registrations_controller.rb": {
         "lines": [
           1,
           1,
@@ -1336,10 +1317,11 @@
           null,
           1,
           8,
+          null,
           null
         ]
       },
-      "C:/Programming/VS Code/Courses/CSCI3100/Project/CSCI3100-Project/app/channels/staff_channel.rb": {
+      "D:/document/study_material/CSCI3100/Project/CSCI3100-Project/app/channels/staff_channel.rb": {
         "lines": [
           0,
           0,
@@ -1356,7 +1338,7 @@
         ],
         "branches": {}
       },
-      "C:/Programming/VS Code/Courses/CSCI3100/Project/CSCI3100-Project/app/controllers/login_controller.rb": {
+      "D:/document/study_material/CSCI3100/Project/CSCI3100-Project/app/controllers/login_controller.rb": {
         "lines": [
           0,
           0,
@@ -1371,7 +1353,7 @@
         ],
         "branches": {}
       },
-      "C:/Programming/VS Code/Courses/CSCI3100/Project/CSCI3100-Project/app/jobs/application_job.rb": {
+      "D:/document/study_material/CSCI3100/Project/CSCI3100-Project/app/jobs/application_job.rb": {
         "lines": [
           0,
           null,
@@ -1384,70 +1366,71 @@
         "branches": {}
       }
     },
-    "timestamp": 1775999701
+    "timestamp": 1776051131
   },
   "RSpec": {
     "coverage": {
-      "C:/Programming/VS Code/Courses/CSCI3100/Project/CSCI3100-Project/app/helpers/admin/tenants_helper.rb": {
+      "D:/document/study_material/CSCI3100/Project/CSCI3100-Project/app/helpers/admin/tenants_helper.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "C:/Programming/VS Code/Courses/CSCI3100/Project/CSCI3100-Project/app/helpers/admin/users_helper.rb": {
+      "D:/document/study_material/CSCI3100/Project/CSCI3100-Project/app/helpers/admin/users_helper.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "C:/Programming/VS Code/Courses/CSCI3100/Project/CSCI3100-Project/app/helpers/application_helper.rb": {
+      "D:/document/study_material/CSCI3100/Project/CSCI3100-Project/app/helpers/application_helper.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "C:/Programming/VS Code/Courses/CSCI3100/Project/CSCI3100-Project/app/helpers/bookings_helper.rb": {
+      "D:/document/study_material/CSCI3100/Project/CSCI3100-Project/app/helpers/bookings_helper.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "C:/Programming/VS Code/Courses/CSCI3100/Project/CSCI3100-Project/app/helpers/equipment_helper.rb": {
+      "D:/document/study_material/CSCI3100/Project/CSCI3100-Project/app/helpers/equipment_helper.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "C:/Programming/VS Code/Courses/CSCI3100/Project/CSCI3100-Project/app/helpers/home_helper.rb": {
+      "D:/document/study_material/CSCI3100/Project/CSCI3100-Project/app/helpers/home_helper.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "C:/Programming/VS Code/Courses/CSCI3100/Project/CSCI3100-Project/app/helpers/login_helper.rb": {
-        "lines": [
-          1
-        ]
-      },
-      "C:/Programming/VS Code/Courses/CSCI3100/Project/CSCI3100-Project/app/helpers/manage_resources_helper.rb": {
+      "D:/document/study_material/CSCI3100/Project/CSCI3100-Project/app/helpers/login_helper.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "C:/Programming/VS Code/Courses/CSCI3100/Project/CSCI3100-Project/app/helpers/staff_helper.rb": {
+      "D:/document/study_material/CSCI3100/Project/CSCI3100-Project/app/helpers/manage_resources_helper.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "C:/Programming/VS Code/Courses/CSCI3100/Project/CSCI3100-Project/app/helpers/venues_helper.rb": {
+      "D:/document/study_material/CSCI3100/Project/CSCI3100-Project/app/helpers/staff_helper.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "C:/Programming/VS Code/Courses/CSCI3100/Project/CSCI3100-Project/app/channels/application_cable/connection.rb": {
+      "D:/document/study_material/CSCI3100/Project/CSCI3100-Project/app/helpers/venues_helper.rb": {
+        "lines": [
+          1,
+          null
+        ]
+      },
+      "D:/document/study_material/CSCI3100/Project/CSCI3100-Project/app/channels/application_cable/connection.rb": {
         "lines": [
           1,
           1,
@@ -1467,10 +1450,11 @@
           1,
           null,
           null,
+          null,
           null
         ]
       },
-      "C:/Programming/VS Code/Courses/CSCI3100/Project/CSCI3100-Project/app/channels/booking_channel.rb": {
+      "D:/document/study_material/CSCI3100/Project/CSCI3100-Project/app/channels/booking_channel.rb": {
         "lines": [
           1,
           null,
@@ -1611,17 +1595,19 @@
           null,
           0,
           null,
+          null,
           null
         ]
       },
-      "C:/Programming/VS Code/Courses/CSCI3100/Project/CSCI3100-Project/app/channels/application_cable/channel.rb": {
+      "D:/document/study_material/CSCI3100/Project/CSCI3100-Project/app/channels/application_cable/channel.rb": {
         "lines": [
           1,
           1,
+          null,
           null
         ]
       },
-      "C:/Programming/VS Code/Courses/CSCI3100/Project/CSCI3100-Project/app/channels/staff_channel.rb": {
+      "D:/document/study_material/CSCI3100/Project/CSCI3100-Project/app/channels/staff_channel.rb": {
         "lines": [
           1,
           1,
@@ -1633,10 +1619,11 @@
           null,
           null,
           1,
+          null,
           null
         ]
       },
-      "C:/Programming/VS Code/Courses/CSCI3100/Project/CSCI3100-Project/app/controllers/admin/tenants_controller.rb": {
+      "D:/document/study_material/CSCI3100/Project/CSCI3100-Project/app/controllers/admin/tenants_controller.rb": {
         "lines": [
           1,
           1,
@@ -1695,10 +1682,11 @@
           null,
           1,
           13,
+          null,
           null
         ]
       },
-      "C:/Programming/VS Code/Courses/CSCI3100/Project/CSCI3100-Project/app/controllers/application_controller.rb": {
+      "D:/document/study_material/CSCI3100/Project/CSCI3100-Project/app/controllers/application_controller.rb": {
         "lines": [
           1,
           null,
@@ -1709,10 +1697,11 @@
           null,
           null,
           null,
+          null,
           null
         ]
       },
-      "C:/Programming/VS Code/Courses/CSCI3100/Project/CSCI3100-Project/app/controllers/admin/users_controller.rb": {
+      "D:/document/study_material/CSCI3100/Project/CSCI3100-Project/app/controllers/admin/users_controller.rb": {
         "lines": [
           1,
           1,
@@ -1740,10 +1729,11 @@
           null,
           1,
           6,
+          null,
           null
         ]
       },
-      "C:/Programming/VS Code/Courses/CSCI3100/Project/CSCI3100-Project/app/controllers/bookings_controller.rb": {
+      "D:/document/study_material/CSCI3100/Project/CSCI3100-Project/app/controllers/bookings_controller.rb": {
         "lines": [
           1,
           1,
@@ -1956,10 +1946,11 @@
           null,
           2,
           null,
+          null,
           null
         ]
       },
-      "C:/Programming/VS Code/Courses/CSCI3100/Project/CSCI3100-Project/app/controllers/equipment_controller.rb": {
+      "D:/document/study_material/CSCI3100/Project/CSCI3100-Project/app/controllers/equipment_controller.rb": {
         "lines": [
           1,
           1,
@@ -2050,10 +2041,11 @@
           null,
           1,
           16,
+          null,
           null
         ]
       },
-      "C:/Programming/VS Code/Courses/CSCI3100/Project/CSCI3100-Project/app/controllers/home_controller.rb": {
+      "D:/document/study_material/CSCI3100/Project/CSCI3100-Project/app/controllers/home_controller.rb": {
         "lines": [
           1,
           1,
@@ -2061,7 +2053,7 @@
           null
         ]
       },
-      "C:/Programming/VS Code/Courses/CSCI3100/Project/CSCI3100-Project/app/controllers/login_controller.rb": {
+      "D:/document/study_material/CSCI3100/Project/CSCI3100-Project/app/controllers/login_controller.rb": {
         "lines": [
           1,
           1,
@@ -2071,10 +2063,11 @@
           null,
           null,
           1,
+          null,
           null
         ]
       },
-      "C:/Programming/VS Code/Courses/CSCI3100/Project/CSCI3100-Project/app/controllers/manage_resources_controller.rb": {
+      "D:/document/study_material/CSCI3100/Project/CSCI3100-Project/app/controllers/manage_resources_controller.rb": {
         "lines": [
           1,
           1,
@@ -2094,10 +2087,11 @@
           null,
           1,
           3,
+          null,
           null
         ]
       },
-      "C:/Programming/VS Code/Courses/CSCI3100/Project/CSCI3100-Project/app/controllers/registrations_controller.rb": {
+      "D:/document/study_material/CSCI3100/Project/CSCI3100-Project/app/controllers/registrations_controller.rb": {
         "lines": [
           1,
           1,
@@ -2108,10 +2102,11 @@
           null,
           1,
           8,
+          null,
           null
         ]
       },
-      "C:/Programming/VS Code/Courses/CSCI3100/Project/CSCI3100-Project/app/controllers/resources_controller.rb": {
+      "D:/document/study_material/CSCI3100/Project/CSCI3100-Project/app/controllers/resources_controller.rb": {
         "lines": [
           1,
           1,
@@ -2127,10 +2122,11 @@
           null,
           null,
           5,
+          null,
           null
         ]
       },
-      "C:/Programming/VS Code/Courses/CSCI3100/Project/CSCI3100-Project/app/controllers/staff_controller.rb": {
+      "D:/document/study_material/CSCI3100/Project/CSCI3100-Project/app/controllers/staff_controller.rb": {
         "lines": [
           1,
           1,
@@ -2157,10 +2153,11 @@
           null,
           1,
           3,
+          null,
           null
         ]
       },
-      "C:/Programming/VS Code/Courses/CSCI3100/Project/CSCI3100-Project/app/controllers/venues_controller.rb": {
+      "D:/document/study_material/CSCI3100/Project/CSCI3100-Project/app/controllers/venues_controller.rb": {
         "lines": [
           1,
           1,
@@ -2243,10 +2240,11 @@
           null,
           1,
           16,
+          null,
           null
         ]
       },
-      "C:/Programming/VS Code/Courses/CSCI3100/Project/CSCI3100-Project/app/mailers/booking_mailer.rb": {
+      "D:/document/study_material/CSCI3100/Project/CSCI3100-Project/app/mailers/booking_mailer.rb": {
         "lines": [
           1,
           null,
@@ -2283,10 +2281,11 @@
           null,
           null,
           null,
+          null,
           null
         ]
       },
-      "C:/Programming/VS Code/Courses/CSCI3100/Project/CSCI3100-Project/app/mailers/application_mailer.rb": {
+      "D:/document/study_material/CSCI3100/Project/CSCI3100-Project/app/mailers/application_mailer.rb": {
         "lines": [
           1,
           1,
@@ -2294,7 +2293,7 @@
           null
         ]
       },
-      "C:/Programming/VS Code/Courses/CSCI3100/Project/CSCI3100-Project/app/models/booking.rb": {
+      "D:/document/study_material/CSCI3100/Project/CSCI3100-Project/app/models/booking.rb": {
         "lines": [
           1,
           1,
@@ -2307,15 +2306,15 @@
           1,
           1,
           1,
-          141,
+          139,
           null,
           1,
           1,
           1,
           1,
-          71,
-          71,
-          71,
+          70,
+          70,
+          70,
           1,
           null,
           null,
@@ -2404,43 +2403,6 @@
           2,
           null,
           null,
-          1,
-          1,
-          null,
-          1,
-          1,
-          null,
-          null,
-          1,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          1,
-          0,
-          null,
-          1,
-          null,
-          1,
-          0,
-          null,
-          null,
-          null,
-          1,
-          null,
-          1,
-          null,
-          1,
-          0,
-          null,
-          1,
-          null,
-          1,
-          null,
-          null,
           null,
           1,
           0,
@@ -2459,40 +2421,40 @@
           1,
           null,
           1,
-          70,
+          69,
           17,
           17,
-          53,
-          53,
-          53,
+          52,
+          52,
+          52,
           null,
           null,
           null,
           1,
-          70,
+          69,
           0,
-          70,
+          69,
           3,
           null,
           null,
           null,
           1,
-          70,
-          70,
+          69,
+          69,
           null,
-          70,
-          67,
-          67,
-          1,
+          69,
+          66,
           66,
           1,
+          65,
+          1,
           null,
           null,
           null,
           null,
           1,
-          70,
-          70,
+          69,
+          69,
           2,
           null,
           null,
@@ -2510,9 +2472,9 @@
           null,
           null,
           1,
-          53,
+          52,
           null,
-          53,
+          52,
           0,
           52,
           3,
@@ -2545,17 +2507,18 @@
           69,
           2,
           null,
+          null,
           null
         ]
       },
-      "C:/Programming/VS Code/Courses/CSCI3100/Project/CSCI3100-Project/app/models/application_record.rb": {
+      "D:/document/study_material/CSCI3100/Project/CSCI3100-Project/app/models/application_record.rb": {
         "lines": [
           1,
           1,
           null
         ]
       },
-      "C:/Programming/VS Code/Courses/CSCI3100/Project/CSCI3100-Project/app/models/equipment.rb": {
+      "D:/document/study_material/CSCI3100/Project/CSCI3100-Project/app/models/equipment.rb": {
         "lines": [
           1,
           1,
@@ -2645,7 +2608,7 @@
           null
         ]
       },
-      "C:/Programming/VS Code/Courses/CSCI3100/Project/CSCI3100-Project/app/models/user.rb": {
+      "D:/document/study_material/CSCI3100/Project/CSCI3100-Project/app/models/user.rb": {
         "lines": [
           1,
           1,
@@ -2668,10 +2631,11 @@
           null,
           1,
           311,
+          null,
           null
         ]
       },
-      "C:/Programming/VS Code/Courses/CSCI3100/Project/CSCI3100-Project/app/models/venue.rb": {
+      "D:/document/study_material/CSCI3100/Project/CSCI3100-Project/app/models/venue.rb": {
         "lines": [
           1,
           null,
@@ -2741,20 +2705,22 @@
           1,
           48,
           null,
+          null,
           null
         ]
       },
-      "C:/Programming/VS Code/Courses/CSCI3100/Project/CSCI3100-Project/app/models/tenant.rb": {
+      "D:/document/study_material/CSCI3100/Project/CSCI3100-Project/app/models/tenant.rb": {
         "lines": [
           1,
           1,
           1,
           1,
           null,
-          1
+          1,
+          null
         ]
       },
-      "C:/Programming/VS Code/Courses/CSCI3100/Project/CSCI3100-Project/app/jobs/application_job.rb": {
+      "D:/document/study_material/CSCI3100/Project/CSCI3100-Project/app/jobs/application_job.rb": {
         "lines": [
           0,
           null,
@@ -2767,6 +2733,6 @@
         "branches": {}
       }
     },
-    "timestamp": 1775999453
+    "timestamp": 1776007655
   }
 }

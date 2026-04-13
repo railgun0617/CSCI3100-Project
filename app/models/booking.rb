@@ -105,44 +105,7 @@ class Booking < ApplicationRecord
     return true if actor.staff?
     false
   end
-
-  def self.lock_time_slot(resource_type, resource_id, start_time, end_time, user)
-    transaction do
-      # find the conflict booking/lock
-      conflicting = find_conflicting(resource_type, resource_id, start_time, end_time)
-      return nil if conflicting
-
-      # create temp record
-      booking = new(
-        booking_type: resource_type,
-        user_id: user.id,
-        start_time: start_time,
-        end_time: end_time,
-        status: 'pending',
-        locked_by_id: user.id,
-        locked_at: Time.current )
-      if resource_type == 'venue'
-        booking.venue_id = resource_id
-      else
-        booking.equipment_id = resource_id
-      end
-      booking.save!
-      booking
-    end
-  end
-
-  def self.find_conflicting(resource_type, resource_id, start_time, end_time)
-    # find 'pending/approved' booking / lock (in 5 mins)
-    query = where("status IN (?) OR (locked_by_id IS NOT NULL AND locked_at > ?)", ['pending', 'approved'], 5.minutes.ago).where("start_time < ? AND end_time > ?", end_time, start_time)
-
-    if resource_type == 'venue'
-      query = query.where(venue_id: resource_id, booking_type: 'venue')
-    else
-      query = query.where(equipment_id: resource_id, booking_type: 'equipment')
-    end
-    query.first
-  end
-
+  
   # check if it is locked
   def locked?
     locked_by_id.present? && locked_at.present? && locked_at > 5.minutes.ago
@@ -194,7 +157,7 @@ class Booking < ApplicationRecord
 
   def start_time_not_in_past
     return unless start_time.present?
-    if start_time < Time.zone.now
+    if start_time < (Time.zone.now + 8.hours)
       errors.add(:start_time, "cannot be in the past")
     end
   end
@@ -212,7 +175,7 @@ class Booking < ApplicationRecord
   end
 
   def sufficient_equipment
-    return if equipment.blank?
+    return if equipment.blank? || equipment.quantity.nil?
 
     if equipment.quantity < quantity
       errors.add(:base, "Not enough #{equipment.name} available (total quantity).")
