@@ -157,7 +157,7 @@ class Booking < ApplicationRecord
 
   def start_time_not_in_past
     return unless start_time.present?
-    if start_time < (Time.zone.now + 8.hours)
+    if start_time < Time.zone.now
       errors.add(:start_time, "cannot be in the past")
     end
   end

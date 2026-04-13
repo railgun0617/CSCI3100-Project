@@ -146,16 +146,16 @@ def destroy
 
   def generate_time_slots(resource)
     slots = []
-    start_date = Date.today
+    start_date = Time.zone.now.to_date
     (0..6).each do |day_offset|
       date = start_date + day_offset
       (9..17).each do |hour|
-        slot_start = DateTime.new(date.year, date.month, date.day, hour, 0, 0)
+        slot_start = Time.zone.local(date.year, date.month, date.day, hour, 0, 0)
         slot_end = slot_start + 1.hour
 
         status = if date.saturday? || date.sunday? 
                   "closed"
-                elsif slot_start < (Time.current + 8.hours)
+                elsif slot_start <= Time.zone.now
                   "closed"
                 elsif resource.is_a?(Venue) && !resource.is_venue_open?(slot_start, slot_end)
                   "closed"
