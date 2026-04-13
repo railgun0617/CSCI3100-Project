@@ -59,7 +59,7 @@ class Venue < ApplicationRecord
   end
 
   def self.ransackable_associations(auth_object = nil)
-    %w[capacity latitude longitude open_time close_time tenant]   # <-- tenant added, array closed
+    %w[capacity latitude longitude open_time close_time tenant]
   end
 
 end

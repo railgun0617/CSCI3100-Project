@@ -1,17 +1,29 @@
 class VenuesController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
   before_action :authorize_staff!, only: [:new, :create, :edit, :update, :destroy]
   before_action :set_venue, only: [:show, :edit, :update, :destroy]
 
   def index
-    if current_user.staff? && current_user.tenant&.name == "Admin"
-      @q = Venue.ransack(params[:q])
-      @venues = @q.result(distinct: true).order(:name)
-    elsif current_user.staff?
-      @q = current_user.tenant.venues.ransack(params[:q])
-      @venues = @q.result(distinct: true).order(:name)
+    # Determine base collection based on user role (if logged in)
+    if user_signed_in? && current_user.staff? && current_user.tenant&.name == "Admin"
+      base_venues = Venue.all
+    elsif user_signed_in? && current_user.staff?
+      base_venues = current_user.tenant.venues
     else
-      @q = Venue.ransack(params[:q])
+      base_venues = Venue.all  # guests and students see all
+    end
+
+    if params[:q].present? && params[:q][:name_or_description_cont].present?
+      search_term = "%#{params[:q][:name_or_description_cont]}%"
+      @venues = base_venues
+        .joins("LEFT JOIN tenants ON venues.tenant_id = tenants.id")
+        .where("venues.name LIKE ? OR venues.description LIKE ? OR tenants.name LIKE ?",
+               search_term, search_term, search_term)
+        .distinct
+        .order(:name)
+      @q = base_venues.ransack(params[:q])
+    else
+      @q = base_venues.ransack(params[:q])
       @venues = @q.result(distinct: true).order(:name)
     end
   end
@@ -32,7 +44,6 @@ class VenuesController < ApplicationController
   def create
     @venue = Venue.new(venue_params)
     if current_user.staff? && current_user.tenant&.name == "Admin"
-      # Admin can assign any tenant; if not provided, use their own
       @venue.tenant_id = venue_params[:tenant_id] if venue_params[:tenant_id].present?
     elsif current_user.staff?
       @venue.tenant = current_user.tenant
@@ -40,9 +51,9 @@ class VenuesController < ApplicationController
     if @venue.save
       redirect_to @venue, notice: 'Venue was successfully created.'
     else
-      redirect_to new_venue_path, 
-                alert: @venue.errors.full_messages.to_sentence,
-                flash: { venue_params: venue_params }
+      redirect_to new_venue_path,
+                  alert: @venue.errors.full_messages.to_sentence,
+                  flash: { venue_params: venue_params }
     end
   end
 
@@ -51,7 +62,7 @@ class VenuesController < ApplicationController
       redirect_to @venue, notice: 'Venue was successfully updated.'
     else
       redirect_to edit_venue_path(@venue),
-                alert: @venue.errors.full_messages.to_sentence
+                  alert: @venue.errors.full_messages.to_sentence
     end
   end
 
@@ -63,9 +74,9 @@ class VenuesController < ApplicationController
   private
 
   def set_venue
-    if current_user.staff? && current_user.tenant&.name == "Admin"
+    if user_signed_in? && current_user.staff? && current_user.tenant&.name == "Admin"
       @venue = Venue.find(params[:id])
-    elsif current_user.staff?
+    elsif user_signed_in? && current_user.staff?
       @venue = current_user.tenant.venues.find(params[:id])
     else
       @venue = Venue.find(params[:id])
@@ -73,7 +84,7 @@ class VenuesController < ApplicationController
   end
 
   def venue_params
-    if current_user.staff? && current_user.tenant&.name == "Admin"
+    if user_signed_in? && current_user.staff? && current_user.tenant&.name == "Admin"
       params.require(:venue).permit(:name, :description, :capacity, :open_time, :close_time, :latitude, :longitude, :tenant_id)
     else
       params.require(:venue).permit(:name, :description, :capacity, :open_time, :close_time, :latitude, :longitude)
@@ -81,6 +92,6 @@ class VenuesController < ApplicationController
   end
 
   def authorize_staff!
-    redirect_to root_path, alert: 'Access denied.' unless current_user.staff?
+    redirect_to root_path, alert: 'Access denied.' unless user_signed_in? && current_user.staff?
   end
 end
