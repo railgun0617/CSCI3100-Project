@@ -46,7 +46,7 @@ A multi‑tenant SaaS application for CUHK student societies and departments to 
 | Maps           | Google Maps JavaScript API                      |
 | Testing        | RSpec (unit), Cucumber (BDD), SimpleCov         |
 | CI/CD          | GitHub Actions                                  |
-| Deployment     | Render / Koyeb (or any cloud platform)          |
+| Deployment     | Google Cloud                                    |
 
 ## Setup Instructions
 
@@ -136,7 +136,7 @@ bundle exec cucumber
 ```
 
 ### Coverage report
-SimpleCov generates two separate coverage reports (Rspec and Cucumber) after running tests.
+SimpleCov generates a coverage report after running tests.
 
 The project requires **>80% line coverage** – currently met.
 
@@ -181,7 +181,7 @@ The project requires **>80% line coverage** – currently met.
 | Debugging                           | All members       | -                   |
 | Deployment & CI/CD                  | Li Kwan Ho        | -                   |
 
-## Team members
+## Team
 
 | Name                | Student ID   | GitHub Username |
 |---------------------|--------------|-----------------|
