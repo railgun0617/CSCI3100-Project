@@ -1,0 +1,29 @@
+# Ignore everything except what's needed for Rails
+*
+!app/
+!bin/
+!config/
+!db/
+!lib/
+!public/
+!vendor/
+!storage/
+!Gemfile
+!Gemfile.lock
+!Rakefile
+!config.ru
+!Dockerfile
+!.ruby-version
+
+# Ignore development files
+.git/
+.gitignore
+.env
+.log/
+tmp/
+log/
+node_modules/
+storage/development.sqlite3
+storage/test.sqlite3
+coverage/
+.byebug_history
