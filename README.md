@@ -184,7 +184,7 @@ The project requires **>80% line coverage** – both rspec and cucumber tests cu
 | Testing (RSpec + Cucumber)          | Chan Pak Ho       | -                   |
 | Debugging                           | All members       | -                   |
 | Deployment                          | Li Kwan Ho        | -                   |
-| CI & CD                             | Lin Chung Ho      | Chan Pak Ho         |
+| CI/CD                             | Chan Pak Ho       | Lin Chung Ho        |
 
 ## Team
 
