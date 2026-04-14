@@ -138,7 +138,7 @@ bundle exec cucumber
 ### Coverage report
 SimpleCov generates a coverage report after running tests.
 
-The project requires **>80% line coverage** – currently met.
+The project requires **>80% line coverage** – both rspec and cucumber tests currently met.
 
 ## Advanced Features
 
@@ -179,7 +179,8 @@ The project requires **>80% line coverage** – currently met.
 | UI/UX design & Tailwind CSS         | Lam Chun To       | Chan Pak Ho         |
 | Testing (RSpec + Cucumber)          | Chan Pak Ho       | -                   |
 | Debugging                           | All members       | -                   |
-| Deployment & CI/CD                  | Li Kwan Ho        | -                   |
+| Deployment                          | Li Kwan Ho        | -                   |
+| CI & CD                             | Lin Chung Ho      | Chan Pak Ho         |
 
 ## Team
 
