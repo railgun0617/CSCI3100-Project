@@ -2,8 +2,8 @@
 set -e
 
 PROJECT_ID=$(gcloud config get-value project)
-BUCKET_NAME="${PROJECT_ID}-sqlite-storage"
-REGION="us-central1"
+REGION="asia-east2"
+BUCKET_NAME="${PROJECT_ID}-sqlite-storage-${REGION}"
 SERVICE_NAME="csci3100-sqlite"
 SECRET_KEY_BASE=$(openssl rand -hex 64)
 
