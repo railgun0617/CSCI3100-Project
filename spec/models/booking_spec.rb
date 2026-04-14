@@ -7,6 +7,42 @@ RSpec.describe Booking, type: :model do
   let(:slot_start) { 1.day.from_now.change(hour: 10) }
   let(:slot_end)   { slot_start + 1.hour }
 
+  describe "#remaining_equipment and #sufficient_equipment?" do
+    let(:another_equipment) { create(:equipment, quantity: 7) }
+
+    it "returns full quantity when no other bookings exist" do
+      booking = create(:booking_equipment, user: user, equipment: another_equipment,
+                                          start_time: slot_start, end_time: slot_end, quantity: 2)
+      expect(booking.remaining_equipment).to eq(7)
+      expect(booking.sufficient_equipment?).to be true
+    end
+
+    it "subtracts quantities of pending/approved bookings" do
+      create(:booking_equipment, equipment: another_equipment, status: :approved,
+            start_time: slot_start, end_time: slot_end, quantity: 4)
+      booking = build(:booking_equipment, user: user, equipment: another_equipment,
+                                          start_time: slot_start, end_time: slot_end, quantity: 2)
+      expect(booking.remaining_equipment).to eq(3) # 7 - 4
+      expect(booking.sufficient_equipment?).to be true
+    end
+
+    it "ignores rejected/cancelled bookings in calculation" do
+      create(:booking_equipment, equipment: another_equipment, status: :rejected,
+            start_time: slot_start, end_time: slot_end, quantity: 5)
+      booking = build(:booking_equipment, user: user, equipment: another_equipment,
+                                          start_time: slot_start, end_time: slot_end, quantity: 5)
+      expect(booking.remaining_equipment).to eq(7) # rejected booking ignored
+      expect(booking.sufficient_equipment?).to be true
+    end
+
+    it "returns 0 if equipment is blank" do
+      booking = build(:booking_equipment, user: user, equipment: nil,
+                                          start_time: slot_start, end_time: slot_end, quantity: 1)
+      expect(booking.remaining_equipment).to eq(0)
+      expect(booking.sufficient_equipment?).to be false
+    end
+  end
+
   describe "booking equipment validations" do
     it "is valid for booking 1 equipment when there is remaining equipment" do
       booking = create(:booking_equipment, user: user, equipment: equipment, start_time: slot_start, end_time: slot_end, quantity: 1)

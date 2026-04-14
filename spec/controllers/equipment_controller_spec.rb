@@ -13,7 +13,7 @@ RSpec.describe EquipmentController, type: :controller do
       before { sign_out staff_user }  # ensure no one is signed in
 
       it "redirects unauthenticated users to sign in" do
-        get :index
+        get :new
         expect(response).to redirect_to(new_user_session_path)
       end
     end
@@ -106,6 +106,22 @@ RSpec.describe EquipmentController, type: :controller do
 
       it "redirects back to new when invalid" do
         post :create, params: { equipment: invalid_attributes }
+        expect(response).to redirect_to(new_equipment_path)
+        expect(flash[:alert]).to be_present
+      end
+    end
+
+    context "with non-numeric latitude/longitude" do
+      it "adds validation errors for latitude and longitude" do
+        post :create, params: {
+          equipment: attributes_for(:equipment, tenant_id: admin_tenant.id).merge(
+            latitude: "abc",
+            longitude: "xyz"
+          )
+        }
+        equipment = assigns(:equipment)
+        expect(equipment.errors[:latitude]).to include("is not a number")
+        expect(equipment.errors[:longitude]).to include("is not a number")
         expect(response).to redirect_to(new_equipment_path)
         expect(flash[:alert]).to be_present
       end

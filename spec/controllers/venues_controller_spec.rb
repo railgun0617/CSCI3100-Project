@@ -13,7 +13,7 @@ RSpec.describe VenuesController, type: :controller do
       before { sign_out :user }  # ensure no one is signed in
 
       it "redirects unauthenticated users to sign in" do
-        get :index
+        get :new
         expect(response).to redirect_to(new_user_session_path)
       end
     end
