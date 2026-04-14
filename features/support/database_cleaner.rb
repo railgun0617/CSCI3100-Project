@@ -1,7 +1,7 @@
 # features/support/database_cleaner.rb
 require 'database_cleaner-active_record'
 
-DatabaseCleaner.strategy = :transaction
+DatabaseCleaner.strategy = :truncation
 
 Before('@javascript') do
   DatabaseCleaner.strategy = :truncation
