@@ -68,6 +68,11 @@ jobs:
         with:
           name: coverage-cucumber
           path: coverage/cucumber
+      
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
 
       - name: Collate coverage
         run: bundle exec ruby coverage_collate.rb

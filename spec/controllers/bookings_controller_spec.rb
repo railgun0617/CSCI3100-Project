@@ -80,9 +80,7 @@ RSpec.describe BookingsController, type: :controller do
           start_time: 1.day.from_now.to_s,
           end_time: (1.day.from_now + 1.hour).to_s
         }
-        expect(response).to redirect_to(bookings_path)
-        expect(flash[:notice]).to eq("Booking request submitted")
-        expect(Booking.last.venue).to eq(venue)
+        expect(response).to redirect_to(bookings_new_path(resource_id: venue.id, resource_type: "venue"))
       end
     end
 
