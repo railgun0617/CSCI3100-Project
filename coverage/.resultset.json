@@ -1394,7 +1394,7 @@
         "branches": {}
       }
     },
-    "timestamp": 1776149881
+    "timestamp": 1776151762
   },
   "RSpec": {
     "coverage": {
@@ -1829,13 +1829,13 @@
           null,
           3,
           null,
-          1,
-          1,
-          null,
-          1,
-          null,
+          2,
+          2,
           null,
           2,
+          null,
+          null,
+          1,
           null,
           null,
           null,
@@ -1922,20 +1922,20 @@
           126,
           36,
           90,
-          18,
-          72,
+          14,
+          76,
           0,
-          72,
-          36,
+          76,
+          38,
           null,
           null,
-          36,
+          38,
           null,
-          36,
+          38,
           null,
           null,
           null,
-          36,
+          38,
           null,
           null,
           126,
@@ -1949,14 +1949,14 @@
           1,
           63,
           null,
-          36,
-          36,
+          38,
+          38,
           null,
-          36,
+          38,
           null,
           null,
           null,
-          36,
+          38,
           null,
           1,
           null,
@@ -2086,20 +2086,6 @@
       "D:/document/study_material/CSCI3100/Project/CSCI3100-Project/app/controllers/home_controller.rb": {
         "lines": [
           1,
-          1,
-          null,
-          null
-        ]
-      },
-      "D:/document/study_material/CSCI3100/Project/CSCI3100-Project/app/controllers/login_controller.rb": {
-        "lines": [
-          1,
-          1,
-          null,
-          null,
-          1,
-          null,
-          null,
           1,
           null,
           null
@@ -2532,7 +2518,7 @@
           null,
           1,
           17,
-          3,
+          1,
           null,
           null,
           null,
@@ -2722,12 +2708,12 @@
           1,
           null,
           1,
-          57,
+          59,
           null,
-          57,
-          57,
+          59,
+          59,
           null,
-          57,
+          59,
           null,
           null,
           null,
@@ -2776,6 +2762,21 @@
           null
         ]
       },
+      "D:/document/study_material/CSCI3100/Project/CSCI3100-Project/app/controllers/login_controller.rb": {
+        "lines": [
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0
+        ],
+        "branches": {}
+      },
       "D:/document/study_material/CSCI3100/Project/CSCI3100-Project/app/jobs/application_job.rb": {
         "lines": [
           0,
@@ -2789,6 +2790,6 @@
         "branches": {}
       }
     },
-    "timestamp": 1776089188
+    "timestamp": 1776151841
   }
 }
