@@ -7,7 +7,8 @@ class User < ApplicationRecord
 
   # Include default devise modules.
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+         :recoverable, :rememberable, :validatable,
+         :confirmable
          
   # New: role enum (student is default)
   enum :role, { student: 'student', staff: 'staff', admin: 'admin' }, default: 'student'
