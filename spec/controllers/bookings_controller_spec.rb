@@ -1,5 +1,4 @@
-# spec/controllers/bookings_controller_spec.rb
-require "rails_helper"
+require 'rails_helper'
 
 RSpec.describe BookingsController, type: :controller do
   let(:tenant) { create(:tenant, name: "Admin") }
@@ -7,6 +6,15 @@ RSpec.describe BookingsController, type: :controller do
   let(:student){ create(:user, :student, tenant: tenant) }
   let(:venue)  { create(:venue, tenant: tenant) }
   let(:equipment) { create(:equipment, tenant: tenant, quantity: 5) }
+
+  include ActiveSupport::Testing::TimeHelpers
+
+  before do
+    travel_to Time.zone.local(2025, 10, 6, 10, 0, 0) # Monday 10 AM
+    sign_in(student)
+  end
+
+  after { travel_back }
 
   before { sign_in(student) }
 
@@ -78,7 +86,7 @@ RSpec.describe BookingsController, type: :controller do
           resource_type: "venue",
           resource_id: venue.id,
           start_time: 1.day.from_now.to_s,
-          end_time: (1.day.from_now + 1.hour).to_s
+          end_time: (1.day.from_now + 1.hour).to_s,
         }
         expect(response).to redirect_to(bookings_path)
         expect(flash[:notice]).to eq("Booking request submitted")
@@ -145,6 +153,18 @@ RSpec.describe BookingsController, type: :controller do
       expect(response).to redirect_to(staff_dashboard_path)
       expect(flash[:alert]).to eq("You are not authorized to approve this booking.")
     end
+
+    it "handles failed approval" do
+      # Stub approve! to simulate failure
+      allow_any_instance_of(Booking).to receive(:approve!).and_return(false)
+
+      patch :approve, params: { id: booking.id }
+
+      expect(response).to redirect_to(staff_dashboard_path)
+      expect(flash[:alert]).to eq("Failed to approve booking.")
+      # status should remain unchanged
+      expect(booking.reload.status).not_to eq("approved")
+    end
   end
 
   describe "PATCH #reject" do
@@ -164,6 +184,18 @@ RSpec.describe BookingsController, type: :controller do
       patch :reject, params: { id: booking.id }
       expect(response).to redirect_to(staff_dashboard_path)
       expect(flash[:alert]).to eq("You are not authorized to reject this booking.")
+    end
+
+    it "handles failed rejection" do
+      # Stub reject! to simulate failure
+      allow_any_instance_of(Booking).to receive(:reject!).and_return(false)
+
+      patch :reject, params: { id: booking.id }
+
+      expect(response).to redirect_to(staff_dashboard_path)
+      expect(flash[:alert]).to eq("Failed to reject booking.")
+      # status should remain unchanged
+      expect(booking.reload.status).not_to eq("rejected")
     end
   end
 

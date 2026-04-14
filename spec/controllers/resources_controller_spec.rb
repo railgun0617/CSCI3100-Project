@@ -1,4 +1,4 @@
-require "rails_helper"
+require 'rails_helper'
 
 RSpec.describe ResourcesController, type: :controller do
   let(:tenant)    { create(:tenant) }

@@ -1,4 +1,3 @@
-# spec/controllers/manage_resources_controller_spec.rb
 require 'rails_helper'
 
 RSpec.describe ManageResourcesController, type: :controller do
@@ -49,6 +48,21 @@ RSpec.describe ManageResourcesController, type: :controller do
         # force evaluation
         expect(assigns(:venues).map(&:name)).to include(venue.name, other_venue.name)
         expect(assigns(:equipment).map(&:name)).to include(equipment.name, other_equipment.name)
+      end
+    end
+
+    context "as staff with search param" do
+      before { sign_in(staff_user) }
+
+      let!(:search_equipment)   { create(:equipment, tenant: tenant, name: "Laptop", description: "Computer for study") }
+      let!(:search_venue) { create(:venue, tenant: tenant, name: "Library", description: "A place for student to study") }
+
+      it "filters venues and equipment by search term" do
+        get :index, params: { search: "Computer" }
+
+        expect(assigns(:venues)).to be_empty
+        expect(assigns(:equipment)).to contain_exactly(search_equipment)
+        expect(assigns(:equipment).first.description).to include("Computer for study")
       end
     end
   end

@@ -1,4 +1,4 @@
-require "rails_helper"
+require 'rails_helper'
 
 RSpec.describe BookingMailer, type: :mailer do
   let(:tenant)   { create(:tenant) }
