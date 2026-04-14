@@ -12,9 +12,10 @@ RSpec.describe EquipmentController, type: :controller do
     context "when unauthenticated" do
       before { sign_out staff_user }  # ensure no one is signed in
 
-      it "redirects unauthenticated users to sign in" do
+      it "redirects unauthenticated users to index" do
         get :index
-        expect(response).to redirect_to(new_user_session_path)
+        expect(response).to have_http_status(:ok)
+        expect(response).to render_template(:index)
       end
     end
 

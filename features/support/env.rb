@@ -62,3 +62,7 @@ World(FactoryBot::Syntax::Methods)
 # Capybara.javascript_driver = :selenium_chrome_headless if you want to run headless by default.
 # Capybara.javascript_driver = :selenium_chrome if you want to run with a visible browser by default.
 Capybara.javascript_driver = :selenium_chrome_headless
+
+if ENV['CI'] || ENV['GITHUB_ACTIONS']
+  Capybara.default_max_wait_time = 10
+end

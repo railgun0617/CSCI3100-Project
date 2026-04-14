@@ -1,5 +1,9 @@
 include ActiveSupport::Testing::TimeHelpers
 
+def wait_a_bit
+  sleep 0.5 if ENV['CI'] || ENV['GITHUB_ACTIONS']
+end
+
 Given(/^the current time is "(.*?)"$/) do |time_string|
   travel_to Time.zone.parse(time_string)
 end
@@ -61,12 +65,14 @@ end
 
 
 When(/^I click "Book" at date "(.*?)" and timeslot "(.*?)"$/) do |date_str, timeslot_str|
+  wait_a_bit
   row = all("tr").find { |tr| tr.has_text?(date_str) && tr.has_text?(timeslot_str) }
   within(row) { click_button("Book") }
 end
 
 
 When(/^I click "(.*?)" for the (equipment|venue) "(.*?)" booked by "(.*?)" start at "(.*?)" and end at "(.*?)"$/) do |button_text, item_type, item_name, user_email, start_time, end_time|
+  wait_a_bit
   row = all("tbody tr").find do |tr|
     tr.has_text?(item_name) &&
     tr.has_text?(user_email)
