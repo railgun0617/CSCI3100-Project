@@ -1,6 +1,6 @@
 # CUHK Venue & Equipment Booking SaaS
 
-A multi‑tenant SaaS application for CUHK student societies and departments to manage bookings of venues and equipment. Built with Ruby on Rails 8.1, Tailwind CSS, and PostgreSQL.
+A multi‑tenant SaaS application for CUHK student societies and departments to manage bookings of venues and equipment. Built with Ruby on Rails 8.1, Tailwind CSS, and SQLite.
 
 ## Table of Contents
 
@@ -19,11 +19,11 @@ A multi‑tenant SaaS application for CUHK student societies and departments to 
 ### Core Features
 - **Multi‑tenant architecture** – Each department (tenant) manages its own venues and equipment independently.
 - **User authentication** – Devise with roles: `student` and `staff` (plus an `Admin` tenant for super‑admin access).
-- **Resource management** – CRUD operations for venues and equipment (staff only).
+- **Resource/Departments management** – CRUD operations for venues and equipment (staff only), departments(admin only).
 - **Booking system** – Students can book venues/equipment for 1‑4 hour slots, up to 7 days in advance.
 - **Conflict detection** – Prevents double‑booking of venues and ensures sufficient equipment quantity.
 - **Approval workflow** – Staff approve or reject pending bookings; students see real‑time status.
-- **Email confirmation** – New users must confirm their email address via a link (using Brevo SMTP).
+- **Email confirmation** – Users must confirm their email address when changing their password before sign in via a link (using Brevo SMTP). Also, users can receive email notification for booking requests (pending, approve and reject).
 - **Cancel & delete bookings** – Students can cancel their own bookings; staff can delete any booking.
 
 ### Advanced Features (N‑1 = 3+)
@@ -37,7 +37,7 @@ A multi‑tenant SaaS application for CUHK student societies and departments to 
 | Component       | Technology                                      |
 |----------------|-------------------------------------------------|
 | Framework      | Ruby on Rails 8.1                               |
-| Database       | SQLite (development), PostgreSQL (production)   |
+| Database       | SQLite                                          |
 | Frontend       | Tailwind CSS, Stimulus (Hotwire), ERB           |
 | Authentication | Devise (confirmable, rememberable)              |
 | Real‑time      | ActionCable                                     |
@@ -75,7 +75,7 @@ The seed file creates:
 - A staff user for the `Admin` tenant: `admin@cuhk.edu.hk` / `password123`
 - Sample venues and equipment.
 
-### Start the local server
+### Start the local server (Run locally)
 ```bash
 bin/dev   # starts Rails server + Tailwind CSS watcher
 ```
@@ -105,7 +105,7 @@ The app will be available at `http://localhost:3000`.
 | Role          | Email                          | Password     |
 |---------------|--------------------------------|--------------|
 | Admin (staff) | `admin@cuhk.edu.hk`            | `password123`|
-| Staff         | Create via admin dashboard   |              |
+| Staff         | Create via admin dashboard     |              |
 | Student       | Register via sign‑up page      |              |
 
 ### Key paths
@@ -136,7 +136,7 @@ bundle exec cucumber
 ```
 
 ### Coverage report
-SimpleCov generates a coverage report after running tests.
+SimpleCov generates two separate coverage reports (Rspec and Cucumber) after running tests.
 
 The project requires **>80% line coverage** – currently met.
 
@@ -157,29 +157,31 @@ The project requires **>80% line coverage** – currently met.
 - Daily background job (Sidekiq) sends reminders for next‑day bookings.
 
 ### Fuzzy Search
-- Ransack search on `resources`, `venues`, and `equipment` pages.
+- Ransack search on `Venues & Equipment`, `Venues`, `Equipment`, `Manage Resources` and `Manage Departments` pages.
 - Searches across name, description, location, and department name.
 - Case‑insensitive using `LIKE` (SQLite).
 
 ## Feature Ownership
 
-| Feature                     | Primary Developer | Secondary Developer |
-|-----------------------------|-------------------|---------------------|
-| User authentication (Devise)| -        | -       |
-| Multi‑tenant architecture   | -        | -        |
-| Venue & Equipment CRUD      | -       | -         |
-| Booking system (create, view, cancel) | - | -          |
-| Approval workflow (staff dashboard) | - | -          |
-| Conflict detection & availability | - | -       |
-| Google Maps integration     | -       | -         |
-| ActionCable (real‑time)     | -       | -          |
-| Email notifications (SendGrid) | - | -       |
-| Fuzzy search (Ransack)      | -       | -        |
-| UI/UX design & Tailwind CSS | -       | -         |
-| Testing (RSpec + Cucumber)  | -       |  -                  |
-| Deployment & CI/CD          | -        |   -                  |
+| Feature                             | Primary Developer | Secondary Developer |
+|-------------------------------------|-------------------|---------------------|
+| User authentication (Devise)        | Li Kwan Ho        | Lam Chun To         |
+| Multi‑tenant architecture           | Lam Chun To       | Lin Chung Ho        |
+| Venue & Equipment CRUD              | Lam Chun To       | Lin Chung Ho        |
+| Booking system                      | Lam Chun To       | Lin Chung Ho        |
+| Approval workflow (staff dashboard) | Lam Chun To       | Lin Chung Ho        |
+| Conflict detection & availability   | Lin Chung Ho      | Lam Chun To         |
+| Models & Validation                 | Lin Chung Ho      | -                   |
+| Google Maps integration             | Li Kwan Ho        | -                   |
+| ActionCable (Real‑time)             | Lin Chung Ho      | -                   |
+| Email notifications (SendGrid)      | Li Kwan Ho        | -                   |
+| Fuzzy search (Ransack)              | Li Kwan Ho        | Lam Chun To         |
+| UI/UX design & Tailwind CSS         | Lam Chun To       | Chan Pak Ho         |
+| Testing (RSpec + Cucumber)          | Chan Pak Ho       | -                   |
+| Debugging                           | All members       | -                   |
+| Deployment & CI/CD                  | Li Kwan Ho        | -                   |
 
-## Team
+## Team members
 
 | Name                | Student ID   | GitHub Username |
 |---------------------|--------------|-----------------|
@@ -188,10 +190,6 @@ The project requires **>80% line coverage** – currently met.
 | Lin Chung Ho        | 1155234923   | ForestL06       |
 | Lam Chun To         | 1155236012   | railgun0617     |
 
-## License
-
-This project is developed for CSCI3100 – Software Engineering, CUHK. © 2026.
-
 ---
 
-**Questions or issues?** Please open a GitHub issue or contact the team.
+**Questions or issues?** Please open a GitHub issue or contact the team through email 1155236012@link.cuhk.edu.hk / 1155234608@link.cuhk.edu.hk .
