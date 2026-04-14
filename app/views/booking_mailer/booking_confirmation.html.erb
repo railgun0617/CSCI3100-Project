@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+</head>
+<body style="font-family: Arial, sans-serif; line-height: 1.6; color: #333;">
+  <div style="max-width: 600px; margin: 0 auto; padding: 20px;">
+    <h2 style="color: #1e40af;">Booking Request Received</h2>
+    
+    <p>Hello <%= @user.email %>,</p>
+    
+    <p>Thank you for booking with us! Your booking request has been successfully submitted and is now <strong>pending approval</strong> by our staff.</p>
+    
+    <div style="background: #f8fafc; padding: 20px; border-radius: 8px; margin: 25px 0; border-left: 4px solid #3b82f6;">
+      <strong>Booking Details:</strong><br><br>
+      <strong>Resource:</strong> <%= @resource.name %> (<%= @booking.venue ? 'Venue' : 'Equipment' %>)<br>
+      <strong>Date:</strong> <%= @booking.start_time.strftime("%A, %B %d, %Y") %><br>
+      <strong>Time:</strong> <%= @booking.start_time.strftime("%I:%M %p") %> - <%= @booking.end_time.strftime("%I:%M %p") %><br>
+      <% if @booking.equipment.present? && @booking.quantity.present? %>
+        <strong>Quantity:</strong> <%= @booking.quantity %><br>
+      <% end %>
+      <strong>Status:</strong> Pending Approval
+    </div>
+    
+    <p>You will receive another email once your booking is <strong>approved</strong> or <strong>rejected</strong> by our staff.</p>
+    
+    <p style="margin-top: 30px;">
+      <%= link_to "View My Bookings", 
+                  bookings_url, 
+                  style: "background-color: #2563eb; color: white; padding: 12px 24px; text-decoration: none; border-radius: 6px; font-weight: bold;" %>
+    </p>
+    
+    <p style="color: #666; font-size: 14px; margin-top: 40px;">
+      Best regards,
+      <br>CUHK Booking SaaS
+    </p>
+  </div>
+</body>
+</html>

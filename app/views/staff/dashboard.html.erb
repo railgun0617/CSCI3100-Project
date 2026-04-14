@@ -36,7 +36,10 @@
                 <%= button_to "Reject", reject_booking_path(booking), method: :patch,
                       class: "bg-red-600 hover:bg-red-700 text-white px-3 py-1 rounded text-sm" %>
                 <%= button_to "Delete", booking_path(booking), method: :delete,
-                      data: { confirm: "Permanently delete this booking?" },
+                      data: { 
+                            confirm: "Permanently delete this booking?",
+                            turbo_frame: "_top"
+                            },
                       class: "bg-gray-600 hover:bg-gray-700 text-white px-3 py-1 rounded text-sm" %>
               </div>
             </td>
@@ -48,3 +51,122 @@
 <% else %>
   <p class="text-gray-500">No pending bookings to approve.</p>
 <% end %>
+
+<%= action_cable_meta_tag %>
+<script src="https://cdn.jsdelivr.net/npm/@rails/actioncable@7.0.0/app/assets/javascripts/actioncable.js"></script>
+<script>
+  (function() {
+    const cable = ActionCable.createConsumer('/cable');
+    const subscription = cable.subscriptions.create('StaffChannel', {
+      connected() { console.log('Staff WebSocket connected'); },
+      disconnected() { console.log('Staff WebSocket disconnected'); },
+      received(data) {
+        console.log('Staff received:', data);
+        
+        if (data.type === 'new_booking') {
+          addBookingToTable(data);
+          showNotification('New pending booking!', 'info');
+        }
+      }
+    });
+
+    function addBookingToTable(booking) {
+      // Find table body
+      let tableBody = document.querySelector('tbody');
+      let table = document.querySelector('table');
+      
+      console.log('Table body found:', tableBody);
+      console.log('Booking data:', booking);
+      
+      // If no table exists, reload page
+      if (!tableBody) {
+        console.log('No table found, reloading...');
+        location.reload();
+        return;
+      }
+      
+      // Remove empty message if exists
+      const emptyMsg = document.querySelector('.text-gray-500');
+      if (emptyMsg) emptyMsg.remove();
+      
+      // Format time
+      const startTime = new Date(booking.start_time).toLocaleString();
+      const endTime = new Date(booking.end_time).toLocaleString();
+      
+      // Create new row
+      const row = document.createElement('tr');
+      row.setAttribute('data-booking-id', booking.booking_id);
+      row.innerHTML = `
+        <td class="px-6 py-4">${escapeHtml(booking.resource_name)} (${booking.resource_type})</td>
+        <td class="px-6 py-4">${escapeHtml(booking.user_email)}</td>
+        <td class="px-6 py-4">${startTime}</td>
+        <td class="px-6 py-4">${endTime}</td>
+        <td class="px-6 py-4">${booking.quantity || '-'}</td>
+        <td class="px-6 py-4">
+          <div class="flex gap-2">
+            <form action="/bookings/${booking.booking_id}/approve" method="post" class="inline" data-turbo="false">
+              <input type="hidden" name="_method" value="patch">
+              <input type="hidden" name="authenticity_token" value="${getCsrfToken()}">
+              <button type="submit" class="bg-green-600 hover:bg-green-700 text-white px-3 py-1 rounded text-sm">Approve</button>
+            </form>
+            <form action="/bookings/${booking.booking_id}/reject" method="post" class="inline" data-turbo="false">
+              <input type="hidden" name="_method" value="patch">
+              <input type="hidden" name="authenticity_token" value="${getCsrfToken()}">
+              <button type="submit" class="bg-red-600 hover:bg-red-700 text-white px-3 py-1 rounded text-sm">Reject</button>
+            </form>
+            <form action="/bookings/${booking.booking_id}" method="post" class="inline" data-turbo="false">
+              <input type="hidden" name="_method" value="delete">
+              <input type="hidden" name="authenticity_token" value="${getCsrfToken()}">
+              <button type="submit" class="bg-gray-600 hover:bg-gray-700 text-white px-3 py-1 rounded text-sm" onclick="return confirm('Delete this booking?')">Delete</button>
+            </form>
+          </div>
+        </td>
+      `;
+      
+      // Insert at top
+      if (tableBody.firstChild) {
+        tableBody.insertBefore(row, tableBody.firstChild);
+      } else {
+        tableBody.appendChild(row);
+      }
+      
+      // Highlight new row
+      row.style.backgroundColor = '#fef3c7';
+      setTimeout(() => {
+        row.style.backgroundColor = '';
+      }, 2000);
+      
+      console.log('Row added successfully');
+    }
+
+    function showNotification(message, type) {
+      const existing = document.querySelector('.staff-toast');
+      if (existing) existing.remove();
+      
+      const toast = document.createElement('div');
+      toast.className = 'staff-toast';
+      toast.textContent = message;
+      toast.style.cssText = `
+        position: fixed; top: 20px; left: 50%; transform: translateX(-50%);
+        padding: 10px 20px; background: #3b82f6; color: white;
+        border-radius: 6px; font-size: 14px; z-index: 9999;
+      `;
+      document.body.appendChild(toast);
+      setTimeout(() => toast.remove(), 3000);
+    }
+
+    function escapeHtml(str) {
+      if (!str) return '';
+      return str.replace(/[&<>]/g, function(m) {
+        if (m === '&') return '&amp;';
+        if (m === '<') return '&lt;';
+        if (m === '>') return '&gt;';
+        return m;
+      });
+    }
+
+    function getCsrfToken() {
+      return document.querySelector('[name="csrf-token"]')?.content || '';
+    }
+  })();
+</script>

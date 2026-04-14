@@ -39,7 +39,6 @@ class BookingsController < ApplicationController
       booked = Booking.where(equipment_id: resource_id, status: [:pending, :approved])
                       .where("start_time < ? AND end_time > ?", end_time, start_time)
                       .sum(:quantity)
-      
       if quantity > (resource.quantity - booked)
         redirect_to new_booking_path(resource_type: resource_type, resource_id: resource_id),
                     alert: "Only #{resource.quantity - booked} items available"
@@ -63,24 +62,35 @@ class BookingsController < ApplicationController
     end
 
     if booking.save
-      redirect_to bookings_path, notice: "Booking request submitted for #{start_time.strftime('%b %d, %I:%M %p')}."
+      # Send confirmation email to the user
+      if Rails.application.config.send_emails
+        BookingMailer.booking_confirmation(booking).deliver_later
+      end
+      redirect_to bookings_path, 
+          notice: "Booking request submitted"
     else
       redirect_to new_booking_path(resource_type: resource_type, resource_id: resource_id),
-                  alert: booking.errors.full_messages.to_sentence
+          alert: booking.errors.full_messages.to_sentence
     end
   end
 
   def approve
     booking = Booking.find(params[:id])
+
     unless can_manage_booking?(booking)
       redirect_to staff_dashboard_path, alert: "You are not authorized to approve this booking."
       return
     end
 
     if booking.approve!
-      redirect_to staff_dashboard_path, notice: "Booking approved."
+      if Rails.application.config.send_emails
+        BookingMailer.booking_approved(booking).deliver_later
+      end
+      redirect_to staff_dashboard_path, 
+                  notice: "Booking approved."
     else
-      redirect_to staff_dashboard_path, alert: "Could not approve booking. It may conflict with another booking."
+      redirect_to staff_dashboard_path, 
+                  alert: "Failed to approve booking."
     end
   end
 
@@ -91,21 +101,44 @@ class BookingsController < ApplicationController
       return
     end
 
-    if booking.reject!
-      redirect_to staff_dashboard_path, notice: "Booking rejected."
+    if  booking.reject!
+      if Rails.application.config.send_emails
+        BookingMailer.booking_rejected(booking).deliver_later
+      end
+      redirect_to staff_dashboard_path, 
+                  notice: "Booking rejected."
     else
-      redirect_to staff_dashboard_path, alert: "Could not reject booking."
+      redirect_to staff_dashboard_path, 
+                  alert: "Failed to reject booking."
     end
   end
 
-  def destroy
-    @booking = Booking.find(params[:id])
-    # Allow owner to delete, or staff who can manage the booking (tenant match)
+def destroy
+    @booking = Booking.find_by(id: params[:id])
+
+    if @booking.nil?
+      redirect_to request.referer || staff_dashboard_path, 
+                  alert: "Booking was already deleted or not found."
+      return
+    end
+
+    # Authorization check
     if current_user == @booking.user || (current_user.staff? && can_manage_booking?(@booking))
       @booking.destroy
-      redirect_to request.referer || bookings_path, notice: "Booking was successfully deleted."
+      
+      respond_to do |format|
+        format.html do
+          redirect_to request.referer || staff_dashboard_path, 
+                      notice: "Booking was successfully deleted."
+        end
+        format.turbo_stream do
+          redirect_to request.referer || staff_dashboard_path, 
+                      notice: "Booking was successfully deleted."
+        end
+      end
     else
-      redirect_to bookings_path, alert: "You are not authorized to delete this booking."
+      redirect_to request.referer || staff_dashboard_path, 
+                  alert: "You are not authorized to delete this booking."
     end
   end
 
@@ -113,14 +146,16 @@ class BookingsController < ApplicationController
 
   def generate_time_slots(resource)
     slots = []
-    start_date = Date.today
+    start_date = Time.zone.now.to_date
     (0..6).each do |day_offset|
       date = start_date + day_offset
       (9..17).each do |hour|
-        slot_start = DateTime.new(date.year, date.month, date.day, hour, 0, 0)
+        slot_start = Time.zone.local(date.year, date.month, date.day, hour, 0, 0)
         slot_end = slot_start + 1.hour
 
         status = if date.saturday? || date.sunday? 
+                  "closed"
+                elsif slot_start <= Time.zone.now
                   "closed"
                 elsif resource.is_a?(Venue) && !resource.is_venue_open?(slot_start, slot_end)
                   "closed"

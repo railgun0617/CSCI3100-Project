@@ -9,15 +9,15 @@ Feature: Edit Account Page
     And I am on the edit account page
 
   Scenario: Update Email successfully
-    Given I type the Email as "abc@link.cuhk.edu.hk"
-    And I type the Current password as "password123"
+    Given I fill in the Email as "abc@link.cuhk.edu.hk"
+    And I fill in the Current password as "password123"
     When I click the "Update" button
     Then I should see "Your account has been updated successfully."
 
   Scenario: Update Password successfully
-    Given I type the New password as "123456789"
-    And I type the Confirm new password as "123456789"
-    And I type the Current password as "password123"
+    Given I fill in the New password as "123456789"
+    And I fill in the Confirm new password as "123456789"
+    And I fill in the Current password as "password123"
     When I click the "Update" button
     Then I should see "Your account has been updated successfully."  
 

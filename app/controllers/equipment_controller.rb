@@ -1,18 +1,28 @@
 class EquipmentController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
   before_action :authorize_staff!, only: [:new, :create, :edit, :update, :destroy]
   before_action :set_equipment, only: [:show, :edit, :update, :destroy]
 
   def index
-    if current_user.staff? && current_user.tenant&.name == "Admin"
-      # Admin sees all equipment (no tenant filter)
-      @q = Equipment.ransack(params[:q])
-      @equipment = @q.result(distinct: true).order(:name)
-    elsif current_user.staff?
-      @q = current_user.tenant.equipment.ransack(params[:q])
-      @equipment = @q.result(distinct: true).order(:name)
+    if user_signed_in? && current_user.staff? && current_user.tenant&.name == "Admin"
+      base_equipment = Equipment.all
+    elsif user_signed_in? && current_user.staff?
+      base_equipment = current_user.tenant.equipment
     else
-      @q = Equipment.ransack(params[:q])
+      base_equipment = Equipment.all
+    end
+
+    if params[:q].present? && params[:q][:name_or_description_or_location_cont].present?
+      search_term = "%#{params[:q][:name_or_description_or_location_cont]}%"
+      @equipment = base_equipment
+        .joins("LEFT JOIN tenants ON equipment.tenant_id = tenants.id")
+        .where("equipment.name LIKE ? OR equipment.description LIKE ? OR equipment.location LIKE ? OR tenants.name LIKE ?",
+               search_term, search_term, search_term, search_term)
+        .distinct
+        .order(:name)
+      @q = base_equipment.ransack(params[:q])
+    else
+      @q = base_equipment.ransack(params[:q])
       @equipment = @q.result(distinct: true).order(:name)
     end
   end
@@ -22,9 +32,8 @@ class EquipmentController < ApplicationController
   end
 
   def new
-    @equipment = Equipment.new
-    # For non‑admin staff, pre‑assign their tenant; admin will choose via form
-    if current_user.staff? && current_user.tenant&.name != "Admin"
+    @equipment = Equipment.new(flash[:equipment_params] || {})
+    if user_signed_in? && current_user.staff? && current_user.tenant&.name != "Admin"
       @equipment.tenant = current_user.tenant
     end
   end
@@ -36,15 +45,16 @@ class EquipmentController < ApplicationController
   def create
     @equipment = Equipment.new(equipment_params)
 
-    # Non‑admin staff: force tenant to their own tenant (ignore any passed tenant_id)
-    if current_user.staff? && current_user.tenant&.name != "Admin"
+    if user_signed_in? && current_user.staff? && current_user.tenant&.name != "Admin"
       @equipment.tenant = current_user.tenant
     end
 
     if @equipment.save
       redirect_to @equipment, notice: 'Equipment was successfully created.'
     else
-      render :new, status: :unprocessable_entity
+      redirect_to new_equipment_path,
+                  alert: @equipment.errors.full_messages.to_sentence,
+                  flash: { equipment_params: equipment_params }
     end
   end
 
@@ -52,7 +62,8 @@ class EquipmentController < ApplicationController
     if @equipment.update(equipment_params)
       redirect_to @equipment, notice: 'Equipment was successfully updated.'
     else
-      render :edit, status: :unprocessable_entity
+      redirect_to edit_equipment_path(@equipment),
+                  alert: @equipment.errors.full_messages.to_sentence
     end
   end
 
@@ -64,28 +75,24 @@ class EquipmentController < ApplicationController
   private
 
   def set_equipment
-    @equipment = if current_user.staff? && current_user.tenant&.name == "Admin"
-                   # Admin can access any equipment
-                   Equipment.find(params[:id])
-                 elsif current_user.staff?
-                   # Normal staff can only access equipment from their tenant
-                   current_user.tenant.equipment.find(params[:id])
-                 else
-                   Equipment.find(params[:id])
-                 end
+    if user_signed_in? && current_user.staff? && current_user.tenant&.name == "Admin"
+      @equipment = Equipment.find(params[:id])
+    elsif user_signed_in? && current_user.staff?
+      @equipment = current_user.tenant.equipment.find(params[:id])
+    else
+      @equipment = Equipment.find(params[:id])
+    end
   end
 
   def equipment_params
-    if current_user.staff? && current_user.tenant&.name == "Admin"
-      # Admin can set tenant_id
+    if user_signed_in? && current_user.staff? && current_user.tenant&.name == "Admin"
       params.require(:equipment).permit(:name, :description, :location, :quantity, :latitude, :longitude, :tenant_id)
     else
-      # Non‑admin staff and students cannot set tenant_id
       params.require(:equipment).permit(:name, :description, :location, :quantity, :latitude, :longitude)
     end
   end
 
   def authorize_staff!
-    redirect_to root_path, alert: 'Access denied.' unless current_user.staff?
+    redirect_to root_path, alert: 'Access denied.' unless user_signed_in? && current_user.staff?
   end
 end

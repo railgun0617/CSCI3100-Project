@@ -26,7 +26,12 @@
     <%= render "shared/map_picker", f: f %>
 
     <!-- Tenant (department) handling -->
-    <% if current_user&.staff? %>
+    <% if current_user&.staff? && current_user.tenant&.name == "Admin" %>
+      <div class="mb-4">
+        <%= f.label :tenant_id, "Department", class: "block text-gray-700 font-medium mb-1" %>
+        <%= f.collection_select :tenant_id, Tenant.all, :id, :name, { prompt: "Select department" }, class: "w-full p-2 border rounded-lg" %>
+      </div>
+    <% elsif current_user&.staff? %>
       <%= f.hidden_field :tenant_id, value: current_user.tenant_id %>
       <div class="text-sm text-gray-600 mb-4">Department: <%= current_user.tenant&.name || 'N/A' %></div>
     <% end %>

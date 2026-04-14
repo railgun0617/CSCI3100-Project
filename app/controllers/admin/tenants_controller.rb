@@ -1,10 +1,11 @@
 class Admin::TenantsController < ApplicationController
   before_action :authenticate_user!
-  before_action :authorize_staff!
+  before_action :authorize_staff_or_admin!
   before_action :set_tenant, only: [:edit, :update, :destroy]
 
   def index
-    @tenants = Tenant.all.order(:name)
+    @q = Tenant.ransack(params[:q])
+    @tenants = @q.result(distinct: true).order(:name)
   end
 
   def new
@@ -53,7 +54,7 @@ class Admin::TenantsController < ApplicationController
     params.require(:tenant).permit(:name, :slug)
   end
 
-  def authorize_staff!
-    redirect_to root_path, alert: "Access denied." unless current_user.staff?
+  def authorize_staff_or_admin!
+    redirect_to root_path, alert: "Access denied." unless current_user.staff? || current_user.admin?
   end
 end

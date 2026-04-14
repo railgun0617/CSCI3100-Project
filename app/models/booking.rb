@@ -105,6 +105,21 @@ class Booking < ApplicationRecord
     return true if actor.staff?
     false
   end
+  
+  # check if it is locked
+  def locked?
+    locked_by_id.present? && locked_at.present? && locked_at > 5.minutes.ago
+  end
+
+  # check if it is locked by some user
+  def locked_by?(user)
+    locked? && locked_by_id == user.id
+  end
+
+  # release the lock
+  def release_lock!
+    update!(locked_by_id: nil, locked_at: nil)
+  end
 
   private
 
@@ -160,7 +175,7 @@ class Booking < ApplicationRecord
   end
 
   def sufficient_equipment
-    return if equipment.blank?
+    return if equipment.blank? || equipment.quantity.nil?
 
     if equipment.quantity < quantity
       errors.add(:base, "Not enough #{equipment.name} available (total quantity).")

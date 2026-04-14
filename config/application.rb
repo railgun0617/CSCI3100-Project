@@ -8,6 +8,9 @@ Bundler.require(*Rails.groups)
 
 module Csci3100Project
   class Application < Rails::Application
+    # Email configuration - Set to false to disable sending emails
+    config.send_emails = true
+
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 8.1
 
@@ -23,5 +26,7 @@ module Csci3100Project
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+
+    config.time_zone = 'Hong Kong'
   end
 end
