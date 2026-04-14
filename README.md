@@ -124,6 +124,10 @@ The app will be available at `http://localhost:3000`.
 | Sign up                   | `/users/sign_up`              |
 
 ## Testing
+### Configure database for testing
+```bash
+rails db:create db:migrate db:seed RAILS_ENV=test
+```
 
 ### Run RSpec (unit tests)
 ```bash
