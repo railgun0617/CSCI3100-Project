@@ -61,4 +61,18 @@ World(FactoryBot::Syntax::Methods)
 
 # Capybara.javascript_driver = :selenium_chrome_headless if you want to run headless by default.
 # Capybara.javascript_driver = :selenium_chrome if you want to run with a visible browser by default.
+
+require 'capybara/cucumber'
+require 'selenium-webdriver'
+
+Capybara.register_driver :selenium_chrome_headless do |app|
+  options = Selenium::WebDriver::Chrome::Options.new
+  options.add_argument('--headless')
+  options.add_argument('--no-sandbox')
+  options.add_argument('--disable-dev-shm-usage')
+  options.binary = '/usr/bin/chromium-browser'
+  Capybara::Selenium::Driver.new(app, browser: :chrome, options: options)
+end
+
+Capybara.default_driver = :selenium_chrome_headless
 Capybara.javascript_driver = :selenium_chrome_headless

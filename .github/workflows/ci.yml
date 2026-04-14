@@ -17,6 +17,9 @@ jobs:
         with:
           bundler-cache: true
 
+      - run: sudo apt-get update && sudo apt-get install -y chromium-browser chromium-chromedriver
+      - run: chromium-browser --version && chromedriver --version
+
       - name: Prepare test database
         env:
           RAILS_ENV: test
