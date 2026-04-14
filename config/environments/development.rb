@@ -3,11 +3,6 @@ require "active_support/core_ext/integer/time"
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
-  # For development use
-  config.action_controller.forgery_protection_origin_check = false
-  config.hosts << /.*\.github\.dev/
-  routes.default_url_options = { host: "congenial-zebra-69qw79wwj6j4h4vxw-3000.app.github.dev", protocol: "https" }
-
   # Make code changes take effect immediately without server restart.
   config.enable_reloading = true
 
@@ -22,7 +17,7 @@ Rails.application.configure do
 
 
   # Toggle emails on/off during development
-  config.send_emails = false    # ← Change to true when you want emails
+  config.send_emails = true    # ← Change to true when you want emails
   
   # Run rails dev:cache to toggle Action Controller caching.
   if Rails.root.join("tmp/caching-dev.txt").exist?
