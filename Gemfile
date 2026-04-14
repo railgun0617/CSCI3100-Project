@@ -73,7 +73,7 @@ group :test do
   gem "selenium-webdriver"
   gem "cucumber-rails", require: false
   gem "cucumber"
-  gem "database_cleaner"
+  gem "database_cleaner-active_record"
   gem "simplecov", require: false
   gem "simplecov-console", require: false
   gem "rspec-expectations"
